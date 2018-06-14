@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import './Sidebar.css';
-import { Grid,Row,Col } from 'react-bootstrap';
+// import { Grid,Row,Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 
 
 class Sidebar extends Component {
 
   constructor(props) {
   super(props);
-  this.state = {menu: ["All Courses","My Courses","Create Courses","Logout"]}
+
+  this.state = {menu: [
+    {name: "Home", url: "/"},
+    {name: "All Courses", url: "all-courses"},
+    {name: "My Courses", url: "my-courses"},
+    {name: "Create Courses", url: "create-course"},
+    {name: "Logout", url: "Logout"}
+  ]}
 }
 
   render() {
@@ -19,8 +27,9 @@ class Sidebar extends Component {
             {
                 this.state.menu.map((exp,i) => {
                   return <li key={i} className="nav-item">
-                        <a className="nav-link active" href="#"> {exp} </a>
-                  </li>
+                          <Link to={{pathname: exp.url}}>  {exp.name} </Link>
+                      </li>
+
                 })
               }
 
