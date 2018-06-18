@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import { Grid,Row,Col,Panel } from 'react-bootstrap';
-import './CreateCourse.css';
+import { Grid,Row,Col } from 'react-bootstrap';
+import './MyCourses.css';
 
 
 
-class CreateCourse extends Component {
+class MyCourses extends Component {
 
   constructor(props) {
     super(props);
@@ -22,7 +22,7 @@ class CreateCourse extends Component {
   render() {
     return (
       <Grid fluid>
-       <h2>Create Course</h2>
+       <h2>My Courses</h2>
 
         <Row className="show-grid">
           <Col md={12}>
@@ -45,4 +45,4 @@ class CreateCourse extends Component {
 
 
 
-export default CreateCourse
+export default MyCourses

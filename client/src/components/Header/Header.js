@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar,Nav,NavItem,NavDropdown,MenuItem } from 'react-bootstrap';
-// import Sidebar from '../Sidebar/Sidebar';
+import { Navbar } from 'react-bootstrap';
 
 
 
@@ -14,7 +13,7 @@ class Header extends Component {
               </Navbar.Brand>
             </Navbar.Header>
           </Navbar>
-          
+
 
 
       )
