@@ -5,20 +5,39 @@ var router = express.Router();
 import Course from './models/Course';
 
 //Create
-router.get('/something', (req, res) => {
-  res.json("vrbnvlernbln");
+router.get('/', (req, res) => {
+
+  console.log("Kastanien aus dem Feuer");
+
+
+  res.json("Kastanien aus dem Feuer");
 });
 
 
 
 
 router.post('/create', (req, res) => {
+
   const course = new Course();
+  const obj = req.body; // What i get
 
-  // // body parser lets us use the req.body
-  const { author, text } = req.body;
+  // Assign all received data to course
+  Object.keys(obj).forEach(key => {
+    let value = obj[key]
+    course[key] = value
+  });
 
-  console.log(author);
+
+  // Always think of testing
+  course.save(error => {
+    if(error){}
+    res.send(course)
+
+    return
+
+  })
+
+
 
 
 

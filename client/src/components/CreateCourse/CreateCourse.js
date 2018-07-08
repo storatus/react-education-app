@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Grid,Row,Col, Form, FormGroup, FormControl, Button, ControlLabel } from 'react-bootstrap';
 import './CreateCourse.css';
-
+import axios from 'axios';
 
 
 class CreateCourse extends Component {
@@ -11,10 +11,10 @@ class CreateCourse extends Component {
 
     this.state = {
       name: true,
-      durationFrom: 2,
-      durationTo: 3,
+      dateFrom: 2,
+      dateTo: 3,
       description: '',
-      selectStatus: ''
+      courseStatus: 'enabled'
 
     };
 
@@ -34,11 +34,27 @@ class CreateCourse extends Component {
   }
 
 
-  submitForm(e){
+submitForm(e) {
 
 
-      e.preventDefault();
-  }
+
+  // // Should i copy this.state ?
+  // let stateObj = JSON.stringify(this.state)
+  let stateObj = this.state
+
+  axios.post('/api/create', stateObj).then((response) => {
+    let data = response.data
+    console.log(data);
+
+
+
+
+  }).catch(err => {
+    console.log(err);
+  })
+
+  e.preventDefault();
+}
 
 
   render() {
@@ -63,7 +79,7 @@ class CreateCourse extends Component {
               </FormGroup>
 
 
-              <FormGroup controlId="durationFrom">
+              <FormGroup controlId="dateFrom">
                 <Col componentClass={ControlLabel} sm={3}>
                   Duration from
                 </Col>
@@ -73,7 +89,7 @@ class CreateCourse extends Component {
               </FormGroup>
 
 
-              <FormGroup controlId="durationTo">
+              <FormGroup controlId="dateTo">
                 <Col componentClass={ControlLabel} sm={3}>
                   Duration to
                 </Col>
@@ -93,7 +109,7 @@ class CreateCourse extends Component {
               </FormGroup>
 
 
-              <FormGroup controlId="selectStatus">
+              <FormGroup controlId="courseStatus">
                 <Col componentClass={ControlLabel} sm={3}>
                   Course status
                 </Col>
@@ -125,13 +141,6 @@ class CreateCourse extends Component {
 
         </Row>
       </Grid>
-
-
-
-
-
-
-
     )
   }
 }

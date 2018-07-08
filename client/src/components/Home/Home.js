@@ -27,7 +27,7 @@ class Home extends Component {
 
         <Row className="show-grid">
           <Col md={3}>
-            <Panel onClick={(e) => this.handleClick('courses', e)}>
+            <Panel onClick={(e) => this.handleClick('all-courses', e)}>
                 <Panel.Body className="panelPointer">See All Courses</Panel.Body>
             </Panel>
           </Col>

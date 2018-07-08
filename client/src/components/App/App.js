@@ -10,19 +10,20 @@ class App extends Component {
 
 
 
-  // This is just for testing purposes 
-  componentDidMount() {
-    this.callApi().then(res => this.setState({response: res.express})).catch(err => console.log(err));
-  }
-
-  callApi = async () => {
-    const response = await fetch('/api/something');
-    const body = await response.json();
-
-    if (response.status !== 200)
-      throw Error(body.message);
-    return body;
-  }
+  // This is just for testing purposes
+  // componentDidMount() {
+  //   this.callApi().then(res => this.setState({response: res.express})).catch(err => console.log(err));
+  // }
+  //
+  // callApi = async () => {
+  //   const response = await fetch('/api/');
+  //   const body = await response.json();
+  //
+  //
+  //   if (response.status !== 200)
+  //     throw Error(body.message);
+  //   return body;
+  // }
 
   render() {
     return (
