@@ -10,7 +10,7 @@ var courseSchema = new Schema({
   dateTo: String,
   description: String,
   courseStatus: String
-}, { timestamps: true });
+}, { timestamps: true, collection: 'courses' });
 
 
 export default mongoose.model('Course', courseSchema);

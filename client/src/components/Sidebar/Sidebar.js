@@ -11,10 +11,10 @@ class Sidebar extends Component {
 
   this.state = {menu: [
     {name: "Home", url: "/"},
-    {name: "All Courses", url: "all-courses"},
-    {name: "My Courses", url: "my-courses"},
-    {name: "Create Courses", url: "create-course"},
-    {name: "Logout", url: "Logout"}
+    {name: "All Courses", url: "/all-courses"},
+    {name: "My Courses", url: "/my-courses"},
+    {name: "Create Courses", url: "/create-course"},
+    {name: "Logout", url: "/Logout"}
   ]}
 }
 
@@ -26,6 +26,7 @@ class Sidebar extends Component {
           <ul className="nav flex-column">
             {
                 this.state.menu.map((exp,i) => {
+
                   return <li key={i} className="nav-item">
                           <Link to={{pathname: exp.url}}>  {exp.name} </Link>
                       </li>

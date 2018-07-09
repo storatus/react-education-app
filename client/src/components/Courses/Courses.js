@@ -1,20 +1,70 @@
 import React, {Component} from 'react';
-import { Table,Grid, Row, Col } from 'react-bootstrap';
+import { Table, Grid, Row, Col, Button } from 'react-bootstrap';
+import axios from 'axios';
+import { Link } from 'react-router-dom'
+import './Courses.css';
 
 
 class Courses extends Component {
 
-
   constructor(props) {
+
     super(props);
+    this.state = {courseData: []}
+
+  }
+
+  loadCourses(){
+
+    // Here I need still the
+
+    let url = this.props.match.url
+
+
+    axios.get('/api/courses')
+    .then(data => {
+      let courseData = data.data.map((val,index) => {
+        return (
+        <tr key={val._id}>
+          <td>{index}</td>
+          <td>{val.name}</td>
+          <td>43</td>
+          <td className="align-middle">
+            <Link to={`course/${val._id}`}>
+              <Button >See course</Button>
+            </Link>
+          </td>
+
+        </tr>);
+      });
+
+      this.setState({courseData})
+    })
+    .catch(err=> console.log(err, "This is an error"))
+
+
+  }
+
+  componentDidMount() {
+    this.loadCourses();
+
   }
 
 
+
   render() {
+    let courseData = this.state.data
+
+
+    // let courses = courseData.map(val => {
+    //     return val
+    // });
+
+
     return (
       <Grid fluid>
         <h2>
-          Create Course
+          All courses
         </h2>
 
     <Row className="show-grid">
@@ -29,12 +79,7 @@ class Courses extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
+                  {this.state.courseData}
                 </tbody>
             </Table>
           </Col>
