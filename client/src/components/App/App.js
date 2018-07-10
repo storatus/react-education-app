@@ -1,41 +1,51 @@
 import React, {Component} from 'react';
-import Header from '../Header/Header';
 import './App.css';
 
-import Sidebar from '../Sidebar/Sidebar';
-import Container from '../Container/Container';
+
+import Main from '../Main/Main';
+import Login from '../Login/Login';
+
+
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect,
+  withRouter,
+  Switch
+} from "react-router-dom";
+
+
 
 class App extends Component {
 
+  componentWillMount() {
+    console.log("I will mount");
+
+  }
 
 
 
-  // This is just for testing purposes
-  // componentDidMount() {
-  //   this.callApi().then(res => this.setState({response: res.express})).catch(err => console.log(err));
-  // }
-  //
-  // callApi = async () => {
-  //   const response = await fetch('/api/');
-  //   const body = await response.json();
-  //
-  //
-  //   if (response.status !== 200)
-  //     throw Error(body.message);
-  //   return body;
-  // }
+
+
 
   render() {
     return (
     // This might change because I have to do things responsive
     <div className="App">
-      <Header/>
-      <div className="row">
-        <Sidebar/>
-        <Container/>
-      </div>
 
-    </div>)
+      <Switch>
+
+
+          <Route path="/login" component={Login} />
+          <Route path="/" component={Main} />
+      </Switch>
+
+
+    </div>
+
+  )
 
   }
 }

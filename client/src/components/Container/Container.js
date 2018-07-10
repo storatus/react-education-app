@@ -1,5 +1,3 @@
-
-
 import React, { Component } from 'react';
 import { Route,Switch,  } from 'react-router-dom'
 
@@ -22,7 +20,6 @@ class Container extends Component {
   render() {
     return (
           <div className="col-md-10">
-
           <Switch>
 
             <Route exact path='/' component={Home}/>
