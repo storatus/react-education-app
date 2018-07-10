@@ -19,17 +19,38 @@ router.get('/courses', (req, res) => {
   Course.find((err,data) => {
       if (err) { res.json(err)}
       res.json(data)
+
   })
 });
+
+router.delete('/delete/:courseId', (req, res) => {
+
+  let courseId = req.params.courseId;
+  Course.remove({ _id: courseId }, (err, data) => {
+      // I also need to define error message
+      // console.log(data);
+      if (err) {
+        res.json(err)
+        return;
+      }
+      res.json({status: true})
+  });
+
+});
+
+
+
+
 
 
 router.get('/course/:courseId', (req, res) => {
   let courseId = req.params.courseId;
-
   // What happens if courseId was not found ?
-
   Course.findById(courseId, (err, courseData) => {
-        if (err) { res.json(err)}
+        if (err) {
+          res.json(err)
+          return; 
+        }
         res.json(courseData)
   });
 
@@ -37,9 +58,27 @@ router.get('/course/:courseId', (req, res) => {
 
 
 
+router.post("/update", (req, res) => {
+
+  const obj = req.body;
+
+  Course.findByIdAndUpdate(obj._id,{
+    name: obj.name,
+    dateFrom: obj.dateFrom,
+    dateTo: obj.dateTo,
+    description: obj.description,
+    courseStatus: obj.courseStatus
+  },
+  {new: true},(err,dbRes) => {
+    res.send(dbRes)
+  })
+
+});
+
+
+
 router.post('/create', (req, res) => {
 
-  console.log("I just created something");
 
   const course = new Course();
   const obj = req.body; // What i get
@@ -55,28 +94,11 @@ router.post('/create', (req, res) => {
   course.save(error => {
     if(error){}
     res.send(course)
-
     return
 
   })
 
 
-
-
-
-  // if (!author || !text) {
-  //   // we should throw an error. we can do this check on the front end
-  //   return res.json({
-  //     success: false,
-  //     error: 'You must provide an author and comment'
-  //   });
-  // }
-  // comment.author = author;
-  // comment.text = text;
-  // comment.save(err => {
-  //   if (err) return res.json({ success: false, error: err });
-  //   return res.json({ success: true });
-  // });
 });
 
 

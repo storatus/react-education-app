@@ -16,11 +16,6 @@ class Courses extends Component {
 
   loadCourses(){
 
-    // Here I need still the
-
-    let url = this.props.match.url
-
-
     axios.get('/api/courses')
     .then(data => {
       let courseData = data.data.map((val,index) => {
@@ -30,7 +25,7 @@ class Courses extends Component {
           <td>{val.name}</td>
           <td>43</td>
           <td className="align-middle">
-            <Link to={`course/${val._id}`}>
+            <Link to={`/course/${val._id}`}>
               <Button >See course</Button>
             </Link>
           </td>
@@ -53,8 +48,6 @@ class Courses extends Component {
 
 
   render() {
-    let courseData = this.state.data
-
 
     // let courses = courseData.map(val => {
     //     return val

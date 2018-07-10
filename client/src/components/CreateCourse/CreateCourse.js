@@ -18,12 +18,11 @@ class CreateCourse extends Component {
     super(props);
 
     this.state = {
-      name: true,
-      dateFrom: 2,
-      dateTo: 3,
+      name: '',
+      dateFrom: '',
+      dateTo: '',
       description: '',
       courseStatus: 'enabled'
-
     };
 
     // This binding is necessary to make `this` work in the callback
@@ -32,32 +31,76 @@ class CreateCourse extends Component {
 
   }
 
+
+
+
+  loadCourse(courseId){
+    return axios.get(`/api/course/${courseId}`);
+  }
+
+
+  assignData(data){
+
+    this.setState({
+      _id: data._id,
+      name: data.name,
+      dateFrom: data.dateFrom,
+      dateTo: data.dateTo,
+      description: data.description,
+      courseStatus: data.courseStatus
+    });
+
+
+  }
+
+  componentDidMount() {
+
+    this.paramId = this.props.match.params.courseId
+    let courseId = this.paramId;
+
+    if (this.paramId) {
+        this.loadCourse(courseId).then(data => {
+            let courseData = data.data;
+            this.assignData(courseData)
+        }).catch(err => console.log(err))
+    }
+
+  }
+
   handleInput(e) {
     let name = e.target.id
     let val = e.target.value
     this.setState({[name]: val});
-
   }
 
+
   submitForm(e) {
-
-
     //  Should i copy this.state ?
     // let stateObj = JSON.stringify(this.state)
     let stateObj = this.state
-    axios.post('/api/create', stateObj).then((response) => {
-      // let data = response.data;
-    }).catch(err => {
-      console.log(err);
+    let request = this.paramId ? '/api/update' : '/api/create'
+
+
+    axios.post(request, stateObj)
+    .then(response => {
+      this.paramId ? alert('Changes made') : alert('created')
     })
+    .catch(err => console.log(err))
+
+
     e.preventDefault();
   }
 
   render() {
+
+    let courseStatus = this.paramId ? 'Edit Course' : 'Create Course';
+    let buttonStatus = this.paramId ? 'Save Changes' : 'Create Course';
+
+
     return (
       <Grid fluid={true}>
       <h2>
-        Create Course
+        {courseStatus} Course
       </h2>
 
       <Row className="show-grid">
@@ -69,7 +112,7 @@ class CreateCourse extends Component {
                 Name of Course
               </Col>
               <Col sm={9}>
-                <FormControl onChange={this.handleInput} type="input" placeholder="Name of Course"/>
+                <FormControl onChange={this.handleInput} type="input" value={this.state.name} placeholder="Name of Course"/>
               </Col>
             </FormGroup>
 
@@ -78,7 +121,7 @@ class CreateCourse extends Component {
                 Duration from
               </Col>
               <Col sm={9}>
-                <FormControl onChange={this.handleInput} type="date" placeholder="Date from"/>
+                <FormControl onChange={this.handleInput} type="date" value={this.state.dateFrom} placeholder="Date from"/>
               </Col>
             </FormGroup>
 
@@ -87,7 +130,7 @@ class CreateCourse extends Component {
                 Duration to
               </Col>
               <Col sm={9}>
-                <FormControl onChange={this.handleInput} type="date" placeholder="Date to"/>
+                <FormControl onChange={this.handleInput} type="date" value={this.state.dateTo} placeholder="Date to"/>
               </Col>
             </FormGroup>
 
@@ -96,7 +139,7 @@ class CreateCourse extends Component {
                 Description
               </Col>
               <Col sm={9}>
-                <FormControl onChange={this.handleInput} componentClass="textarea" placeholder="Date to"/>
+                <FormControl onChange={this.handleInput} value={this.state.description} componentClass="textarea" placeholder="Date to"/>
               </Col>
             </FormGroup>
 
@@ -105,7 +148,7 @@ class CreateCourse extends Component {
                 Course status
               </Col>
               <Col sm={9}>
-                <FormControl onChange={this.handleInput} componentClass="select" placeholder="Select">
+                <FormControl onChange={this.handleInput} value={this.state.courseStatus} componentClass="select" placeholder="Select">
 
                   <option value="enabled">Enabled</option>
                   <option value="disabled">Disabled</option>
@@ -116,10 +159,12 @@ class CreateCourse extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Col smOffset={2} sm={10}>
-                <Button className="pull-right" type="submit">
-                  Create
-                </Button>
+              <Col  sm={12}>
+
+                  <Button className="pull-right"  type="submit">
+                    {buttonStatus}
+                  </Button>
+
               </Col>
             </FormGroup>
           </Form>

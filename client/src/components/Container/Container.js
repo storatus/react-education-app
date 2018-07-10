@@ -24,9 +24,10 @@ class Container extends Component {
 
             <Route exact path='/' component={Home}/>
             <Route path='/all-courses' component={Courses}/>
-            <Route path='/create-course' component={CreateCourse}/>
+            <Route path='/create-course' key="create-course" component={CreateCourse}/>
             <Route path='/my-courses' component={MyCourses}/>
-            <Route path='/course/:courseId' component={Course}/>
+            <Route path='/course/:courseId'  component={Course}/>
+            <Route path='/edit/:courseId' key="edit-course" component={CreateCourse}/>
 
 
           </Switch>

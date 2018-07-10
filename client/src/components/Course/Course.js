@@ -14,6 +14,8 @@ class Course extends Component {
       courseData: ''
     }
 
+    this.deleteCourse = this.deleteCourse.bind(this);
+
   }
 
   loadCourse(){
@@ -24,16 +26,29 @@ class Course extends Component {
       }).catch((error) => {
         console.log(error);
       })
+  }
 
+
+  deleteCourse(e){
+
+    let courseId = this.state.courseId;
+
+    axios.delete(`/api/delete/${courseId}`)
+    .then(res => {
+        let status = res.data.status
+        if (status) {
+          alert('You have deleted')
+          this.props.history.push('/all-courses')
+        }
+    })
+    .catch(err => console.log(err))
 
   }
 
 
 
   componentDidMount() {
-
     this.loadCourse()
-
   }
 
 
@@ -62,8 +77,6 @@ class Course extends Component {
                 <b>To: </b> <span> {courseData.dateTo} </span>
               </li>
             </ul>
-
-
           </Col>
           <Col md={3}>
             <ul className="no-bullets">
@@ -72,6 +85,19 @@ class Course extends Component {
               </li>
             </ul>
           </Col>
+        </Row>
+        <Row>
+            <Col md={6}>
+              <div className="pull-right">
+
+
+                  <Button  onClick={this.deleteCourse} bsStyle="danger" className="margin-right" > Delete </Button>
+                    <Link className="pull-right" to={`/edit/${courseData._id}`}>
+                      <Button >Edit</Button>
+                    </Link>
+              </div>
+
+            </Col>
         </Row>
       </Grid>
 

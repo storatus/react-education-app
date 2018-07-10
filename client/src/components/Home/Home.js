@@ -27,12 +27,12 @@ class Home extends Component {
 
         <Row className="show-grid">
           <Col md={3}>
-            <Panel onClick={(e) => this.handleClick('all-courses', e)}>
+            <Panel onClick={(e) => this.handleClick('/all-courses', e)}>
                 <Panel.Body className="panelPointer">See All Courses</Panel.Body>
             </Panel>
           </Col>
           <Col md={3}>
-            <Panel onClick={(e) => this.handleClick('create-course', e)}>
+            <Panel onClick={(e) => this.handleClick('/create-course', e)}>
                 <Panel.Body className="panelPointer">Create Course</Panel.Body>
             </Panel>
           </Col>

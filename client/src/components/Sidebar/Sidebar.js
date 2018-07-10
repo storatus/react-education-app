@@ -28,7 +28,7 @@ class Sidebar extends Component {
                 this.state.menu.map((exp,i) => {
 
                   return <li key={i} className="nav-item">
-                          <Link to={{pathname: exp.url}}>  {exp.name} </Link>
+                          <Link replace to={{pathname: exp.url}}>  {exp.name} </Link>
                       </li>
 
                 })

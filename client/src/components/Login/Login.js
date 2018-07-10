@@ -9,7 +9,7 @@ import {
   FormControl,
   Button,
   ControlLabel,
-  HelpBlock
+  // HelpBlock
 } from 'react-bootstrap';
 import './Login.css';
 
@@ -37,9 +37,6 @@ class Login extends Component {
 
   handleInput(e){
       console.log(e);
-
-
-
 
   }
 

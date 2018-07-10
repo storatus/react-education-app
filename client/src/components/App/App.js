@@ -1,27 +1,16 @@
 import React, {Component} from 'react';
 import './App.css';
 
-
 import Main from '../Main/Main';
 import Login from '../Login/Login';
 
-
-
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  withRouter,
-  Switch
-} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 
 
 
 class App extends Component {
 
   componentWillMount() {
-    console.log("I will mount");
 
   }
 
