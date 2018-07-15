@@ -9,7 +9,18 @@ var courseSchema = new Schema({
   dateFrom: String,
   dateTo: String,
   description: String,
-  courseStatus: String
+  courseStatus: String,
+  filePaths: [{
+    fileName: String,
+    path: String,
+    clicks: Number
+  }],
+  videos: [{
+    url: String,
+    title: String,
+    clicks: Number,
+    youtubeId: String
+  }]
 }, { timestamps: true, collection: 'courses' });
 
 

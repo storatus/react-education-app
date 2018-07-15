@@ -4,5 +4,23 @@
 }
 
 .no-bullets li{
-  padding: 10px 0 10px 0; 
+  padding: 10px 0 10px 0;
+}
+
+.present-text {
+  word-wrap: break-word;
+}
+
+.margin-up{
+  margin-top: 20px;
+}
+
+.no-padding{
+  padding-left: 0px;
+}
+
+
+
+.display-file-input{
+  display: inline-block !important;
 }

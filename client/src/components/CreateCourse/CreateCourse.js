@@ -83,7 +83,15 @@ class CreateCourse extends Component {
 
     axios.post(request, stateObj)
     .then(response => {
-      this.paramId ? alert('Changes made') : alert('created')
+
+      if (this.paramId) {
+        alert('Changes made');
+      }else{
+        alert('created')
+        this.props.history.push('/all-courses')
+      }
+
+
     })
     .catch(err => console.log(err))
 

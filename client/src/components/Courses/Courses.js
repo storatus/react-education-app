@@ -8,10 +8,8 @@ import './Courses.css';
 class Courses extends Component {
 
   constructor(props) {
-
     super(props);
     this.state = {courseData: []}
-
   }
 
   loadCourses(){
@@ -21,15 +19,13 @@ class Courses extends Component {
       let courseData = data.data.map((val,index) => {
         return (
         <tr key={val._id}>
-          <td>{index}</td>
           <td>{val.name}</td>
-          <td>43</td>
+          <td>0</td>
           <td className="align-middle">
             <Link to={`/course/${val._id}`}>
               <Button >See course</Button>
             </Link>
           </td>
-
         </tr>);
       });
 
@@ -45,27 +41,17 @@ class Courses extends Component {
 
   }
 
-
-
   render() {
-
-    // let courses = courseData.map(val => {
-    //     return val
-    // });
-
-
     return (
       <Grid fluid>
         <h2>
           All courses
         </h2>
-
-    <Row className="show-grid">
+    <Row >
       <Col md={8}>
               <Table responsive striped bordered condensed hover>
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>Course name</th>
                     <th>People enrolled</th>
                     <th>Action</th>
@@ -78,15 +64,8 @@ class Courses extends Component {
           </Col>
         </Row>
       </Grid>
-
-
-
     )
   }
-
-
-
-
 
 }
 

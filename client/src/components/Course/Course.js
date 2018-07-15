@@ -1,8 +1,17 @@
 import React, {Component} from 'react';
-import { Table, Grid, Row, Col, Button, ListGroupItem,ListGroup } from 'react-bootstrap';
+import {
+  Grid,
+  Row,
+  Col,
+  Button} from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 import './Course.css';
+
+import CourseFiles from './CourseFiles/CourseFiles'
+import CourseVideos from './CourseVideos/CourseVideos'
+
+
 
 
 class Course extends Component {
@@ -11,28 +20,24 @@ class Course extends Component {
     super(props);
     this.state = {
       courseId: props.match.params.courseId,
-      courseData: ''
+      courseData: '',
     }
 
     this.deleteCourse = this.deleteCourse.bind(this);
-
   }
 
   loadCourse(){
       let courseId = this.state.courseId
-      axios.get(`/api/course/${courseId}`).then(data => {
+      axios.get(`/api/course/${courseId}`)
+      .then(data => {
           let courseData = data.data;
           this.setState({courseData});
-      }).catch((error) => {
-        console.log(error);
-      })
+      }).catch((error) => console.log(error))
   }
 
 
   deleteCourse(e){
-
     let courseId = this.state.courseId;
-
     axios.delete(`/api/delete/${courseId}`)
     .then(res => {
         let status = res.data.status
@@ -42,15 +47,11 @@ class Course extends Component {
         }
     })
     .catch(err => console.log(err))
-
   }
 
-
-
-  componentDidMount() {
+  componentWillMount() {
     this.loadCourse()
   }
-
 
 
   render() {
@@ -64,7 +65,7 @@ class Course extends Component {
           Course Overview -  {courseData.name}
         </h2>
 
-        <Row className="show-grid">
+        <Row >
           <Col md={3}>
             <ul className="no-bullets">
               <li>
@@ -76,37 +77,43 @@ class Course extends Component {
               <li>
                 <b>To: </b> <span> {courseData.dateTo} </span>
               </li>
+              <li>
+                <b>Status: </b> <span> {courseData.courseStatus} </span>
+              </li>
+              <li>
+
+              </li>
             </ul>
           </Col>
           <Col md={3}>
             <ul className="no-bullets">
               <li>
-                <b> Description: </b> <span> {courseData.description} </span>
+                <b> Description: </b> <p className="present-text"> {courseData.description} </p>
               </li>
             </ul>
           </Col>
         </Row>
-        <Row>
+
+
+      {  courseData && <CourseFiles  courseId={this.state.courseId} filePaths={courseData.filePaths}/>}
+      <hr></hr>
+      {  courseData && <CourseVideos courseId={this.state.courseId} videos={courseData.videos}/>}
+
+      <hr></hr>
+
+        <Row className="margin-up" >
             <Col md={6}>
               <div className="pull-right">
-
-
-                  <Button  onClick={this.deleteCourse} bsStyle="danger" className="margin-right" > Delete </Button>
+                  <Button  onClick={this.deleteCourse} bsStyle="danger" className="margin-right" > Delete Course</Button>
                     <Link className="pull-right" to={`/edit/${courseData._id}`}>
-                      <Button >Edit</Button>
+                      <Button >Edit Course</Button>
                     </Link>
               </div>
-
             </Col>
         </Row>
       </Grid>
-
     )
   }
-
-
-
-
 
 }
 
