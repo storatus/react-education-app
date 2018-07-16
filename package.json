@@ -23,8 +23,6 @@
   },
   "devDependencies": {
     "concurrently": "^3.5.1"
-  },
-  "engines": {
-    "node": "8.11.2"
   }
+
 }
