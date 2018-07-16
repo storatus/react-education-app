@@ -2,8 +2,10 @@ var express = require('express');
 var router = express.Router();
 var formidable = require('formidable');
 var fs = require('fs');
-import mongoose from 'mongoose';
-import Course from './models/Course';
+var mongoose = require('mongoose')
+const Course = require('./models/Course')
+// import mongoose from 'mongoose';
+// import Course from './models/Course';
 
 
 
@@ -230,4 +232,5 @@ router.post('/create', (req, res) => {
 
 
 
-export default router
+// export default router
+module.exports = router

@@ -1,6 +1,7 @@
 //models/Course.js
 
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
+var mongoose = require('mongoose')
 var Schema = mongoose.Schema;
 
 // New Schema
@@ -24,4 +25,5 @@ var courseSchema = new Schema({
 }, { timestamps: true, collection: 'courses' });
 
 
-export default mongoose.model('Course', courseSchema);
+// export default mongoose.model('Course', courseSchema);
+module.exports = mongoose.model('Course', courseSchema);
