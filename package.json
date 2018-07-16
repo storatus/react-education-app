@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "server": "cd server && nodemon server.js --exec babel-node --presets es2015,stage-0",
-    "client": "cd client && yarn start",
+    "client": "cd client && npm run start",
     "dev": "concurrently --kill-others-on-fail  \"npm run server\" \"npm run client\"",
     "start": "node server/server.js",
-    "postinstall": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "main": "index.js",
   "dependencies": {
