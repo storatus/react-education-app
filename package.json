@@ -4,7 +4,7 @@
   "scripts": {
     "server": "cd server && nodemon server.js --exec babel-node --presets es2015,stage-0",
     "client": "cd client && yarn start",
-    "dev": "concurrently --kill-others-on-fail  \"yarn server\" \"yarn client\"",
+    "dev": "concurrently --kill-others-on-fail  \"npm run server\" \"npm run client\"",
     "start": "node server/server.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
