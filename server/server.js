@@ -41,4 +41,4 @@ app.get('*', (req, res) => {
 
 
 // // Use our router configuration when we call /api
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(process.env.PORT || 5000);
