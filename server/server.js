@@ -12,7 +12,7 @@ const app = express();
 
 
 // This was 3001
-const port = process.env.API_PORT || 5000;
+const port = process.env.API_PORT || 3001;
 
 
 // connect with mongoose --> why ?
