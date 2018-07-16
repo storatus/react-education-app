@@ -6,7 +6,7 @@
     "client": "cd client && yarn start",
     "dev": "concurrently --kill-others-on-fail  \"npm run server\" \"npm run client\"",
     "start": "node server/server.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "postinstall": "cd client && npm install && npm run build"
   },
   "main": "index.js",
   "dependencies": {
