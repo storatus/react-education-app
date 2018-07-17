@@ -37,13 +37,11 @@ class CourseFiles extends Component {
   }
 
 
-  downloadFile(materialPath, fileName){
-    let res = materialPath.split("/");
-    let downloadName = res[res.length-1];
-
+  downloadFile(path, fileName){
+    // console.log(path,fileName);
     axios({
       method: 'GET',
-      url:`/api/downloadFile/${downloadName}`,
+      url:`/api/downloadFile/${path}`,
       responseType: 'blob'})
     .then(res => {
       let aTag = document.createElement('a');
@@ -61,7 +59,14 @@ class CourseFiles extends Component {
   deleteFile(materialId){
 
     axios.delete(`/api/deleteFile/${this.state.courseId}/${materialId}`)
-    .then(res => window.location.reload(false))
+    .then(res => {
+      let message = res.data.message
+      let status = res.data.status
+      if (status) {
+        alert(message)
+        window.location.reload(false)
+      }
+    })
     .catch(err => console.log(err))
   }
 
@@ -114,10 +119,9 @@ class CourseFiles extends Component {
           alert(message)
         }
 
-    })
-    .catch(err => console.log(err))
-
+    }).catch(err => console.log(err))
   }
+  
 
   componentDidMount() {
       let readyFilePaths = this.props.filePaths.map((val,index) => {
@@ -137,8 +141,6 @@ class CourseFiles extends Component {
       this.setState({filePaths: readyFilePaths})
 
   }
-
-
 
   render() {
 

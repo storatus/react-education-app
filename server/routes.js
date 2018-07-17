@@ -8,7 +8,7 @@ var path = require('path')
 
 const Course = require('./models/Course')
 
-
+const bucketName = 'final-education-app'
 const Storage = require('@google-cloud/storage');
 const projectId = 'master-thesis-210210';
 const storage = new Storage({
@@ -16,19 +16,9 @@ const storage = new Storage({
   projectId: projectId
 });
 
+// Look for restAPI ORGANISATION
 
-storage.getBuckets()
-  .then(results => {
-    const buckets = results[0];
 
-    console.log('Buckets:');
-    buckets.forEach(bucket => {
-      console.log(bucket.name);
-    });
-  })
-  .catch(err => {
-    console.error('ERROR:', err);
-  });
 
 
 
@@ -36,7 +26,7 @@ storage.getBuckets()
 // GET COURSES
 router.get('/courses', (req, res) => {
   Course.find((err,data) => {
-      if (err) { res.json(err)}
+      if (err) { res.json(err) }
       res.json(data)
   })
 });
@@ -46,10 +36,8 @@ router.get('/courses', (req, res) => {
 router.delete('/delete/:courseId', (req, res) => {
   let courseId = req.params.courseId;
   Course.findOneAndDelete({ _id: courseId }, (err, data) => {
-      if (err) {
-        res.json(err)
-        return;
-      }
+
+      if (err) { res.json(err)}
 
       let files = data.filePaths;
       files.forEach((element) => {
@@ -71,27 +59,25 @@ router.delete('/deleteFile/:courseId/:fileId', (req, res) => {
   let courseId = req.params.courseId
   let fileId = req.params.fileId;
 
+
   Course.findById(courseId, (err, courseData) => {
-        if (err) {
-          res.json(err)
-          return;
-        }
+
+        if (err) { res.json(err)}
+
         let files = courseData.filePaths
         let path = files.find(element => element._id == fileId).path
-        fs.unlink(path, (err) => {
-            if (err) {
-              res.json(err)
-              return
-            }
-            Course.findByIdAndUpdate( courseId,
-              { $pull: { "filePaths": { _id: fileId } } },{new: true},(err,data) => {
-                    if (err) {
-                      res.json(err)
-                      return;
-                    }
-                    res.json({data})
-            });
-        })
+
+        storage.bucket(bucketName).file(path).delete().then(() => {
+              Course.findByIdAndUpdate( courseId,
+                { $pull: { "filePaths": { _id: fileId } } },{new: true},(err,data) => {
+                      if (err) { res.json(err) }
+                      res.json({
+                        message: 'File deleted',
+                        status: true
+                      })
+              });
+        }).catch(err => console.log(err))
+
   });
 });
 
@@ -103,10 +89,7 @@ router.delete('/deleteVideo/:courseId/:videoId', (req, res) => {
   let youtubeId = req.params.youtubeId
 
   Course.findById(courseId, (err, courseData) => {
-        if (err) {
-          res.json(err)
-          return;
-        }
+        if (err) { res.json(err) }
 
         Course.findByIdAndUpdate( courseId,
           { $pull: { "videos": { _id: videoId } } },{new: true},(err,data) => {
@@ -129,10 +112,7 @@ router.delete('/deleteVideo/:courseId/:videoId', (req, res) => {
 router.get('/course/:courseId', (req, res) => {
   let courseId = req.params.courseId;
   Course.findById(courseId, (err, courseData) => {
-        if (err) {
-          res.json(err)
-          return;
-        }
+        if (err) { res.json(err) }
         res.json(courseData)
   });
 });
@@ -140,10 +120,25 @@ router.get('/course/:courseId', (req, res) => {
 
 // DONWLOAD FILE
 router.get('/downloadFile/:downloadName', (req, res) => {
-
   let downloadName = req.params.downloadName
   let publicPath = `${__dirname}/public/${downloadName}`
-  res.download(publicPath, downloadName)
+  let options = {
+    destination: `./public/${downloadName}`
+  }
+
+
+  storage.bucket(bucketName).file(downloadName).download(options)
+  .then(() => {
+    res.download(publicPath, downloadName)
+  })
+  .catch(err => console.error('ERROR:', err));
+    
+
+
+
+
+
+
 
 });
 
@@ -155,28 +150,39 @@ router.post("/upload", (req, res) => {
   form.parse(req, (error,fields,files) => {
     let oldPath = files.file.path;
     let courseId = fields.courseId
-    let newPath = `${__dirname}/public/${courseId}_${files.file.name}`
+    let newName = `${courseId}_${files.file.name}`
 
-    fs.rename(oldPath, newPath, (err) => {
-         if (err){ res.end(err) }
 
-         Course.findById(courseId, (err,courseObj)=>{
-            if (err){ res.end(err) }
+    Course.findById(courseId, (err,courseObj)=>{
+       if (err){ res.end(err) }
 
-            let filePaths = courseObj.filePaths
-            let findPath = filePaths.findIndex(element => element.path == newPath)
+       let filePaths = courseObj.filePaths
+       let findName = filePaths.findIndex(element => element.path == newName)
 
-            if (findPath == -1) {
-              Course.findByIdAndUpdate(courseId,
-                {"$push": { "filePaths": {fileName: files.file.name, path: newPath}}} , {new: true}, (error,data) => {
-                if (err){ res.end(err) }
-                res.json({message: 'Material uploaded',status:true})
-              })
-            }else{
-              res.json({message: 'Material has been already uploaded',status:false} )
-            }
-         })
-     });
+       if (findName == -1) {
+
+         storage.bucket(bucketName).upload(oldPath).then(data => {
+           let fileName = data[0].name
+           storage.bucket(bucketName).file(fileName).move(newName).then(() => {
+
+             Course.findByIdAndUpdate(courseId,
+               {"$push": { "filePaths": {fileName: files.file.name, path: newName}}} , {new: true}, (error,data) => {
+               if (err){ res.end(err) }
+               res.json({message: 'Material uploaded',status:true})
+             })
+
+           })
+
+         }).catch(err => console.error('ERROR:', err))
+
+
+
+       }else{
+         res.json({message: 'Material has been already uploaded',status:false} )
+       }
+    })
+
+
   })
 
 });
@@ -244,10 +250,8 @@ router.post('/create', (req, res) => {
 
 
   course.save(error => {
-    if(error){}
+    if(error){res.send(err)}
     res.send(course)
-    return
-
   })
 
 });
