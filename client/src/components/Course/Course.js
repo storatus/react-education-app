@@ -22,7 +22,6 @@ class Course extends Component {
       courseId: props.match.params.courseId,
       courseData: '',
     }
-
     this.deleteCourse = this.deleteCourse.bind(this);
   }
 

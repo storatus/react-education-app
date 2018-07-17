@@ -2,14 +2,15 @@
   "name": "final-education-app",
   "version": "1.0.0",
   "scripts": {
-    "server": "cd server && nodemon server.js --exec babel-node --presets es2015,stage-0",
+    "server": "cd server && NODE_ENV=development nodemon  server.js --exec babel-node --presets es2015,stage-0",
     "client": "cd client && npm run start",
     "dev": "concurrently --kill-others-on-fail  \"npm run server\" \"npm run client\"",
-    "start": "node server/server.js",
+    "start": "NODE_ENV=production node server/server.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "main": "index.js",
   "dependencies": {
+    "@google-cloud/storage": "^1.7.0",
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",

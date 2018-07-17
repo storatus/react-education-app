@@ -3,9 +3,32 @@ var router = express.Router();
 var formidable = require('formidable');
 var fs = require('fs');
 var mongoose = require('mongoose')
+var path = require('path')
+
+
 const Course = require('./models/Course')
-// import mongoose from 'mongoose';
-// import Course from './models/Course';
+
+
+const Storage = require('@google-cloud/storage');
+const projectId = 'master-thesis-210210';
+const storage = new Storage({
+  keyFilename: path.join(__dirname, '/../storage.json'),
+  projectId: projectId
+});
+
+
+storage.getBuckets()
+  .then(results => {
+    const buckets = results[0];
+
+    console.log('Buckets:');
+    buckets.forEach(bucket => {
+      console.log(bucket.name);
+    });
+  })
+  .catch(err => {
+    console.error('ERROR:', err);
+  });
 
 
 

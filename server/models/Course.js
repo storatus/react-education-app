@@ -24,6 +24,4 @@ var courseSchema = new Schema({
   }]
 }, { timestamps: true, collection: 'courses' });
 
-
-// export default mongoose.model('Course', courseSchema);
 module.exports = mongoose.model('Course', courseSchema);
