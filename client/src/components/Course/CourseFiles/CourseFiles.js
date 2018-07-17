@@ -23,6 +23,7 @@ class CourseFiles extends Component {
       file: null,
       courseId: this.props.courseId,
       isDisabled: true,
+      isDisabledDelete: false,
       filePaths: []
     }
 
@@ -38,7 +39,6 @@ class CourseFiles extends Component {
 
 
   downloadFile(path, fileName){
-    // console.log(path,fileName);
     axios({
       method: 'GET',
       url:`/api/downloadFile/${path}`,
@@ -57,12 +57,15 @@ class CourseFiles extends Component {
   }
 
   deleteFile(materialId){
+    this.setState({isDisabledDelete: true})
+
 
     axios.delete(`/api/deleteFile/${this.state.courseId}/${materialId}`)
     .then(res => {
       let message = res.data.message
       let status = res.data.status
       if (status) {
+        this.setState({isDisabledDelete: false})
         alert(message)
         window.location.reload(false)
       }
@@ -103,6 +106,9 @@ class CourseFiles extends Component {
 
   uploadFile(e){
     e.preventDefault()
+    this.setState({isDisabled: true})
+
+
     let fileObj = this.state.file
     let form = new FormData();
     form.append('file', fileObj);
@@ -110,18 +116,18 @@ class CourseFiles extends Component {
 
     axios.post(`/api/upload`, form)
     .then(res => {
-        let message = res.data.status
+        this.setState({isDisabled: false})
+        let message = res.data.message
         let status = res.data.status
+
         if (status) {
           alert(message)
           window.location.reload(false);
-        }else{
-          alert(message)
-        }
+        }else{ alert(message)}
 
     }).catch(err => console.log(err))
   }
-  
+
 
   componentDidMount() {
       let readyFilePaths = this.props.filePaths.map((val,index) => {
@@ -133,7 +139,7 @@ class CourseFiles extends Component {
                 <Button onClick={(e) => this.downloadFile(val.path,val.fileName, e)} bsSize="xsmall" >Download</Button>
             </td>
             <td className="align-middle">
-              <Button onClick={(e) => this.deleteFile(val._id,e)} bsSize="xsmall" bsStyle="danger" >Delete File </Button>
+              <Button disabled={this.state.isDisabledDelete} onClick={(e) => this.deleteFile(val._id,e)} bsSize="xsmall" bsStyle="danger" >Delete File </Button>
             </td>
           </tr>);
       })

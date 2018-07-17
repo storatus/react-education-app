@@ -9,9 +9,7 @@ import {
   ControlLabel,
   Form} from 'react-bootstrap';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
 import './CourseVideos.css';
-import allowedFormats from '../../../helpers'
 
 
 
@@ -60,7 +58,7 @@ class CourseVideos extends Component {
     let courseId = this.state.courseId
 
     let result = this.checkUrlVideo(url);
-    if (result == false) {
+    if (result === false) {
         alert('Your string is not a valid youtube string')
         return;
     }
