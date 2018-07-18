@@ -10,7 +10,7 @@ import {
   Form} from 'react-bootstrap';
 import axios from 'axios';
 import './CourseFiles.css';
-import allowedFormats from '../../../helpers'
+import {allowedFormats} from '../../../helpers'
 
 
 

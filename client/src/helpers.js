@@ -8,6 +8,23 @@ const allowedFormats = {
 }
 
 
+const errorMessages = {
+  'name': {
+    'length': 'The name field has to be longer than 6 characters'
+  },
+  'dateFrom': {
+    'length': 'The duration from field can not be empty'
+  },
+  'dateTo': {
+    'length': 'The duration to field can not be empty'
+  },
+  'description': {
+    'length': 'The description fiels should be longer than 6 characters'
+  }
+}
+
+
+
 
 // https://github.com/firebase/nginx/blob/master/conf/mime.types
  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file
@@ -100,4 +117,4 @@ const allowedFormats = {
 //     video/x-msvideo                       avi;
 // }
 
-export default allowedFormats;
+export {allowedFormats, errorMessages};
