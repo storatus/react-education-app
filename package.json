@@ -20,7 +20,9 @@
     "fs": "0.0.1-security",
     "mongoose": "^5.1.5",
     "morgan": "^1.9.0",
-    "nodemon": "^1.17.5"
+    "nodemon": "^1.17.5",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
   },
   "devDependencies": {
     "concurrently": "^3.5.1"

@@ -19,10 +19,6 @@ const storage = new Storage({
 // Look for restAPI ORGANISATION
 
 
-
-
-
-
 // GET COURSES
 router.get('/courses', (req, res) => {
   Course.find((err,data) => {
@@ -111,11 +107,17 @@ router.delete('/deleteVideo/:courseId/:videoId', (req, res) => {
 // GET SINGLE COURSE
 router.get('/course/:courseId', (req, res) => {
   let courseId = req.params.courseId;
+
   Course.findById(courseId, (err, courseData) => {
-        if (err) { res.json(err) }
-        res.json(courseData)
+        if (err) {
+          res.status(500).send({error: 'Something failed'})
+        }else{
+            res.json(courseData)
+        }
+
   });
 });
+
 
 
 // DONWLOAD FILE
@@ -132,7 +134,7 @@ router.get('/downloadFile/:downloadName', (req, res) => {
     res.download(publicPath, downloadName)
   })
   .catch(err => console.error('ERROR:', err));
-    
+
 
 
 

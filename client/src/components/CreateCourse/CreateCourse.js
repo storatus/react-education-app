@@ -7,8 +7,7 @@ import {
   FormGroup,
   FormControl,
   Button,
-  ControlLabel,
-  HelpBlock
+  ControlLabel
 } from 'react-bootstrap';
 import './CreateCourse.css';
 import {errorMessages} from '../../helpers';
@@ -29,8 +28,8 @@ class CreateCourse extends Component {
       nameValid: null,
       dateFromValid: null,
       dateToValid: null,
-      descriptionValid: null
-
+      descriptionValid: null,
+      isSend: false
     };
 
     this.submitForm = this.submitForm.bind(this);
@@ -49,7 +48,6 @@ class CreateCourse extends Component {
     }else{
       this.setState({nameValid: null})
     }
-
 
     if (this.state.dateFrom === '') {
       this.setState({ dateFromValid: errorMessages['dateFrom']['length'] })
@@ -112,8 +110,10 @@ class CreateCourse extends Component {
     let name = e.target.id
     let val = e.target.value
     this.setState({[name]: val})
-    this.isValid()
 
+    if (this.state.isSend == true) {
+      this.isValid()
+    }
   }
 
 
@@ -125,9 +125,10 @@ class CreateCourse extends Component {
 
     let stateObj = this.state
     let request = this.paramId ? '/api/update' : '/api/create'
-
-
+    this.setState({isSend: true})
     if (this.isValid() == false) { return false; }
+
+
 
 
     axios.post(request, stateObj)
@@ -200,7 +201,7 @@ class CreateCourse extends Component {
                 Description
               </Col>
               <Col sm={9}>
-                <FormControl onChange={this.handleInput} value={this.state.description} componentClass="textarea" placeholder="Date to"/>
+                <FormControl onChange={this.handleInput} value={this.state.description} componentClass="textarea" placeholder="Description"/>
                 <p className="error">{this.state.descriptionValid}</p>
               </Col>
             </FormGroup>

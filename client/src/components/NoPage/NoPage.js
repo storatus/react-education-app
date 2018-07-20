@@ -25,10 +25,4 @@ class NoPage extends Component {
 }
 
 
-
-
-
-
-
-
 export default NoPage

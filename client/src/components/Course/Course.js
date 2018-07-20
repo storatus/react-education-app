@@ -5,7 +5,7 @@ import {
   Col,
   Button} from 'react-bootstrap';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import './Course.css';
 
 import CourseFiles from './CourseFiles/CourseFiles'
@@ -25,13 +25,18 @@ class Course extends Component {
     this.deleteCourse = this.deleteCourse.bind(this);
   }
 
+
+
+
   loadCourse(){
       let courseId = this.state.courseId
+
       axios.get(`/api/course/${courseId}`)
       .then(data => {
           let courseData = data.data;
           this.setState({courseData});
-      }).catch((error) => console.log(error))
+      }).catch((error) => { this.props.history.push('/NoPage') })
+
   }
 
 
@@ -54,6 +59,7 @@ class Course extends Component {
 
 
   render() {
+
 
     // Alternatively I can also
     let courseData = this.state.courseData;
