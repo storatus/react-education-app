@@ -87,6 +87,7 @@ class CourseFiles extends Component {
             let final = Object.getOwnPropertyNames(allowedFormats)[key]
             return final
         }
+        return true
     })
 
     return results[0]

@@ -1,16 +1,10 @@
 import React, {Component} from 'react';
-import { Grid,Row,Col,Panel } from 'react-bootstrap';
+import { Grid,Row,Col } from 'react-bootstrap';
 import './NoPage.css';
 
 
 
 class NoPage extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-
 
   render() {
     return (

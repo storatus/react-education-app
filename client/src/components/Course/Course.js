@@ -5,7 +5,7 @@ import {
   Col,
   Button} from 'react-bootstrap';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Course.css';
 
 import CourseFiles from './CourseFiles/CourseFiles'

@@ -111,7 +111,7 @@ class CreateCourse extends Component {
     let val = e.target.value
     this.setState({[name]: val})
 
-    if (this.state.isSend == true) {
+    if (this.state.isSend === true) {
       this.isValid()
     }
   }
@@ -126,7 +126,7 @@ class CreateCourse extends Component {
     let stateObj = this.state
     let request = this.paramId ? '/api/update' : '/api/create'
     this.setState({isSend: true})
-    if (this.isValid() == false) { return false; }
+    if (this.isValid() === false) { return false; }
 
 
 

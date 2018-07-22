@@ -10,13 +10,12 @@ import {Route, Switch} from "react-router-dom";
 
 class App extends Component {
 
-  componentWillMount() {
+  constructor(props) {
+    super(props);
 
   }
 
-
-
-
+  componentDidMount(){}
 
 
   render() {
@@ -25,8 +24,6 @@ class App extends Component {
     <div className="App">
 
       <Switch>
-
-
           <Route path="/login" component={Login} />
           <Route path="/" component={Main} />
       </Switch>

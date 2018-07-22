@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 import './Courses.css';
 
+// import { selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit } from '../actions'
 
 class Courses extends Component {
 

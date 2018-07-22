@@ -12,7 +12,7 @@ class Main extends Component {
     return (
     // This might change because I have to do things responsive
 
-    <div> 
+    <div>
       <Header/>
       <div className="row">
         <Sidebar/>
