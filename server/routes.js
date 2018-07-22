@@ -250,7 +250,6 @@ router.post('/create', (req, res) => {
     course[key] = value
   });
 
-
   course.save(error => {
     if(error){res.send(err)}
     res.send(course)

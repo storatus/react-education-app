@@ -1,55 +1,45 @@
 import React, {Component} from 'react';
 import { Table, Grid, Row, Col, Button } from 'react-bootstrap';
-import axios from 'axios';
 import { Link } from 'react-router-dom'
+import { getCourses } from '../../actions/courseActions';
 import './Courses.css';
+import { connect } from 'react-redux';
 
-// import { selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit } from '../actions'
+
 
 class Courses extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {courseData: []}
-  }
-
-  loadCourses(){
-
-    axios.get('/api/courses')
-    .then(data => {
-      let courseData = data.data.map((val,index) => {
-        return (
-        <tr key={val._id}>
-          <td>{val.name}</td>
-          <td>0</td>
-          <td className="align-middle">
-            <Link to={`/course/${val._id}`}>
-              <Button >See course</Button>
-            </Link>
-          </td>
-        </tr>);
-      });
-
-      this.setState({courseData})
-    })
-    .catch(err=> console.log(err, "This is an error"))
-
-
-  }
-
   componentDidMount() {
-    this.loadCourses();
+    this.props.getCourses();
+  }
+
+
+  generateCourses(courseData){
+
+    return courseData.map(val => {
+          return (
+          <tr key={val._id}>
+            <td>{val.name}</td>
+            <td>0</td>
+            <td className="align-middle">
+              <Link to={`/course/${val._id}`}>
+                <Button >See course</Button>
+              </Link>
+            </td>
+          </tr>)
+        })
 
   }
 
   render() {
+    let courses = this.generateCourses(this.props.courses)
     return (
       <Grid fluid>
         <h2>
           All courses
         </h2>
-    <Row >
-      <Col md={8}>
+      <Row >
+        <Col md={8}>
               <Table responsive striped bordered condensed hover>
                 <thead>
                   <tr>
@@ -59,7 +49,7 @@ class Courses extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.state.courseData}
+                  {courses}
                 </tbody>
             </Table>
           </Col>
@@ -67,8 +57,12 @@ class Courses extends Component {
       </Grid>
     )
   }
-
 }
 
 
-export default Courses
+const stateToProps = state => {
+  return ({courses: state.course.courses})
+};
+
+
+export default connect(stateToProps, { getCourses })(Courses);

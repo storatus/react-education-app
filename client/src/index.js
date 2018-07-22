@@ -9,16 +9,10 @@ import configStore from './configStore'
 
 
 
-
-
-
-
-
-
 ReactDOM.render(
-  <Provider store={configStore}>
     <BrowserRouter>
-      <App/>
-    </BrowserRouter>
-  </Provider>
+      <Provider store={configStore}>
+        <App/>
+      </Provider>
+  </BrowserRouter>
   , document.getElementById('root'));
