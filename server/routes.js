@@ -114,7 +114,6 @@ router.get('/course/:courseId', (req, res) => {
         }else{
             res.json(courseData)
         }
-
   });
 });
 
@@ -134,12 +133,6 @@ router.get('/downloadFile/:downloadName', (req, res) => {
     res.download(publicPath, downloadName)
   })
   .catch(err => console.error('ERROR:', err));
-
-
-
-
-
-
 
 
 });

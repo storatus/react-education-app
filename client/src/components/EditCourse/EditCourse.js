@@ -9,18 +9,19 @@ import {
   Button,
   ControlLabel
 } from 'react-bootstrap';
-import './CreateCourse.css';
+import './EditCourse.css';
 import {errorMessages} from '../../helpers';
 
-import { addCourse } from '../../actions/courseActions';
+import { getCourse,updateCourse } from '../../actions/courseActions';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 
-class CreateCourse extends Component {
+
+class EditCourse extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       name: '',
       dateFrom: '',
@@ -77,58 +78,65 @@ class CreateCourse extends Component {
 
 
 
+  assignData(data){
+    this.setState({
+      _id: data._id,
+      name: data.name,
+      dateFrom: data.dateFrom,
+      dateTo: data.dateTo,
+      description: data.description,
+      courseStatus: data.courseStatus
+    });
+  }
+
+
 
   handleInput(e) {
 
     let name = e.target.id
     let val = e.target.value
     this.setState({[name]: val})
-
     if (this.state.isSend === true) {
       this.isValid()
     }
   }
 
-  cleanForm(){
-    this.setState({
-      name: '',
-      dateFrom: '',
-      dateTo: '',
-      description: '',
-      courseStatus: 'enabled'
-    })
-    alert('Course created')
-  }
+
 
 
   submitForm(e) {
     e.preventDefault();
 
-
-    let stateObj = this.state
-    let request = this.paramId ? '/api/update' : '/api/create'
-
+    let courseData = this.state
     this.setState({isSend: true})
     if (this.isValid() === false) { return false; }
 
-    this.props.addCourse(stateObj)
-    this.cleanForm()
+    this.props.updateCourse(courseData)
+    alert('Course Edited')
 
+  }
 
-
+  componentWillReceiveProps(nextProps) {
+    let course = nextProps.course
+    if (Object.keys(course).length != 0) {
+        this.assignData(course)
+    }
   }
 
 
 
+  componentDidMount() {
+    let courseId = this.props.match.params.courseId
+    this.props.getCourse(courseId)
+  }
 
 
 
   render() {
 
-
     return (
       <Grid fluid={true}>
-      <h2> Create Course </h2>
+      <h2> Edit Course </h2>
 
       <Row className="show-grid">
         <Col md={6}>
@@ -194,9 +202,7 @@ class CreateCourse extends Component {
             <FormGroup>
               <Col  sm={12}>
 
-                  <Button className="pull-right"  type="submit">
-                    Create Course
-                  </Button>
+                  <Button className="pull-right"  type="submit"> Save Changes </Button>
 
               </Col>
             </FormGroup>
@@ -210,7 +216,7 @@ class CreateCourse extends Component {
 }
 
 const stateToProps = state => {
-  return ({courses: state.course.courses})
+  return ({course: state.course.course})
 };
 
-export default connect(stateToProps, { addCourse })(CreateCourse);
+export default connect(stateToProps, { getCourse,updateCourse })(EditCourse);

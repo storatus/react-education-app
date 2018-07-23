@@ -12,9 +12,8 @@ import CourseFiles from './CourseFiles/CourseFiles'
 import CourseVideos from './CourseVideos/CourseVideos'
 
 
-
-
 class Course extends Component {
+
 
   constructor(props) {
     super(props);
@@ -24,8 +23,6 @@ class Course extends Component {
     }
     this.deleteCourse = this.deleteCourse.bind(this);
   }
-
-
 
 
   loadCourse(){
@@ -84,9 +81,6 @@ class Course extends Component {
               </li>
               <li>
                 <b>Status: </b> <span> {courseData.courseStatus} </span>
-              </li>
-              <li>
-
               </li>
             </ul>
           </Col>
