@@ -4,12 +4,15 @@ import {
   Row,
   Col,
   Button} from 'react-bootstrap';
-import axios from 'axios';
 import { Link } from 'react-router-dom'
 import './Course.css';
 
 import CourseFiles from './CourseFiles/CourseFiles'
 import CourseVideos from './CourseVideos/CourseVideos'
+
+import { getCourse, deleteCourse } from '../../actions/courseActions';
+import { connect } from 'react-redux';
+
 
 
 class Course extends Component {
@@ -17,49 +20,39 @@ class Course extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      courseId: props.match.params.courseId,
-      courseData: '',
-    }
     this.deleteCourse = this.deleteCourse.bind(this);
   }
 
 
-  loadCourse(){
-      let courseId = this.state.courseId
-
-      axios.get(`/api/course/${courseId}`)
-      .then(data => {
-          let courseData = data.data;
-          this.setState({courseData});
-      }).catch((error) => { this.props.history.push('/NoPage') })
-
+  componentWillReceiveProps(nextProps) {
+    let course = nextProps.course
+    if (course == null) {
+      this.props.history.push('/NoPage')
+    }
   }
 
 
-  deleteCourse(e){
-    let courseId = this.state.courseId;
-    axios.delete(`/api/delete/${courseId}`)
-    .then(res => {
-        let status = res.data.status
-        if (status) {
-          alert('You have deleted')
-          this.props.history.push('/all-courses')
-        }
-    })
-    .catch(err => console.log(err))
+
+  deleteCourse(courseId,e){
+    this.props.deleteCourse(courseId)
+    alert('Course Deleted')
+    this.props.history.push('/all-courses')
   }
 
-  componentWillMount() {
-    this.loadCourse()
+
+  componentDidMount(){
+    let courseId = this.props.match.params.courseId
+    this.props.getCourse(courseId)
   }
+
+
+
+
 
 
   render() {
 
-
-    // Alternatively I can also
-    let courseData = this.state.courseData;
+    let courseData = this.props.course
 
     return (
       <Grid fluid>
@@ -94,16 +87,16 @@ class Course extends Component {
         </Row>
 
 
-      {  courseData && <CourseFiles  courseId={this.state.courseId} filePaths={courseData.filePaths}/>}
+      {  Object.keys(courseData).length > 0 && <CourseFiles  courseId={courseData._id} filePaths={courseData.filePaths}/>}
       <hr></hr>
-      {  courseData && <CourseVideos courseId={this.state.courseId} videos={courseData.videos}/>}
+      {  Object.keys(courseData).length > 0 && <CourseVideos courseId={courseData._id} videos={courseData.videos}/>}
 
       <hr></hr>
 
         <Row className="margin-up" >
             <Col md={6}>
               <div className="pull-right">
-                  <Button  onClick={this.deleteCourse} bsStyle="danger" className="margin-right" > Delete Course</Button>
+                  <Button  onClick={(e) => this.deleteCourse(courseData._id, e)} bsStyle="danger" className="margin-right" > Delete Course</Button>
                     <Link className="pull-right" to={`/edit/${courseData._id}`}>
                       <Button >Edit Course</Button>
                     </Link>
@@ -117,4 +110,9 @@ class Course extends Component {
 }
 
 
-export default Course
+const stateToProps = state => {
+  return ({course: state.course.course})
+};
+
+
+export default connect(stateToProps, { deleteCourse,getCourse })(Course);

@@ -14,7 +14,6 @@ import {errorMessages} from '../../helpers';
 
 import { getCourse,updateCourse } from '../../actions/courseActions';
 import { connect } from 'react-redux';
-import axios from 'axios';
 
 
 

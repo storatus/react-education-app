@@ -5,6 +5,7 @@ import {
   GET_COURSES,
   GET_COURSE,
   UPDATE_COURSE,
+  DELETE_COURSE,
   ERRORS
 } from './typesActions';
 import axios from 'axios';
@@ -75,6 +76,24 @@ export const updateCourse = courseData => dispatch => {
     .catch(err =>
       dispatch({
         type: UPDATE_COURSE,
+        payload: null
+      })
+    );
+};
+
+
+// Update Course
+export const deleteCourse = courseId => dispatch => {
+  axios.delete(`/api/delete/${courseId}`)
+    .then(res =>
+      dispatch({
+        type: DELETE_COURSE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: DELETE_COURSE,
         payload: null
       })
     );

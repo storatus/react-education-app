@@ -104,17 +104,11 @@ class CreateCourse extends Component {
   submitForm(e) {
     e.preventDefault();
 
-
-    let stateObj = this.state
-    let request = this.paramId ? '/api/update' : '/api/create'
-
     this.setState({isSend: true})
     if (this.isValid() === false) { return false; }
 
-    this.props.addCourse(stateObj)
+    this.props.addCourse(this.state)
     this.cleanForm()
-
-
 
   }
 
