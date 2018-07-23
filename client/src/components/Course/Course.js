@@ -46,10 +46,6 @@ class Course extends Component {
   }
 
 
-
-
-
-
   render() {
 
     let courseData = this.props.course

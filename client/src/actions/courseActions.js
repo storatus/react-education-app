@@ -63,7 +63,6 @@ export const getCourse = courseId => dispatch => {
     );
 };
 
-
 // Update Course
 export const updateCourse = courseData => dispatch => {
   axios.post(`/api/update`, courseData)
@@ -94,6 +93,43 @@ export const deleteCourse = courseId => dispatch => {
     .catch(err =>
       dispatch({
         type: DELETE_COURSE,
+        payload: null
+      })
+    );
+};
+
+
+
+// Upload File
+export const uploadFile = file => dispatch => {
+  axios.post(`/api/upload`,file)
+    .then(res =>
+      dispatch({
+        type: GET_COURSE,
+        payload: res.data // This I have to change, this is why it is not updating
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_COURSE,
+        payload: null
+      })
+    );
+};
+
+
+// Delete File
+export const deleteFile = (courseId,fileId) => dispatch => {
+  axios.delete(`/api/deleteFile/${courseId}/${fileId}`)
+    .then(res =>
+      dispatch({
+        type: GET_COURSE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_COURSE,
         payload: null
       })
     );

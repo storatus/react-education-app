@@ -23,7 +23,25 @@ const errorMessages = {
   }
 }
 
+function determineName(fileName){
 
+  let splitName = fileName.split(".");
+  let lastElement = splitName[splitName.length-1]
+
+
+  let results = Object.keys(allowedFormats).filter((el,key) => {
+      let formats =  allowedFormats[el]
+      let isFormat = formats.findIndex(element => element === lastElement)
+      if (isFormat > -1) {
+          let final = Object.getOwnPropertyNames(allowedFormats)[key]
+          return final
+      }
+      return true
+  })
+
+  return results[0]
+
+}
 
 
 // https://github.com/firebase/nginx/blob/master/conf/mime.types
@@ -117,4 +135,4 @@ const errorMessages = {
 //     video/x-msvideo                       avi;
 // }
 
-export {allowedFormats, errorMessages};
+export {allowedFormats, errorMessages, determineName};

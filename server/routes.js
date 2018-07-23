@@ -67,10 +67,7 @@ router.delete('/deleteFile/:courseId/:fileId', (req, res) => {
               Course.findByIdAndUpdate( courseId,
                 { $pull: { "filePaths": { _id: fileId } } },{new: true},(err,data) => {
                       if (err) { res.json(err) }
-                      res.json({
-                        message: 'File deleted',
-                        status: true
-                      })
+                      res.json(data)
               });
         }).catch(err => console.log(err))
 
@@ -163,7 +160,7 @@ router.post("/upload", (req, res) => {
              Course.findByIdAndUpdate(courseId,
                {"$push": { "filePaths": {fileName: files.file.name, path: newName}}} , {new: true}, (error,data) => {
                if (err){ res.end(err) }
-               res.json({message: 'Material uploaded',status:true})
+               res.json(data)
              })
 
            })

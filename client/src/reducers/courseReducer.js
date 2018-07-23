@@ -37,7 +37,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         course: action.payload
-      };
+      };      
     default:
       return state;
   }
