@@ -12,6 +12,9 @@ import axios from 'axios';
 import './CourseVideos.css';
 
 
+import { uploadVideo, deleteVideo } from '../../../actions/courseActions';
+import { connect } from 'react-redux';
+
 
 class CourseVideos extends Component {
 
@@ -19,10 +22,10 @@ class CourseVideos extends Component {
     super(props);
 
     this.state = {
-      url: null,
+      url: '',
       courseId: this.props.courseId,
       isDisabled: true,
-      videos: []
+      isDisabledDelete: false
     }
     this.handleInput = this.handleInput.bind(this);
     this.submitForm = this.submitForm.bind(this);
@@ -30,14 +33,24 @@ class CourseVideos extends Component {
   }
 
 
-  handleInput(e){
+  componentWillReceiveProps(nextProps) {
+    if (nextProps) {
+        this.setState({
+          isDisabled: false,
+          isDisabledDelete: false,
+          url: ''
+        })
+    }
+}
 
+
+
+  handleInput(e){
     let url = e.target.value
     this.setState({
       url,
       isDisabled: url === '' ? true : false
     });
-
   }
 
   checkUrlVideo(url){
@@ -62,25 +75,28 @@ class CourseVideos extends Component {
         alert('Your string is not a valid youtube string')
         return;
     }
+
+
     let youtubeId = result[1];
     let youtubeKey = 'AIzaSyALhXcz4s3rk1zdGpqqHHWw-QJYLNuf0vs'
+
+
+    let checkRepeat = this.props.videos.findIndex(data => {
+      return  data.youtubeId === youtubeId
+    })
+
+
+    if (checkRepeat > -1) {
+      alert('The same youtube title is used already')
+      return;
+    }
+
+    this.setState({isDisabled: true})
 
     axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${youtubeId}&key=${youtubeKey}&part=snippet`)
     .then(response => {
       let title = response.data.items[0].snippet.title
-      axios.post('/api/createVideo', {url, courseId, title, youtubeId})
-      .then(res => {
-          let message = res.message;
-          let status = res.status
-
-          if (status) {
-            alert(message)
-            window.location.reload(false);
-          }else{
-            alert(message)
-          }
-
-      }).catch(err => console.log(err))
+      this.props.uploadVideo(url, courseId, title, youtubeId)
     }).catch(err => console.log(err))
   }
 
@@ -91,44 +107,32 @@ class CourseVideos extends Component {
 
 
   deleteVideo(videoId){
+    this.props.deleteVideo(this.state.courseId, videoId)
+  }
 
-    axios.delete(`/api/deleteVideo/${this.state.courseId}/${videoId}`)
-    .then(res => {
-        let message = res.data.message;
-        let status = res.data.status
-        if (status) {
-          alert(message)
-          window.location.reload(false);
-        }
+
+  generateVideos(videos){
+    return videos.map((val,index) => {
+        return (
+        <tr key={val._id}>
+          <td>{val.title}</td>
+          <td className="align-middle">
+              <Button onClick={(e) => this.watchVideo(val, e)} bsSize="xsmall" >Watch Video</Button>
+          </td>
+          <td className="align-middle">
+            <Button disabled={this.state.isDisabledDelete}  onClick={(e) => this.deleteVideo(val._id,e)} bsSize="xsmall" bsStyle="danger" >Delete File </Button>
+          </td>
+        </tr>);
     })
-    .catch(err => console.log(err))
   }
-
-  componentDidMount() {
-      let readyVideos = this.props.videos.map((val,index) => {
-          return (
-          <tr key={val._id}>
-            <td>{val.title}</td>
-            <td className="align-middle">
-                <Button onClick={(e) => this.watchVideo(val, e)} bsSize="xsmall" >Watch Video</Button>
-            </td>
-            <td className="align-middle">
-              <Button onClick={(e) => this.deleteVideo(val._id,e)} bsSize="xsmall" bsStyle="danger" >Delete File </Button>
-            </td>
-          </tr>);
-      })
-
-      this.setState({videos: readyVideos})
-  }
-
-
 
   render() {
 
+
+    let videos = this.generateVideos(this.props.videos)
+
     return(
-
       <div>
-
       <Row>
         <Col md={6}>
           <h3> Course Videos </h3>
@@ -141,7 +145,7 @@ class CourseVideos extends Component {
               </Col>
 
               <Col sm={9}>
-                <FormControl className="display-file-input" onChange={this.handleInput} type="text"  />
+                <FormControl value={this.state.url} className="display-file-input" onChange={this.handleInput} type="text"  />
               </Col>
 
               <Col className="margin-up"sm={12}>
@@ -165,13 +169,11 @@ class CourseVideos extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.videos}
+                {videos}
               </tbody>
           </Table>
           </Col>
         </Row>
-
-
         </div>
 
 
@@ -182,4 +184,4 @@ class CourseVideos extends Component {
 }
 
 
-export default CourseVideos
+export default connect(null, { uploadVideo, deleteVideo })(CourseVideos);

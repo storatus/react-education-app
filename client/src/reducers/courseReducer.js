@@ -4,7 +4,8 @@ import {
   ADD_COURSE,
   GET_COURSES,
   GET_COURSE,
-  UPDATE_COURSE
+  UPDATE_COURSE,
+  DELETE_COURSE
 } from '../actions/typesActions';
 
 
@@ -19,7 +20,7 @@ export default function(state = initialState, action) {
   // console.log(action.payload);
   switch (action.type) {
     case GET_COURSES:
-    return {
+      return {
         ...state, // 1,2,3
         courses: action.payload
       };
@@ -33,11 +34,19 @@ export default function(state = initialState, action) {
         ...state,
         course: action.payload
       };
-    case UPDATE_COURSE:
+    case DELETE_COURSE:
+      // console.log(action.payload);
+      return {
+        ...state,
+        courses: state.courses.filter(el => {
+          return el._id !== action.payload._id
+        })
+      };
+    case UPDATE_COURSE: // I do not know If I need this
       return {
         ...state,
         course: action.payload
-      };      
+      };
     default:
       return state;
   }

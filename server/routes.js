@@ -32,19 +32,10 @@ router.get('/courses', (req, res) => {
 router.delete('/delete/:courseId', (req, res) => {
   let courseId = req.params.courseId;
   Course.findOneAndDelete({ _id: courseId }, (err, data) => {
-
+      // I also still have to delete from google buckets
       if (err) { res.json(err)}
 
-      let files = data.filePaths;
-      files.forEach((element) => {
-        fs.unlink(element.path, (err) => {
-            if (err) {
-              res.json(err)
-              return
-            }
-        })
-      })
-      res.json({status: true})
+      res.json(data)
   });
 });
 
@@ -90,10 +81,7 @@ router.delete('/deleteVideo/:courseId/:videoId', (req, res) => {
                   res.json(err)
                   return;
                 }
-                res.send({
-                  message: 'Video deleted',
-                  status:true
-                })
+                res.send(data)
         });
   });
 });
@@ -167,10 +155,6 @@ router.post("/upload", (req, res) => {
 
          }).catch(err => console.error('ERROR:', err))
 
-
-
-       }else{
-         res.json({message: 'Material has been already uploaded',status:false} )
        }
     })
 
@@ -182,7 +166,7 @@ router.post("/upload", (req, res) => {
 
 
 // CREATE VIDEO
-router.post('/createVideo', (req, res) => {
+router.post('/uploadVideo', (req, res) => {
   let courseId = req.body.courseId
   let url = req.body.url
   let title = req.body.title
@@ -196,14 +180,11 @@ router.post('/createVideo', (req, res) => {
 
      if (findUrl == -1) {
        Course.findByIdAndUpdate(courseId,
-         {"$push": { "videos": {title: title, url: url, youtubeId, clicks: 0}}} ,
-         {new: true},
+         {"$push": { "videos": {title: title, url: url, youtubeId, clicks: 0}}} , {new: true},
          (error,data) => {
          if (err){ res.end(err) }
-         res.send({message:'Video created', status: true})
+         res.send(data)
        })
-     }else{
-       res.send({message:'Video already in database', status:false})
      }
   })
 });

@@ -21,7 +21,7 @@ class CourseFiles extends Component {
     super(props);
 
     this.state = {
-      file: null,
+      file: '',
       courseId: this.props.courseId,
       isDisabled: true,
       isDisabledDelete: false
@@ -39,8 +39,10 @@ class CourseFiles extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps) {
         this.setState({
-          isDisabled: false,
-          isDisabledDelete: false})
+          isDisabled: true,
+          isDisabledDelete: false,
+          file: ''
+        })
     }
 }
 
@@ -83,10 +85,22 @@ class CourseFiles extends Component {
     e.preventDefault()
     this.setState({isDisabled: true})
 
+
+
     let fileObj = this.state.file
     let form = new FormData();
+    let fileName = fileObj.name
+
     form.append('file', fileObj);
     form.append('courseId', this.state.courseId);
+
+    let findName =  this.props.filePaths.findIndex(data => data.fileName === fileName)
+    if (findName > -1) {
+      alert(' File with same name already uploaded')
+      this.setState({isDisabled: false})
+      return false;
+    }
+
     this.props.uploadFile(form)
 
   }
@@ -128,7 +142,7 @@ class CourseFiles extends Component {
                 </Col>
                 <Col sm={9}>
 
-                  <FormControl className="display-file-input" onChange={this.setFile} type="file"  />
+                  <FormControl className="display-file-input"  ref = {(ref) => this.fileInput = ref}   onChange={this.setFile} type="file"  />
                   <Button disabled={this.state.isDisabled}  bsStyle="success" type="submit" className="pull-right" >Upload file <span className="glyphicon glyphicon-plus"></span></Button>
 
                 </Col>

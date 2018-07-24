@@ -81,14 +81,14 @@ export const updateCourse = courseData => dispatch => {
 };
 
 
-// Update Course
+// Delete Course --> look for reference
 export const deleteCourse = courseId => dispatch => {
   axios.delete(`/api/delete/${courseId}`)
-    .then(res =>
-      dispatch({
+    .then(res =>{
+        dispatch({
         type: DELETE_COURSE,
         payload: res.data
-      })
+      })}
     )
     .catch(err =>
       dispatch({
@@ -133,4 +133,39 @@ export const deleteFile = (courseId,fileId) => dispatch => {
         payload: null
       })
     );
+};
+
+
+// Upload Video
+export const uploadVideo = (url, courseId, title, youtubeId) => dispatch => {
+  axios.post('/api/uploadVideo', {url, courseId, title, youtubeId})
+  .then(res =>
+    dispatch({
+      type: GET_COURSE,
+      payload: res.data // This I have to change, this is why it is not updating
+    })
+  ).catch(err =>
+      dispatch({
+        type: GET_COURSE,
+        payload: null
+      })
+  );
+};
+
+
+
+// Upload Video
+export const deleteVideo = (courseId,videoId) => dispatch => {
+  axios.delete(`/api/deleteVideo/${courseId}/${videoId}`)
+  .then(res =>
+    dispatch({
+      type: GET_COURSE,
+      payload: res.data // This I have to change, this is why it is not updating
+    })
+  ).catch(err =>
+      dispatch({
+        type: GET_COURSE,
+        payload: null
+      })
+  );
 };
