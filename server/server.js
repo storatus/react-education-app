@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 
 var course = require('./routes/course')
-// var user = require('./routes/user')
+var user = require('./routes/user')
 
 
 
@@ -30,7 +30,7 @@ app.use(logger('dev'));
 
 
 app.use('/api', course);
-// app.use('/api', user);
+app.use('/api/user', user);
 
 
 

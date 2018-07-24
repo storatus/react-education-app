@@ -87,14 +87,13 @@ class CreateUser extends Component {
   }
 
   cleanForm(){
-    // this.setState({
-    //   name: '',
-    //   dateFrom: '',
-    //   dateTo: '',
-    //   description: '',
-    //   courseStatus: 'enabled'
-    // })
-    // alert('Course created')
+    this.setState({
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: ''
+    })
+    alert('User created')
   }
 
 
@@ -102,9 +101,8 @@ class CreateUser extends Component {
     e.preventDefault();
     this.setState({isSend: true})
     if (this.isValid() === false) { return false; }
-
-    // this.props.addCourse(this.state)
-    // this.cleanForm()
+    this.props.addUser(this.state)
+    this.cleanForm()
 
   }
 
