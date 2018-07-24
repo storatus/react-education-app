@@ -36,7 +36,15 @@ router.get('/', (req, res) => {
 });
 
 
-
+// DELETE COURSE
+router.delete('/delete/:userId', (req, res) => {
+  let userId = req.params.userId;
+  User.findOneAndDelete({ _id: userId }, (err, data) => {
+      if (err) { res.json(err)}
+      console.log(data);
+      res.json(data)
+  });
+});
 
 
 

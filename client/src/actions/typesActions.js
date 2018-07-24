@@ -4,6 +4,8 @@ export const GET_COURSE = 'GET_COURSE';
 export const DELETE_COURSE = 'DELETE_COURSE';
 export const UPDATE_COURSE = 'UPDATE_COURSE';
 export const ADD_USER = 'ADD_USER';
+export const GET_USERS = 'GET_USERS';
+export const DELETE_USER = 'DELETE_USER';
 
 
 

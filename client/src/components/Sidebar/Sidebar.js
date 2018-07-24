@@ -12,6 +12,7 @@ class Sidebar extends Component {
   this.state = {menu: [
     {name: "Home", url: "/"},
     {name: "All Courses", url: "/all-courses"},
+    {name: "All Users", url: "/all-users"},
     {name: "Create Courses", url: "/create-course"},
     {name: "Create User", url: "/create-user"},
     {name: "Logout", url: "/Logout"}
