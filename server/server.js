@@ -2,10 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-var router = require('./routes')
+
+
+var course = require('./routes/course')
+// var user = require('./routes/user')
+
+
+
 var path = require('path')
 
-// Create app instance
 const app = express();
 
 
@@ -24,7 +29,11 @@ app.use(logger('dev'));
 
 
 
-app.use('/api', router);
+app.use('/api', course);
+// app.use('/api', user);
+
+
+
 
 if (process.env.NODE_ENV == 'production') {
   app.use(express.static(path.join(__dirname, '/../client/build')));

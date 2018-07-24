@@ -85,10 +85,6 @@ class Login extends Component {
               </FormGroup>
 
 
-
-
-
-
               <FormGroup className="center-button">
                 <Button type="submit" >Login</Button>
 
