@@ -10,9 +10,10 @@ import {
   ControlLabel
 } from 'react-bootstrap';
 import './CreateUser.css';
-import {errorMessages} from '../../helpers';
 
 import { addUser } from '../../actions/userActions';
+import { removeError } from '../../actions/errorActions';
+
 import { connect } from 'react-redux';
 
 
@@ -35,6 +36,23 @@ class CreateUser extends Component {
 
     this.submitForm = this.submitForm.bind(this);
     this.handleInput = this.handleInput.bind(this);
+
+  }
+
+  componentWillReceiveProps(nextProps) {
+
+    if (nextProps.errorMesage.err) {
+        alert(nextProps.errorMesage.err)
+        this.props.removeError()
+    }
+
+    if (nextProps.user !== this.props.user) {
+      this.cleanForm()
+    }
+
+
+
+
 
   }
 
@@ -102,7 +120,7 @@ class CreateUser extends Component {
     this.setState({isSend: true})
     if (this.isValid() === false) { return false; }
     this.props.addUser(this.state)
-    this.cleanForm()
+
 
   }
 
@@ -179,4 +197,13 @@ class CreateUser extends Component {
 }
 
 
-export default connect(null, { addUser })(CreateUser);
+
+const stateToProps = state => {
+  return ({
+    errorMesage: state.errors.message,
+    users: state.user.users,
+    user: state.user.user
+  })
+};
+
+export default connect(stateToProps, { addUser, removeError })(CreateUser);

@@ -9,9 +9,15 @@ import {
   FormControl,
   Button,
   ControlLabel,
-  // HelpBlock
 } from 'react-bootstrap';
 import './Login.css';
+
+
+
+import { loginUser } from '../../actions/userActions';
+import { connect } from 'react-redux';
+
+
 
 
 
@@ -35,18 +41,18 @@ class Login extends Component {
   }
 
 
-  handleInput(e){
-      console.log(e);
+  handleInput(e) {
+
+    let name = e.target.id
+    let val = e.target.value
+    this.setState({[name]: val})
 
   }
 
   submitForm(e){
-
     this.props.history.push('/')
     e.preventDefault();
   }
-
-
 
 
 
@@ -68,8 +74,6 @@ class Login extends Component {
                   placeholder="Enter email"
                   onChange={this.handleInput}
                 />
-              {/*<FormControl.Feedback />
-                <HelpBlock>Validation is based on string length.</HelpBlock>*/}
 
               </FormGroup>
 

@@ -5,9 +5,8 @@ import {
   GET_COURSES,
   GET_COURSE,
   UPDATE_COURSE,
-  DELETE_COURSE
+  DELETE_COURSE,
 } from '../actions/typesActions';
-
 
 
 // What about loading ?

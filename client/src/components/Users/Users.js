@@ -37,7 +37,6 @@ class Users extends Component {
             <td>{val.firstName}</td>
             <td>{val.lastName}</td>
             <td>{val.email}</td>
-            <td>{val.password}</td>
 
             <td className="align-middle">
                 <Button onClick={(e) => this.deleteUser(val._id, e)} bsStyle="danger" >Delete User</Button>
@@ -62,7 +61,6 @@ class Users extends Component {
                     <th>First name</th>
                     <th>Last name</th>
                     <th>Email</th>
-                    <th>Password</th>
                     <th>Delete</th>
                   </tr>
                 </thead>
