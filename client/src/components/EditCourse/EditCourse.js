@@ -115,8 +115,8 @@ class EditCourse extends Component {
 
   }
 
-  componentWillReceiveProps(nextProps) {
-    let course = nextProps.course
+  componentWillReceiveProps(newProps) {
+    let course = newProps.course
     if (Object.keys(course).length !== 0) {
         this.assignData(course)
     }

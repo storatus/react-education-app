@@ -36,6 +36,7 @@ class Users extends Component {
             <td>{val.firstName}</td>
             <td>{val.lastName}</td>
             <td>{val.email}</td>
+            <td>{defineRole(val.role)}</td>
 
             <td className="align-middle">
                 <Button onClick={(e) => this.deleteUser(val._id, e)} bsStyle="danger" >Delete User</Button>
@@ -60,6 +61,7 @@ class Users extends Component {
                     <th>First name</th>
                     <th>Last name</th>
                     <th>Email</th>
+                    <th>Role</th>
                     <th>Delete</th>
                   </tr>
                 </thead>
@@ -72,6 +74,11 @@ class Users extends Component {
       </Grid>
     )
   }
+}
+
+
+const defineRole = role => {
+  return role === 0 ? 'admin' : 'student'
 }
 
 

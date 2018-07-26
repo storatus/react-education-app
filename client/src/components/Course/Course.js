@@ -24,8 +24,8 @@ class Course extends Component {
   }
 
 
-  componentWillReceiveProps(nextProps) {
-    let course = nextProps.course
+  componentWillReceiveProps(newProps) {
+    let course = newProps.course
     if (course == null) {
       this.props.history.push('/NoPage')
     }

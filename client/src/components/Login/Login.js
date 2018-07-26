@@ -16,6 +16,7 @@ import './Login.css';
 
 import { loginUser } from '../../actions/userActions';
 import { connect } from 'react-redux';
+import { removeError } from '../../actions/errorActions';
 
 
 
@@ -37,9 +38,24 @@ class Login extends Component {
 
   }
 
+  componentWillReceiveProps(newProps) {
+
+    if (newProps.errorMesage.err) {
+        alert(newProps.errorMesage.err)
+        this.props.removeError()
+    }
+
+
+    // this.props.history.push('/')
+    // if (newProps.user !== this.props.user) {
+    //   this.cleanForm()
+    // }
+
+
+  }
+
 
   handleInput(e) {
-
     let name = e.target.id
     let val = e.target.value
     this.setState({[name]: val})
@@ -47,10 +63,8 @@ class Login extends Component {
   }
 
   submitForm(e){
-    // this.props.history.push('/')
     e.preventDefault();
     this.props.loginUser(this.state)
-
   }
 
 
@@ -59,7 +73,7 @@ class Login extends Component {
   render() {
     return (
       <Grid>
-        <Row className="margin-top-form"  >
+        <Row className="margin-top-form">
           <Col xsOffset={4}  sm={4}>
             <Form horizontal={true} onSubmit={this.submitForm}>
               <FormGroup controlId="email">
@@ -100,10 +114,13 @@ class Login extends Component {
 }
 
 const reduxProps = state => {
-  return ({auth: state.user.auth})
+  return ({
+    isAuth: state.user.isAuth,
+    errorMesage: state.errors.message
+  })
 };
 
 
 
 
-export default connect(reduxProps, { loginUser })(Login);
+export default connect(reduxProps, { loginUser, removeError })(Login);

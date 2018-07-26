@@ -36,8 +36,8 @@ class CourseFiles extends Component {
   }
 
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps) {
+  componentWillReceiveProps(newProps) {
+    if (newProps) {
         this.setState({
           isDisabled: true,
           isDisabledDelete: false,

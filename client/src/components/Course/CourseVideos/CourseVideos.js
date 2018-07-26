@@ -33,8 +33,8 @@ class CourseVideos extends Component {
   }
 
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps) {
+  componentWillReceiveProps(newProps) {
+    if (newProps) {
         this.setState({
           isDisabled: false,
           isDisabledDelete: false,

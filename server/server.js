@@ -1,7 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const mongoose = require('mongoose');
+const path = require('path')
+const app = express();
+const db = require('./configDB')
+
 
 
 var course = require('./routes/course')
@@ -9,17 +12,9 @@ var user = require('./routes/user')
 
 
 
-var path = require('path')
-
-const app = express();
 
 
-mongoose.connect('mongodb://storatus:storatus12@ds247670.mlab.com:47670/expense-manager');
-var db = mongoose.connection;
 
-// REWRITE
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() { console.log("We are connected"); });
 
 
 //What is bodyParser --> I need to clarify this

@@ -67,12 +67,18 @@ export const deleteUser = userId => dispatch => {
 // Login User
 export const loginUser = userData => dispatch => {
   axios.post('/api/user/login', userData)
-    .then(res =>
+    .then(res =>{
+      let token = res.data.token
+      localStorage.setItem('jwtToken', token);
+
       dispatch({
         type: LOGIN_USER,
         payload: res.data
       })
-    )
+
+
+
+    })
     .catch(err =>
       dispatch({
         type: ERRORS,

@@ -15,7 +15,9 @@ class Sidebar extends Component {
     {name: "All Users", url: "/all-users"},
     {name: "Create Courses", url: "/create-course"},
     {name: "Create User", url: "/create-user"},
-    {name: "Logout", url: "/Logout"}
+    {name: "Logout", url: "/Logout"},
+    {name: "Login", url: "/login"}
+
   ]}
 }
 
@@ -34,8 +36,6 @@ class Sidebar extends Component {
 
                 })
               }
-
-
          </ul>
          </div>
       </nav>

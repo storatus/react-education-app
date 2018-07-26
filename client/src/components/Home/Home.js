@@ -8,15 +8,12 @@ class Home extends Component {
 
   constructor(props) {
     super(props);
-
-    // This binding is necessary to make `this` work in the callback
     this.handleClick = this.handleClick.bind(this);
   }
 
 
   handleClick(name){
     this.props.history.push(name);
-    // console.log(name);
   }
 
 

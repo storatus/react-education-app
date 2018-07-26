@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var fs = require('fs');
-var mongoose = require('mongoose')
-var path = require('path')
 var bcrypt = require('bcrypt')
+var jwt = require('jsonwebtoken');
+
 const User = require('./../models/User')
+
+const secretKey = '´something'
+
 
 
 // CREATE USER
@@ -12,20 +14,20 @@ router.post('/create', (req, res) => {
 
   let user = new User();
   const userObj = req.body;
-  let { firstName, lastName, email, password } = userObj
+  let { firstName, lastName, email, password, role } = userObj
   user.firstName = firstName
   user.lastName = lastName
   user.email = email
+  user.role = role
 
 
   User.findOne({ email }).then(userData => {
 
     if (userData) {
-      res.status(400).json({err: 'Email exsists'});
+      return res.status(400).json({err: 'Email exsists'});
     }else {
 
       bcrypt.hash(password, 2).then(hash => {
-        // bcrypt.compare(password, hash)
         user.password = hash
         user.save((error,data) => {
           if(error){res.send(err)}
@@ -42,41 +44,41 @@ router.post('/create', (req, res) => {
 
 router.post('/login', (req, res) => {
 
-  let email = req.body.email
-  let password = req.body.password
+  let { email, password } = req.body
 
-  console.log(email,password);
+  // find user
+  User.findOne({email: email}).then(userData => {
+    if (userData == null) {
+      res.status(400).json({err: 'Email does not exist'});
+    }else {
+      let dbPassword = userData.password
+      let {firstName, lastName, email, role} = userData
+
+      bcrypt.compare(password, dbPassword).then(result => {
+            if (result === false) {
+              return res.status(400).json({err: 'This is the wrong password'});
+            }
+
+            let jwtData = {};
+            jwtData.firstName = firstName
+            jwtData.lastName = lastName
+            jwtData.email = email
+            jwtData.role = role
+
+            let token = jwt.sign(jwtData, secretKey)
+            res.json({token: token})
+
+      })
 
 
 
 
 
-  // let user = new User();
-  // const userObj = req.body;
-  // let { firstName, lastName, email, password } = userObj
-  // user.firstName = firstName
-  // user.lastName = lastName
-  // user.email = email
-  //
-  //
-  // User.findOne({ email }).then(userData => {
-  //
-  //   if (userData) {
-  //     res.status(400).json({err: 'Email exsists'});
-  //   }else {
-  //
-  //     bcrypt.hash(password, 2).then(hash => {
-  //       // bcrypt.compare(password, hash)
-  //       user.password = hash
-  //       user.save((error,data) => {
-  //         if(error){res.send(err)}
-  //         res.send(data)
-  //       })
-  //
-  //     })
-  //
-  //   }
-  // });
+    }
+  })
+
+
+
 
 });
 

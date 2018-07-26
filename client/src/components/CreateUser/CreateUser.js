@@ -27,6 +27,7 @@ class CreateUser extends Component {
       lastName: '',
       email: '',
       password: '',
+      role: 0,
       firstNameValid: null,
       lastNameValid: null,
       emailValid: null,
@@ -39,21 +40,16 @@ class CreateUser extends Component {
 
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(newProps) {
 
-    if (nextProps.errorMesage.err) {
-        alert(nextProps.errorMesage.err)
+    if (newProps.errorMesage.err) {
+        alert(newProps.errorMesage.err)
         this.props.removeError()
     }
 
-    if (nextProps.user !== this.props.user) {
+    if (newProps.user !== this.props.user) {
       this.cleanForm()
     }
-
-
-
-
-
   }
 
   isValid(){
@@ -164,7 +160,7 @@ class CreateUser extends Component {
                 Email
               </Col>
               <Col sm={9}>
-                <FormControl onChange={this.handleInput} type="email" value={this.state.email} placeholder="email"/>
+                <FormControl onChange={this.handleInput} type="input" value={this.state.email} placeholder="email"/>
                   <p className="error">{this.state.emailValid}</p>
               </Col>
             </FormGroup>
@@ -176,6 +172,23 @@ class CreateUser extends Component {
               <Col sm={9}>
                 <FormControl onChange={this.handleInput} value={this.state.password} type="password" placeholder="password"/>
                 <p className="error">{this.state.passwordValid}</p>
+              </Col>
+            </FormGroup>
+
+
+
+            <FormGroup controlId="role">
+              <Col componentClass={ControlLabel} sm={3}>
+                Role status
+              </Col>
+              <Col sm={9}>
+                <FormControl onChange={this.handleInput} value={this.state.role} componentClass="select" placeholder="Select">
+
+                  <option value="1">Admin</option>
+                  <option value="0">Student</option>
+
+                </FormControl>
+
               </Col>
             </FormGroup>
 

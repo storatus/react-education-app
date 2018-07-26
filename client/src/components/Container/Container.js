@@ -9,6 +9,8 @@ import EditCourse from '../EditCourse/EditCourse';
 import CreateUser from '../CreateUser/CreateUser';
 import Course from '../Course/Course';
 import Users from '../Users/Users';
+import Login from '../Login/Login';
+
 
 
 
@@ -34,6 +36,8 @@ class Container extends Component {
             <Route path='/course/:courseId'  component={Course}/>
             <Route path='/edit/:courseId' key="edit-course" component={EditCourse}/>
             <Route path='/create-user' key="create-user" component={CreateUser}/>
+            <Route path='/login' key="login" component={Login}/>
+
 
             <Route component={NoPage}/>
 
