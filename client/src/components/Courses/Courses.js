@@ -60,9 +60,9 @@ class Courses extends Component {
 }
 
 
-const stateToProps = state => {
+const reduxProps = state => {
   return ({courses: state.course.courses})
 };
 
 
-export default connect(stateToProps, { getCourses })(Courses);
+export default connect(reduxProps, { getCourses })(Courses);

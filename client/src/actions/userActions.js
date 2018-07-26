@@ -4,6 +4,7 @@ import {
   ADD_USER,
   GET_USERS,
   DELETE_USER,
+  LOGIN_USER,
   ERRORS
 } from './typesActions';
 import axios from 'axios';
@@ -24,7 +25,6 @@ export const addUser = userData => dispatch => {
       })
     );
 };
-
 
 
 // Get Users
@@ -59,6 +59,24 @@ export const deleteUser = userId => dispatch => {
       dispatch({
         type: ERRORS,
         payload: null
+      })
+    );
+};
+
+
+// Login User
+export const loginUser = userData => dispatch => {
+  axios.post('/api/user/login', userData)
+    .then(res =>
+      dispatch({
+        type: LOGIN_USER,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: ERRORS,
+        payload: err.response.data
       })
     );
 };

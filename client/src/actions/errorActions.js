@@ -1,5 +1,4 @@
 import {
-  ERRORS,
   REMOVE_ERRORS
 } from './typesActions';
 

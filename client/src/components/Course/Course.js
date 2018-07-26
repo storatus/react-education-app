@@ -106,9 +106,9 @@ class Course extends Component {
 }
 
 
-const stateToProps = state => {
+const reduxProps = state => {
   return ({course: state.course.course})
 };
 
 
-export default connect(stateToProps, { deleteCourse,getCourse })(Course);
+export default connect(reduxProps, { deleteCourse,getCourse })(Course);

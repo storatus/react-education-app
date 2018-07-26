@@ -3,7 +3,8 @@
 import {
   ADD_USER,
   GET_USERS,
-  DELETE_USER
+  DELETE_USER,
+  LOGIN_USER
 } from '../actions/typesActions';
 
 const initialState = {
@@ -33,6 +34,11 @@ export default function(state = initialState, action) {
           return el._id !== action.payload._id
         })
       };
+      case LOGIN_USER:
+        return {
+          ...state, // 1,2,3
+          auth: action.payload
+        };
     default:
       return state;
   }

@@ -198,7 +198,7 @@ class CreateUser extends Component {
 
 
 
-const stateToProps = state => {
+const reduxProps = state => {
   return ({
     errorMesage: state.errors.message,
     users: state.user.users,
@@ -206,4 +206,4 @@ const stateToProps = state => {
   })
 };
 
-export default connect(stateToProps, { addUser, removeError })(CreateUser);
+export default connect(reduxProps, { addUser, removeError })(CreateUser);

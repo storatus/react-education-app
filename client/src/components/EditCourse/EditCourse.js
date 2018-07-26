@@ -214,8 +214,8 @@ class EditCourse extends Component {
   }
 }
 
-const stateToProps = state => {
+const reduxProps = state => {
   return ({course: state.course.course})
 };
 
-export default connect(stateToProps, { getCourse,updateCourse })(EditCourse);
+export default connect(reduxProps, { getCourse,updateCourse })(EditCourse);

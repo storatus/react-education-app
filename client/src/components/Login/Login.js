@@ -19,9 +19,6 @@ import { connect } from 'react-redux';
 
 
 
-
-
-
 // MOST PEOPLE USE AUTH0
 
 class Login extends Component {
@@ -50,8 +47,10 @@ class Login extends Component {
   }
 
   submitForm(e){
-    this.props.history.push('/')
+    // this.props.history.push('/')
     e.preventDefault();
+    this.props.loginUser(this.state)
+
   }
 
 
@@ -59,9 +58,6 @@ class Login extends Component {
 
   render() {
     return (
-    // This might change because I have to do things responsive
-
-
       <Grid>
         <Row className="margin-top-form"  >
           <Col xsOffset={4}  sm={4}>
@@ -81,7 +77,7 @@ class Login extends Component {
               <FormGroup controlId="password">
                 <ControlLabel>Password</ControlLabel>
                 <FormControl
-                  type="text"
+                  type="password"
                   value={this.state.value}
                   placeholder="Enter password"
                   onChange={this.handleInput}
@@ -103,4 +99,11 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const reduxProps = state => {
+  return ({auth: state.user.auth})
+};
+
+
+
+
+export default connect(reduxProps, { loginUser })(Login);

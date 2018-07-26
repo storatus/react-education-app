@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Table, Grid, Row, Col, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
 import { getUsers, deleteUser } from '../../actions/userActions';
 import './Users.css';
 import { connect } from 'react-redux';
@@ -76,9 +75,9 @@ class Users extends Component {
 }
 
 
-const stateToProps = state => {
+const reduxProps = state => {
   return ({users: state.user.users})
 };
 
 
-export default connect(stateToProps, { getUsers, deleteUser })(Users);
+export default connect(reduxProps, { getUsers, deleteUser })(Users);
