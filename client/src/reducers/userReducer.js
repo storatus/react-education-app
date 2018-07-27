@@ -4,12 +4,13 @@ import {
   ADD_USER,
   GET_USERS,
   DELETE_USER,
-  LOGIN_USER
+  LOGIN_USER,
+  LOGOUT_USER
 } from '../actions/typesActions';
 
 const initialState = {
   users: [],
-  user: {}, // This is only for checking if a new user was added 
+  user: {}, // This is only for checking if a new user was added
   authUser: {} // This for using in Auth
 }
 
@@ -34,11 +35,16 @@ export default function(state = initialState, action) {
           return el._id !== action.payload._id
         })
       };
-      case LOGIN_USER:
-        return {
-          ...state, // 1,2,3
-          authUser: action.payload
-        };
+    case LOGIN_USER:
+      return {
+        ...state, // 1,2,3
+        authUser: action.payload
+      };
+    case LOGOUT_USER:
+      return {
+        ...state, // 1,2,3
+        authUser: {}
+      };
     default:
       return state;
   }

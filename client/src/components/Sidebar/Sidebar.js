@@ -1,37 +1,41 @@
 import React, { Component } from 'react';
 import './Sidebar.css';
 import { Link } from 'react-router-dom'
-
 import { connect } from 'react-redux';
+import { logoutUser } from '../../actions/userActions';
 
 
 class Sidebar extends Component {
 
   constructor(props) {
-  super(props);
+    super(props);
 
-  this.state = {menu: [
-    {name: "Home", url: "/", role: 0},
-    {name: "All Courses", url: "/all-courses", role: 0},
-    {name: "All Users", url: "/all-users", role: 1},
-    {name: "Create Courses", url: "/create-course", role: 1},
-    {name: "Create User", url: "/create-user", role: 1},
-    // {name: "Logout", url: "/Logout", role: 0},
-    {name: "Login", url: "/login", role: 0}
+    this.state = {menu: [
+      {name: "Home", url: "/", role: 0},
+      {name: "All Courses", url: "/all-courses", role: 0},
+      {name: "All Users", url: "/all-users", role: 1},
+      {name: "Create Courses", url: "/create-course", role: 1},
+      {name: "Create User", url: "/create-user", role: 1},
+      {name: "Login", url: "/login", role: 0}
+    ]}
 
-  ]}
+    this.logout = this.logout.bind(this);
+
 }
 
 
 
-  generateLinks(menuItems){
+logout(e){
+    this.props.logoutUser()
+}
+
+
+generateLinks(menuItems){
 
     return menuItems.map((exp,i) => {
-
       return (<li key={i} className="nav-item">
               <Link replace to={{pathname: exp.url}}>  {exp.name} </Link>
           </li>)
-
     })
 
   }
@@ -54,6 +58,9 @@ class Sidebar extends Component {
         <div className="sidebar-container">
           <ul className="nav flex-column">
             {finalLinks}
+            <li key="logout" className="nav-item">
+                <a href="/#" onClick={this.logout}>  Logout </a>
+            </li>
          </ul>
          </div>
       </nav>
@@ -73,4 +80,4 @@ const reduxProps = state => {
   })
 };
 
-export default connect(reduxProps)(Sidebar);
+export default connect(reduxProps, {logoutUser})(Sidebar);

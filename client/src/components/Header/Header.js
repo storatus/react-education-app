@@ -8,14 +8,6 @@ import './Header.css';
 class Header extends Component {
 
 
-
-  constructor(props) {
-    super(props);
-
-
-  }
-
-
   render() {
     let role = this.props.auth.role
         return(
@@ -27,6 +19,8 @@ class Header extends Component {
             </Navbar.Header>
 
           { role === 1 &&  <span className="loggedIn"> Logged as Admin </span>}
+          { role === 0 &&  <span className="loggedIn"> Hello,  {this.props.auth.firstName} </span>}
+
           </Navbar>
 
       )

@@ -4,14 +4,13 @@ import {
   GET_USERS,
   DELETE_USER,
   LOGIN_USER,
+  LOGOUT_USER,
   ERRORS
 } from './typesActions';
 
 import axios from 'axios';
 import {setAuthToken} from './../helpers'
 import jwtDecode from 'jwt-decode';
-
-
 
 
 
@@ -85,14 +84,8 @@ export const loginUser = userData => dispatch => {
       let token = res.data.token
       localStorage.setItem('jwtToken', token)
       setAuthToken(token)
-
       let decodedUser = jwtDecode(token)
       dispatch(setUser(decodedUser))
-
-
-
-
-
     })
     .catch(err =>
       dispatch({
@@ -100,4 +93,18 @@ export const loginUser = userData => dispatch => {
         payload: err.response.data
       })
     );
+};
+
+
+// Logout User
+export const logoutUser = () => dispatch => {
+
+  console.log("cejlwnvlwenvlnw");
+  setAuthToken(false)
+  localStorage.removeItem('jwtToken');
+  dispatch({
+    type: LOGOUT_USER
+  })
+
+
 };
