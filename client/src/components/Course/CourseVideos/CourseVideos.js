@@ -7,13 +7,15 @@ import {
   FormGroup,
   FormControl,
   ControlLabel,
+  Image,
   Form} from 'react-bootstrap';
-import axios from 'axios';
 import './CourseVideos.css';
-
+import axios from 'axios'
 
 import { uploadVideo, deleteVideo } from '../../../actions/courseActions';
 import { connect } from 'react-redux';
+
+import {setAuthToken} from './../../../helpers'
 
 
 class CourseVideos extends Component {
@@ -92,11 +94,19 @@ class CourseVideos extends Component {
     }
 
     this.setState({isDisabled: true})
+    setAuthToken(false)
+
+
 
     axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${youtubeId}&key=${youtubeKey}&part=snippet`)
     .then(response => {
       let title = response.data.items[0].snippet.title
-      this.props.uploadVideo(url, courseId, title, youtubeId)
+      let thumbnail = response.data.items[0].snippet.thumbnails.default.url
+      this.props.uploadVideo(url, courseId, title, youtubeId, thumbnail)
+
+      let token = localStorage.getItem('jwtToken')
+      setAuthToken(token)
+
     }).catch(err => console.log(err))
   }
 
@@ -115,6 +125,9 @@ class CourseVideos extends Component {
     return videos.map((val,index) => {
         return (
         <tr key={val._id}>
+          <td>
+            <Image src={val.thumbnail} rounded />
+          </td>
           <td>{val.title}</td>
           <td className="align-middle">
               <Button onClick={(e) => this.watchVideo(val, e)} bsSize="xsmall" >Watch Video</Button>
@@ -128,32 +141,29 @@ class CourseVideos extends Component {
 
   render() {
 
-
     let videos = this.generateVideos(this.props.videos)
+    let role = this.props.role
+
 
     return(
       <div>
       <Row>
         <Col md={6}>
           <h3> Course Videos </h3>
-          <Form encType="multipart/form-data" onSubmit={this.submitForm}>
-
+          {role === 1 &&    <Form encType="multipart/form-data" onSubmit={this.submitForm}>
             <FormGroup controlId="videoUrl">
-
               <Col sm={3} className="no-padding" componentClass={ControlLabel} >
                 Youtube URL
               </Col>
-
               <Col sm={9}>
                 <FormControl value={this.state.url} className="display-file-input" onChange={this.handleInput} type="text"  />
               </Col>
-
               <Col className="margin-up"sm={12}>
                 <Button disabled={this.state.isDisabled}  bsStyle="success" type="submit" className="pull-right" >Upload Video <span className="glyphicon glyphicon-plus"></span></Button>
               </Col>
-
             </FormGroup>
-          </Form>
+          </Form>}
+
         </Col>
       </Row>
 
@@ -163,6 +173,7 @@ class CourseVideos extends Component {
             <Table responsive striped bordered condensed hover>
               <thead>
                 <tr>
+                  <th>Videothumb</th>
                   <th>Videoname</th>
                   <th>Watch</th>
                   <th>Delete</th>

@@ -17,6 +17,7 @@ var courseSchema = new Schema({
   }],
   videos: [{
     url: String,
+    thumbnail: String,
     title: String,
     clicks: Number,
     youtubeId: String

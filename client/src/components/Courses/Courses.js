@@ -14,12 +14,17 @@ class Courses extends Component {
   }
 
 
-  generateCourses(courseData){
+  calcMaterial(videos, filePaths){
+    return videos.length + filePaths.length
+  }
 
+
+  generateCourses(courseData){
     return courseData.map(val => {
           return (
           <tr key={val._id}>
             <td>{val.name}</td>
+            <td>{this.calcMaterial(val.videos, val.filePaths)}</td>
             <td>0</td>
             <td className="align-middle">
               <Link to={`/course/${val._id}`}>
@@ -28,8 +33,10 @@ class Courses extends Component {
             </td>
           </tr>)
         })
-
   }
+
+
+
 
   render() {
     let courses = this.generateCourses(this.props.courses)
@@ -44,6 +51,7 @@ class Courses extends Component {
                 <thead>
                   <tr>
                     <th>Course name</th>
+                    <th>Total material</th>
                     <th>People enrolled</th>
                     <th>Action</th>
                   </tr>

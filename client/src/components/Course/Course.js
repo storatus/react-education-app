@@ -20,7 +20,6 @@ class Course extends Component {
 
   constructor(props) {
     super(props);
-    this.deleteCourse = this.deleteCourse.bind(this);
   }
 
 
@@ -31,6 +30,13 @@ class Course extends Component {
     }
   }
 
+  enroll(courseId){
+
+
+    console.log(courseId);
+
+
+  }
 
 
   deleteCourse(courseId,e){
@@ -49,6 +55,7 @@ class Course extends Component {
   render() {
 
     let courseData = this.props.course
+    let role = this.props.auth.role
 
     return (
       <Grid fluid>
@@ -83,20 +90,28 @@ class Course extends Component {
         </Row>
 
 
-      {  Object.keys(courseData).length > 0 && <CourseFiles  courseId={courseData._id} filePaths={courseData.filePaths}/>}
+      {  Object.keys(courseData).length > 0 && <CourseFiles  role={role} courseId={courseData._id} filePaths={courseData.filePaths}/>}
       <hr></hr>
-      {  Object.keys(courseData).length > 0 && <CourseVideos courseId={courseData._id} videos={courseData.videos}/>}
+      {  Object.keys(courseData).length > 0 && <CourseVideos role={role} courseId={courseData._id} videos={courseData.videos}/>}
 
       <hr></hr>
-
         <Row className="margin-up" >
             <Col md={6}>
               <div className="pull-right">
-                  <Button  onClick={(e) => this.deleteCourse(courseData._id, e)} bsStyle="danger" className="margin-right" > Delete Course</Button>
-                    <Link className="pull-right" to={`/edit/${courseData._id}`}>
-                      <Button >Edit Course</Button>
-                    </Link>
-              </div>
+                { role === 1 &&
+                  <div>
+                    <Button  onClick={(e) => this.deleteCourse(courseData._id, e)} bsStyle="danger" className="margin-right" > Delete Course</Button>
+                    <Link className="pull-right" to={`/edit/${courseData._id}`}> <Button >Edit Course</Button> </Link>
+                  </div>
+                }
+
+                { role === 0 &&
+                  <div>
+                    <Button  onClick={(e) => this.enroll(courseData._id, e)} bsStyle="success" className="margin-right" > Enroll in Course </Button>
+                  </div>
+                }
+
+          </div>
             </Col>
         </Row>
       </Grid>
@@ -107,8 +122,11 @@ class Course extends Component {
 
 
 const reduxProps = state => {
-  return ({course: state.course.course})
+  return ({
+    course: state.course.course,
+    auth: state.user.authUser
+  })
 };
 
 
-export default connect(reduxProps, { deleteCourse,getCourse })(Course);
+export default connect(reduxProps, { deleteCourse, getCourse })(Course);

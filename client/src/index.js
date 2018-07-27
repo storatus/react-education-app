@@ -14,11 +14,8 @@ import { setUser } from './actions/userActions';
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken) // This is placing it into headers
-
   configStore.dispatch(setUser(jwtDecode(localStorage.jwtToken))) // putting it equal in state
 }
-
-
 
 
 

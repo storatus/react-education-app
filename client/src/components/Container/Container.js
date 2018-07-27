@@ -30,9 +30,8 @@ class Container extends Component {
             <Route path='/edit/:courseId'  key="edit-course" component={Auth(EditCourse,1)}/>
             <Route path='/create-user'  key="create-user" component={Auth(CreateUser,1)}/>
             <Route path='/login' key="login" component={Login}/>
+            <Route component={Auth(NoPage)}/>
 
-
-            <Route component={NoPage}/>
 
 
           </Switch>

@@ -53,7 +53,6 @@ generateLinks(menuItems){
 
 
     return (
-
       <nav className="sidebar col-md-2">
         <div className="sidebar-container">
           <ul className="nav flex-column">
@@ -64,7 +63,6 @@ generateLinks(menuItems){
          </ul>
          </div>
       </nav>
-
     )
 
   }

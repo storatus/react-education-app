@@ -164,7 +164,7 @@ router.post('/uploadVideo', (req, res) => {
   let url = req.body.url
   let title = req.body.title
   let youtubeId = req.body.youtubeId
-
+  let thumbnail = req.body.thumbnail
 
   Course.findById(courseId, (err,courseObj)=>{
     if (err){ res.end(err) }
@@ -173,7 +173,7 @@ router.post('/uploadVideo', (req, res) => {
 
      if (findUrl == -1) {
        Course.findByIdAndUpdate(courseId,
-         {"$push": { "videos": {title: title, url: url, youtubeId, clicks: 0}}} , {new: true},
+         {"$push": { "videos": {title, url, youtubeId, thumbnail, clicks: 0}}} , {new: true},
          (error,data) => {
          if (err){ res.end(err) }
          res.send(data)

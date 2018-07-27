@@ -137,8 +137,8 @@ export const deleteFile = (courseId,fileId) => dispatch => {
 
 
 // Upload Video
-export const uploadVideo = (url, courseId, title, youtubeId) => dispatch => {
-  axios.post('/api/uploadVideo', {url, courseId, title, youtubeId})
+export const uploadVideo = (url, courseId, title, youtubeId, thumbnail) => dispatch => {
+  axios.post('/api/uploadVideo', {url, courseId, title, youtubeId, thumbnail})
   .then(res =>
     dispatch({
       type: GET_COURSE,

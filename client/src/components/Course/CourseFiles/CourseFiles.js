@@ -126,6 +126,8 @@ class CourseFiles extends Component {
   render() {
 
     let files = this.generateFiles(this.props.filePaths)
+    let role = this.props.role
+    console.log(role);
 
     return (
 
@@ -135,7 +137,7 @@ class CourseFiles extends Component {
           <Col md={6}>
             <h3> Course Files </h3>
 
-            <Form encType="multipart/form-data" onSubmit={this.uploadFile}>
+            {role === 1 && <Form encType="multipart/form-data" onSubmit={this.uploadFile}>
               <FormGroup controlId="courseFile">
                 <Col sm={3} className="no-padding" componentClass={ControlLabel} >
                   Upload file
@@ -147,7 +149,11 @@ class CourseFiles extends Component {
 
                 </Col>
               </FormGroup>
-            </Form>
+            </Form>}
+
+
+
+
           </Col>
         </Row>
 
