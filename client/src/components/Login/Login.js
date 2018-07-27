@@ -40,17 +40,16 @@ class Login extends Component {
 
   componentWillReceiveProps(newProps) {
 
+    // I have to work on this
+
     if (newProps.errorMesage.err) {
         alert(newProps.errorMesage.err)
         this.props.removeError()
     }
 
-
-    // this.props.history.push('/')
-    // if (newProps.user !== this.props.user) {
-    //   this.cleanForm()
-    // }
-
+    if (Object.keys(newProps.auth).length > 0 ) {
+      this.props.history.push('/')
+    }
 
   }
 
@@ -115,7 +114,7 @@ class Login extends Component {
 
 const reduxProps = state => {
   return ({
-    isAuth: state.user.isAuth,
+    auth: state.user.authUser,
     errorMesage: state.errors.message
   })
 };

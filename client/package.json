@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
     "foreman": "^3.0.0",
+    "jwt-decode": "^2.2.0",
     "marked": "^0.4.0",
     "react": "^16.4.0",
     "react-bootstrap": "^0.32.1",

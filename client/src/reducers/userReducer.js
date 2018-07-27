@@ -9,9 +9,8 @@ import {
 
 const initialState = {
   users: [],
-  user: {},
-  authUser: {},
-  authToken: ''
+  user: {}, // This is only for checking if a new user was added 
+  authUser: {} // This for using in Auth
 }
 
 export default function(state = initialState, action) {
@@ -38,7 +37,7 @@ export default function(state = initialState, action) {
       case LOGIN_USER:
         return {
           ...state, // 1,2,3
-          authToken: action.payload
+          authUser: action.payload
         };
     default:
       return state;

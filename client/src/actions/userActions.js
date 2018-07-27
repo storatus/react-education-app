@@ -1,5 +1,4 @@
 // REF. Examples
-
 import {
   ADD_USER,
   GET_USERS,
@@ -7,7 +6,14 @@ import {
   LOGIN_USER,
   ERRORS
 } from './typesActions';
+
 import axios from 'axios';
+import {setAuthToken} from './../helpers'
+import jwtDecode from 'jwt-decode';
+
+
+
+
 
 // Add Course
 export const addUser = userData => dispatch => {
@@ -45,6 +51,14 @@ export const getUsers = () => dispatch => {
 };
 
 
+export const setUser = userData => {
+  return {
+    type: LOGIN_USER,
+    payload: userData
+  }
+}
+
+
 
 // Delete User
 export const deleteUser = userId => dispatch => {
@@ -69,12 +83,13 @@ export const loginUser = userData => dispatch => {
   axios.post('/api/user/login', userData)
     .then(res =>{
       let token = res.data.token
-      localStorage.setItem('jwtToken', token);
+      localStorage.setItem('jwtToken', token)
+      setAuthToken(token)
 
-      dispatch({
-        type: LOGIN_USER,
-        payload: res.data
-      })
+      let decodedUser = jwtDecode(token)
+      dispatch(setUser(decodedUser))
+
+
 
 
 

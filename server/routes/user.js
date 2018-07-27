@@ -52,7 +52,7 @@ router.post('/login', (req, res) => {
       res.status(400).json({err: 'Email does not exist'});
     }else {
       let dbPassword = userData.password
-      let {firstName, lastName, email, role} = userData
+      let {_id, firstName, lastName, email, role} = userData
 
       bcrypt.compare(password, dbPassword).then(result => {
             if (result === false) {
@@ -60,19 +60,16 @@ router.post('/login', (req, res) => {
             }
 
             let jwtData = {};
+            jwtData._id = _id
             jwtData.firstName = firstName
             jwtData.lastName = lastName
             jwtData.email = email
             jwtData.role = role
 
             let token = jwt.sign(jwtData, secretKey)
-            res.json({token: token})
+            res.json({token})
 
       })
-
-
-
-
 
     }
   })
