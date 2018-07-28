@@ -95,11 +95,13 @@ class CourseFiles extends Component {
     form.append('courseId', this.state.courseId);
 
     let findName =  this.props.filePaths.findIndex(data => data.fileName === fileName)
+
     if (findName > -1) {
-      alert(' File with same name already uploaded')
+      alert('File with same name already uploaded')
       this.setState({isDisabled: false})
       return false;
     }
+
 
     this.props.uploadFile(form)
 
@@ -127,7 +129,6 @@ class CourseFiles extends Component {
 
     let files = this.generateFiles(this.props.filePaths)
     let role = this.props.role
-    console.log(role);
 
     return (
 

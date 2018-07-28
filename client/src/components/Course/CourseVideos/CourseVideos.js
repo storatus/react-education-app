@@ -132,9 +132,10 @@ class CourseVideos extends Component {
           <td className="align-middle">
               <Button onClick={(e) => this.watchVideo(val, e)} bsSize="xsmall" >Watch Video</Button>
           </td>
-          <td className="align-middle">
+
+          {this.props.role === 1 && <td className="align-middle">
             <Button disabled={this.state.isDisabledDelete}  onClick={(e) => this.deleteVideo(val._id,e)} bsSize="xsmall" bsStyle="danger" >Delete File </Button>
-          </td>
+          </td>}
         </tr>);
     })
   }
@@ -176,7 +177,7 @@ class CourseVideos extends Component {
                   <th>Videothumb</th>
                   <th>Videoname</th>
                   <th>Watch</th>
-                  <th>Delete</th>
+                  {role === 1 && <th>Delete</th>}
                 </tr>
               </thead>
               <tbody>

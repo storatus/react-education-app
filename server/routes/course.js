@@ -4,9 +4,7 @@ var formidable = require('formidable');
 var fs = require('fs');
 var mongoose = require('mongoose')
 var path = require('path')
-
-var storage = require('./../config')
-
+var googleStorage = require('./../config')
 
 const Course = require('./../models/Course')
 
@@ -47,7 +45,8 @@ router.delete('/deleteFile/:courseId/:fileId', (req, res) => {
         let files = courseData.filePaths
         let path = files.find(element => element._id == fileId).path
 
-        storage.bucket(bucketName).file(path).delete().then(() => {
+
+        googleStorage.storage.bucket(googleStorage.bucketName).file(path).delete().then(() => {
               Course.findByIdAndUpdate( courseId,
                 { $pull: { "filePaths": { _id: fileId } } },{new: true},(err,data) => {
                       if (err) { res.json(err) }
@@ -100,18 +99,14 @@ router.get('/course/:courseId', (req, res) => {
 // DONWLOAD FILE
 router.get('/downloadFile/:downloadName', (req, res) => {
   let downloadName = req.params.downloadName
-  let publicPath = `${__dirname}/public/${downloadName}`
+  let publicPath = `${__dirname}/../public/${downloadName}`
   let options = {
     destination: `./public/${downloadName}`
   }
 
-
-  storage.bucket(bucketName).file(downloadName).download(options)
-  .then(() => {
-    res.download(publicPath, downloadName)
-  })
+  googleStorage.storage.bucket(googleStorage.bucketName).file(downloadName).download(options)
+  .then(() => res.download(publicPath, downloadName))
   .catch(err => console.error('ERROR:', err));
-
 
 });
 
@@ -126,17 +121,20 @@ router.post("/upload", (req, res) => {
     let newName = `${courseId}_${files.file.name}`
 
 
+
     Course.findById(courseId, (err,courseObj)=>{
        if (err){ res.end(err) }
+
 
        let filePaths = courseObj.filePaths
        let findName = filePaths.findIndex(element => element.path == newName)
 
-       if (findName == -1) {
 
-         storage.bucket(bucketName).upload(oldPath).then(data => {
+       if (findName == -1) {
+         googleStorage.storage.bucket(googleStorage.bucketName).upload(oldPath).then(data => {
+
            let fileName = data[0].name
-           storage.bucket(bucketName).file(fileName).move(newName).then(() => {
+           googleStorage.storage.bucket(googleStorage.bucketName).file(fileName).move(newName).then(() => {
 
              Course.findByIdAndUpdate(courseId,
                {"$push": { "filePaths": {fileName: files.file.name, path: newName}}} , {new: true}, (error,data) => {
