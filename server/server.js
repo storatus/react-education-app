@@ -24,7 +24,7 @@ app.use(logger('dev'));
 
 
 
-app.use('/api', course);
+app.use('/api/course', course);
 app.use('/api/user', user);
 
 

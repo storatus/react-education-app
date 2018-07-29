@@ -4,15 +4,20 @@ var bcrypt = require('bcrypt')
 var jwt = require('jsonwebtoken');
 
 const User = require('./../models/User')
-const Course = require('./../models/User')
+const Course = require('./../models/Course')
 const secretKey = 'something'
 
+
+// GET ALL USERS
 router.get('/', (req, res) => {
-  User.find((err,data) => {
-      if (err) { res.json(err) }
-      res.json(data)
-  })
+  User.find()
+  .then(data => res.json(data))
+  .catch(err => res.status(400).send({err: 'Could not get all users'}))
+
 });
+
+
+
 
 // CREATE USER
 router.post('/create', (req, res) => {
@@ -31,28 +36,27 @@ router.post('/create', (req, res) => {
     }else {
       bcrypt.hash(password, 2).then(hash => {
         user.password = hash
-        user.save((error,data) => {
-          if(error){res.send(err)}
-          res.send(data)
-        })
+        user.save()
+        .then(data => res.send(data))
+        .catch(err => res.status(400).send({err: 'Could not create user'}))
       })
     }
   });
 });
 
+
+// GET SINGLE USER
 router.get('/:userId', (req, res) => {
   let userId = req.params.userId
 
   User.findById(userId)
-  .then(userData => {
-    res.send(userData)
-  })
-  .catch((err) => res.status(400).json({err: 'User does not exist'}))
+  .then(userData => res.send(userData))
+  .catch(() => res.status(400).json({err: 'User does not exist'}))
 
 });
 
 
-
+// SINGLE LOGIN 
 router.post('/login', (req, res) => {
 
   let { email, password } = req.body
@@ -91,11 +95,30 @@ router.post('/login', (req, res) => {
 
 // DELETE COURSE
 router.delete('/delete/:userId', (req, res) => {
+
   let userId = req.params.userId;
-  User.findOneAndDelete({ _id: userId }, (err, data) => {
-      if (err) { res.json(err)}
-      res.json(data)
-  });
+
+  Course.find().then(courseData => {
+    courseData.forEach(val => {
+      if (val.members.length > 0) {
+            val.members.forEach(memberVal => {
+                if (memberVal.userId == userId) {
+                  Course.findByIdAndUpdate( val._id,
+                    { $pull: { "members": { userId: userId } } },{new: true},(err,data) => {
+                            console.log(data);
+                  });
+                }
+            })
+      }
+    })
+  })
+
+
+  User.findOneAndDelete({ _id: userId })
+  .then(data => res.json(data))
+  .catch(err => res.status(400).send({err: 'Somthing went wrong'}))
+
+
 });
 
 

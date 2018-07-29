@@ -13,7 +13,7 @@ import axios from 'axios';
 
 // Add Course
 export const addCourse = courseData => dispatch => {
-  axios.post('/api/create', courseData)
+  axios.post('/api/course/create', courseData)
     .then(res =>
       dispatch({
         type: ADD_COURSE,
@@ -31,15 +31,12 @@ export const addCourse = courseData => dispatch => {
 
 // Get Courses
 export const getCourses = () => dispatch => {
-  axios.get('/api/courses')
+  axios.get('/api/course')
     .then(response =>
-      {dispatch({
+      dispatch({
           type: GET_COURSES,
           payload: response.data
-        })
-      }
-
-    )
+        }))
     .catch(err =>
        dispatch({
         type: GET_COURSES,
@@ -47,6 +44,24 @@ export const getCourses = () => dispatch => {
       })
     );
 };
+
+// Delete Course --> look for reference
+export const deleteCourse = courseId => dispatch => {
+  axios.delete(`/api/course/delete/${courseId}`)
+    .then(res =>{
+        dispatch({
+        type: DELETE_COURSE,
+        payload: res.data
+      })}
+    )
+    .catch(err =>
+      dispatch({
+        type: DELETE_COURSE,
+        payload: null
+      })
+    );
+};
+
 
 
 // Get Course
@@ -72,7 +87,7 @@ export const getCourse = courseId => dispatch => {
 
 // Update Course
 export const updateCourse = courseData => dispatch => {
-  axios.post(`/api/update`, courseData)
+  axios.post(`/api/course/update`, courseData)
     .then(res =>
       dispatch({
         type: UPDATE_COURSE,
@@ -87,28 +102,12 @@ export const updateCourse = courseData => dispatch => {
     );
 };
 
-// Delete Course --> look for reference
-export const deleteCourse = courseId => dispatch => {
-  axios.delete(`/api/delete/${courseId}`)
-    .then(res =>{
-        dispatch({
-        type: DELETE_COURSE,
-        payload: res.data
-      })}
-    )
-    .catch(err =>
-      dispatch({
-        type: DELETE_COURSE,
-        payload: null
-      })
-    );
-};
 
 
 
 // Upload File
 export const uploadFile = file => dispatch => {
-  axios.post(`/api/upload`,file)
+  axios.post(`/api/course/uploadFile`,file)
     .then(res =>
       dispatch({
         type: GET_COURSE,
@@ -126,7 +125,7 @@ export const uploadFile = file => dispatch => {
 
 // Delete File
 export const deleteFile = (courseId,fileId) => dispatch => {
-  axios.delete(`/api/deleteFile/${courseId}/${fileId}`)
+  axios.delete(`/api/course/deleteFile/${courseId}/${fileId}`)
     .then(res =>
       dispatch({
         type: GET_COURSE,
@@ -144,7 +143,7 @@ export const deleteFile = (courseId,fileId) => dispatch => {
 
 // Upload Video
 export const uploadVideo = (url, courseId, title, youtubeId, thumbnail) => dispatch => {
-  axios.post('/api/uploadVideo', {url, courseId, title, youtubeId, thumbnail})
+  axios.post('/api/course/uploadVideo', {url, courseId, title, youtubeId, thumbnail})
   .then(res =>
     dispatch({
       type: GET_COURSE,
@@ -162,7 +161,7 @@ export const uploadVideo = (url, courseId, title, youtubeId, thumbnail) => dispa
 
 // Upload Video
 export const deleteVideo = (courseId,videoId) => dispatch => {
-  axios.delete(`/api/deleteVideo/${courseId}/${videoId}`)
+  axios.delete(`/api/course/deleteVideo/${courseId}/${videoId}`)
   .then(res =>
     dispatch({
       type: GET_COURSE,
