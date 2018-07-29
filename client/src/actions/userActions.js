@@ -96,15 +96,13 @@ export const loginUser = userData => dispatch => {
 };
 
 
+
 // Logout User
 export const logoutUser = () => dispatch => {
 
-  console.log("cejlwnvlwenvlnw");
   setAuthToken(false)
   localStorage.removeItem('jwtToken');
   dispatch({
     type: LOGOUT_USER
   })
-
-
 };

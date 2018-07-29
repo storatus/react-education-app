@@ -78,7 +78,7 @@ class Users extends Component {
 
 
 const defineRole = role => {
-  return role === 0 ? 'admin' : 'student'
+  return role === 0 ? 'student' : 'admin'
 }
 
 

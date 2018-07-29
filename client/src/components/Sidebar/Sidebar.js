@@ -14,7 +14,7 @@ class Sidebar extends Component {
       {name: "Home", url: "/", role: 0},
       {name: "All Courses", url: "/all-courses", role: 0},
       {name: "All Users", url: "/all-users", role: 1},
-      {name: "Create Courses", url: "/create-course", role: 1},
+      {name: "Create Course", url: "/create-course", role: 1},
       {name: "Create User", url: "/create-user", role: 1},
       {name: "Login", url: "/login", role: 0}
     ]}

@@ -21,7 +21,13 @@ var courseSchema = new Schema({
     title: String,
     clicks: Number,
     youtubeId: String
+  }],
+  // members: [{    userId: {type: String, ref: 'User' }  }]
+  members: [{
+    userId: String
   }]
+
+
 }, { timestamps: true, collection: 'courses' });
 
 module.exports = mongoose.model('Course', courseSchema);

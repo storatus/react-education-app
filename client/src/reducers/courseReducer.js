@@ -6,6 +6,7 @@ import {
   GET_COURSE,
   UPDATE_COURSE,
   DELETE_COURSE,
+  CLEAN_COURSE,
 } from '../actions/typesActions';
 
 
@@ -32,6 +33,13 @@ export default function(state = initialState, action) {
         ...state,
         course: action.payload
       };
+
+    case CLEAN_COURSE:
+      return {
+        ...state,
+        course: {}
+      };
+
     case DELETE_COURSE:
       // console.log(action.payload);
       return {

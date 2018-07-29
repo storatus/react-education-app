@@ -15,11 +15,13 @@
   margin-top: 20px;
 }
 
+.margin-down{
+  margin-bottom: 20px;
+}
+
 .no-padding{
   padding-left: 0px;
 }
-
-
 
 .display-file-input{
   display: inline-block !important;

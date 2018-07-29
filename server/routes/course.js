@@ -7,6 +7,7 @@ var path = require('path')
 var googleStorage = require('./../config')
 
 const Course = require('./../models/Course')
+const User = require('./../models/User')
 
 
 
@@ -84,7 +85,6 @@ router.delete('/deleteVideo/:courseId/:videoId', (req, res) => {
 // GET SINGLE COURSE
 router.get('/course/:courseId', (req, res) => {
   let courseId = req.params.courseId;
-
   Course.findById(courseId, (err, courseData) => {
         if (err) {
           res.status(500).send({error: 'Something failed'})
@@ -199,6 +199,80 @@ router.post("/update", (req, res) => {
   })
 
 });
+
+
+// ENROLL COURSE
+router.post('/course/enrollCourse', (req, res) => {
+  let courseId = req.body.courseId
+  let userId = req.body.userId
+
+
+  Course.findById(courseId, (err,courseObj)=>{
+    if (err){ res.end(err) }
+
+     let members = courseObj.members
+     let findMember = members.findIndex(element => element.userId === userId)
+
+     if (findMember == -1) {
+       Course.findByIdAndUpdate(courseId,
+         {"$push": { "members": {userId: userId}}} , {new: true},
+         (error,data) => {
+         if (err){ res.end(err) }
+         res.send(data)
+       })
+     }
+  })
+});
+
+// LEAVE COURSE
+router.delete('/course/leaveCourse/:courseId/:enrollId', (req, res) => {
+  let courseId = req.params.courseId
+  let enrollId = req.params.enrollId
+
+  Course.findById(courseId, (err, courseData) => {
+        if (err) { res.json(err) }
+
+        Course.findByIdAndUpdate( courseId,
+          { $pull: { "members": { _id: enrollId } } },{new: true},(err,data) => {
+                if (err) { res.send(err) }
+                res.send(data)
+        });
+  });
+});
+
+
+// router.post(
+//   '/like/:id',
+//   passport.authenticate('jwt', { session: false }),
+//   (req, res) => {
+//     Profile.findOne({ user: req.user.id }).then(profile => {
+//       Post.findById(req.params.id)
+//         .then(post => {
+//           if (
+//             post.likes.filter(like => like.user.toString() === req.user.id)
+//               .length > 0
+//           ) {
+//             return res
+//               .status(400)
+//               .json({ alreadyliked: 'User already liked this post' });
+//           }
+//
+//           // Add user id to likes array
+//           post.likes.unshift({ user: req.user.id });
+//
+//           post.save().then(post => res.json(post));
+//         })
+//         .catch(err => res.status(404).json({ postnotfound: 'No post found' }));
+//     });
+//   }
+// );
+
+
+
+
+
+
+
 
 
 // CREATE COURSE

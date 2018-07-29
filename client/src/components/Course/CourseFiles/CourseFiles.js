@@ -117,9 +117,10 @@ class CourseFiles extends Component {
           <td className="align-middle">
               <Button onClick={(e) => this.downloadFile(val.path,val.fileName, e)} bsSize="xsmall" >Download</Button>
           </td>
-          <td className="align-middle">
+
+        { this.props.role === 1 &&  <td className="align-middle">
             <Button disabled={this.state.isDisabledDelete} onClick={(e) => this.deleteFile(val._id,e)} bsSize="xsmall" bsStyle="danger" >Delete File </Button>
-          </td>
+          </td>}
         </tr>);
     })
   }
@@ -131,9 +132,7 @@ class CourseFiles extends Component {
     let role = this.props.role
 
     return (
-
       <div>
-
         <Row>
           <Col md={6}>
             <h3> Course Files </h3>
@@ -151,10 +150,6 @@ class CourseFiles extends Component {
                 </Col>
               </FormGroup>
             </Form>}
-
-
-
-
           </Col>
         </Row>
 
@@ -167,7 +162,7 @@ class CourseFiles extends Component {
                     <th>Filename</th>
                     <th>Type</th>
                     <th>Download</th>
-                    <th>Delete</th>
+                    {role === 1 && <th>Delete</th>}
                   </tr>
                 </thead>
                 <tbody>
@@ -176,8 +171,6 @@ class CourseFiles extends Component {
             </Table>
             </Col>
           </Row>
-
-
         </div>
     )
   }

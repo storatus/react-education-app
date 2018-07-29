@@ -6,6 +6,7 @@ import {
   GET_COURSE,
   UPDATE_COURSE,
   DELETE_COURSE,
+  CLEAN_COURSE,
   ERRORS
 } from './typesActions';
 import axios from 'axios';
@@ -27,6 +28,7 @@ export const addCourse = courseData => dispatch => {
     );
 };
 
+
 // Get Courses
 export const getCourses = () => dispatch => {
   axios.get('/api/courses')
@@ -46,8 +48,12 @@ export const getCourses = () => dispatch => {
     );
 };
 
+
 // Get Course
 export const getCourse = courseId => dispatch => {
+  dispatch({
+    type: CLEAN_COURSE
+  })
   axios.get(`/api/course/${courseId}`)
     .then(res =>
       dispatch({
@@ -62,6 +68,7 @@ export const getCourse = courseId => dispatch => {
       })
     );
 };
+
 
 // Update Course
 export const updateCourse = courseData => dispatch => {
@@ -79,7 +86,6 @@ export const updateCourse = courseData => dispatch => {
       })
     );
 };
-
 
 // Delete Course --> look for reference
 export const deleteCourse = courseId => dispatch => {
@@ -168,4 +174,43 @@ export const deleteVideo = (courseId,videoId) => dispatch => {
         payload: null
       })
   );
+};
+
+
+// Enroll Course
+export const enrollCourse = userData => dispatch => {
+  axios.post('/api/course/enrollCourse', userData)
+    .then(res =>
+      dispatch({
+          type: GET_COURSE,
+          payload: res.data // This I have to change, this is why it is not updating
+    }))
+    .catch(err =>
+      dispatch({
+        type: ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+
+export const cleanCourse = () => dispatch => {
+      dispatch({type: CLEAN_COURSE})
+};
+
+
+// leave course
+export const leaveCourse = (courseId,enrollId) => dispatch => {
+  axios.delete(`/api/course/leaveCourse/${courseId}/${enrollId}`)
+    .then(res =>
+      dispatch({
+          type: GET_COURSE,
+          payload: res.data // This I have to change, this is why it is not updating
+    }))
+    .catch(err =>
+      dispatch({
+        type: ERRORS,
+        payload: err.response.data
+      })
+    );
 };

@@ -4,10 +4,15 @@ var bcrypt = require('bcrypt')
 var jwt = require('jsonwebtoken');
 
 const User = require('./../models/User')
+const Course = require('./../models/User')
+const secretKey = 'something'
 
-const secretKey = '´something'
-
-
+router.get('/', (req, res) => {
+  User.find((err,data) => {
+      if (err) { res.json(err) }
+      res.json(data)
+  })
+});
 
 // CREATE USER
 router.post('/create', (req, res) => {
@@ -20,26 +25,32 @@ router.post('/create', (req, res) => {
   user.email = email
   user.role = role
 
-
   User.findOne({ email }).then(userData => {
-
     if (userData) {
       return res.status(400).json({err: 'Email exsists'});
     }else {
-
       bcrypt.hash(password, 2).then(hash => {
         user.password = hash
         user.save((error,data) => {
           if(error){res.send(err)}
           res.send(data)
         })
-
       })
-
     }
   });
+});
+
+router.get('/:userId', (req, res) => {
+  let userId = req.params.userId
+
+  User.findById(userId)
+  .then(userData => {
+    res.send(userData)
+  })
+  .catch((err) => res.status(400).json({err: 'User does not exist'}))
 
 });
+
 
 
 router.post('/login', (req, res) => {
@@ -70,25 +81,12 @@ router.post('/login', (req, res) => {
             res.json({token})
 
       })
-
     }
   })
 
-
-
-
 });
 
 
-
-
-
-router.get('/', (req, res) => {
-  User.find((err,data) => {
-      if (err) { res.json(err) }
-      res.json(data)
-  })
-});
 
 
 // DELETE COURSE

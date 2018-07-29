@@ -9,8 +9,11 @@ import './Course.css';
 
 import CourseFiles from './CourseFiles/CourseFiles'
 import CourseVideos from './CourseVideos/CourseVideos'
+import CourseUsers from './CourseUsers/CourseUsers'
 
-import { getCourse, deleteCourse } from '../../actions/courseActions';
+
+import { getCourse, deleteCourse, enrollCourse, leaveCourse, cleanCourse } from '../../actions/courseActions';
+
 import { connect } from 'react-redux';
 
 
@@ -20,6 +23,10 @@ class Course extends Component {
 
   constructor(props) {
     super(props);
+
+    this.leave = this.leave.bind(this);
+    this.enroll = this.enroll.bind(this);
+
   }
 
 
@@ -30,11 +37,22 @@ class Course extends Component {
     }
   }
 
-  enroll(courseId){
+
+  leave(enrollId){
+    this.props.leaveCourse(this.props.match.params.courseId,enrollId)
+    alert('Course left')
+  }
 
 
-    console.log(courseId);
+  enroll(){
 
+    let enrollObj = {
+      courseId: this.props.match.params.courseId,
+      userId: this.props.auth._id
+    }
+
+    this.props.enrollCourse(enrollObj)
+    alert('Course Entered')
 
   }
 
@@ -46,9 +64,13 @@ class Course extends Component {
   }
 
 
-  componentDidMount(){
+  componentWillMount(){
     let courseId = this.props.match.params.courseId
     this.props.getCourse(courseId)
+  }
+
+  componentWillUnmount(){
+    this.props.cleanCourse()
   }
 
 
@@ -56,6 +78,16 @@ class Course extends Component {
 
     let courseData = this.props.course
     let role = this.props.auth.role
+    let enrollId = null;
+
+    if (Object.keys(courseData).length > 0 && courseData.members.length > 0 && role === 0) {
+      enrollId = courseData.members.find(el => el.userId === this.props.auth._id)
+      if (enrollId) {
+        enrollId = enrollId._id
+      }
+    }
+
+
 
     return (
       <Grid fluid>
@@ -93,9 +125,14 @@ class Course extends Component {
       {  Object.keys(courseData).length > 0 && <CourseFiles  role={role} courseId={courseData._id} filePaths={courseData.filePaths}/>}
       <hr></hr>
       {  Object.keys(courseData).length > 0 && <CourseVideos role={role} courseId={courseData._id} videos={courseData.videos}/>}
+      <hr></hr>
+      {  Object.keys(courseData).length > 0 && <CourseUsers role={role} courseId={courseData._id} members={courseData.members}/>}
+
+
+
 
       <hr></hr>
-        <Row className="margin-up" >
+        <Row className="margin-up margin-down" >
             <Col md={6}>
               <div className="pull-right">
                 { role === 1 &&
@@ -107,7 +144,8 @@ class Course extends Component {
 
                 { role === 0 &&
                   <div>
-                    <Button  onClick={(e) => this.enroll(courseData._id, e)} bsStyle="success" className="margin-right" > Enroll in Course </Button>
+                    {!enrollId && <Button  onClick={this.enroll} bsStyle="success" className="margin-right" > Enroll in Course </Button>}
+                    {enrollId  && <Button  onClick={(e) => this.leave(enrollId, e)} bsStyle="warning" className="margin-right" > Leave Course </Button>}
                   </div>
                 }
 
@@ -129,4 +167,4 @@ const reduxProps = state => {
 };
 
 
-export default connect(reduxProps, { deleteCourse, getCourse })(Course);
+export default connect(reduxProps, { deleteCourse, getCourse, enrollCourse, leaveCourse,cleanCourse })(Course);
