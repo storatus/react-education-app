@@ -20,18 +20,34 @@ class Courses extends Component {
 
 
   generateCourses(courseData){
-    return courseData.map(val => {
+    let role = this.props.auth.role
+    let filterCourses = courseData.filter(el => {
+      if (role === 1) { return true }
+      else {
+        if (el.courseStatus === 'enabled') {
+          return true
+        }
+      }
+    })
+
+    return filterCourses.map(val => {
+
+
           return (
           <tr key={val._id}>
             <td>{val.name}</td>
             <td>{this.calcMaterial(val.videos, val.filePaths)}</td>
-            <td>0</td>
+            <td>{val.members.length}</td>
+            {role === 1 && <td>{val.courseStatus}</td>}
             <td className="align-middle">
               <Link to={`/course/${val._id}`}>
                 <Button >See course</Button>
               </Link>
             </td>
           </tr>)
+
+
+
         })
   }
 
@@ -53,6 +69,7 @@ class Courses extends Component {
                     <th>Course name</th>
                     <th>Total material</th>
                     <th>People enrolled</th>
+                    {this.props.auth.role === 1 && <th>Status</th>}
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -69,7 +86,10 @@ class Courses extends Component {
 
 
 const reduxProps = state => {
-  return ({courses: state.course.courses})
+  return ({
+    courses: state.course.courses,
+    auth: state.user.authUser
+  })
 };
 
 

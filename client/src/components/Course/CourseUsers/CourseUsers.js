@@ -3,9 +3,7 @@ import {
   Table,
   Row,
   Col,
-  Button,
-  FormGroup,
-  FormControl,
+
   ControlLabel,
   Image,
   Form} from 'react-bootstrap';
