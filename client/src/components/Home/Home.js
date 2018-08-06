@@ -45,6 +45,15 @@ class Home extends Component {
               </Col>
           }
 
+          { role === 1 &&
+                <Col md={3}>
+                  <Panel onClick={(e) => this.handleClick('/all-users', e)}>
+                      <Panel.Body className="panelPointer">All Users</Panel.Body>
+                  </Panel>
+                </Col>
+            }
+
+
 
         </Row>
 

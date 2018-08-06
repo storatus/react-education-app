@@ -32,8 +32,6 @@ class Container extends Component {
             <Route path='/login' key="login" component={Login}/>
             <Route component={Auth(NoPage)}/>
 
-
-
           </Switch>
 
           </div>

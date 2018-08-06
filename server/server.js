@@ -11,7 +11,6 @@ var course = require('./routes/course')
 var user = require('./routes/user')
 
 
-require('./configPassport')
 
 
 

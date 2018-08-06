@@ -12,6 +12,7 @@ export default function(InComponent,role = null){
       if (Object.keys(auth).length === 0) {
         alert('You must be logged In to see this Page')
         this.props.history.push('/login')
+        return
       }
 
       if (role) {
