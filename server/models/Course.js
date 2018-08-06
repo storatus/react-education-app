@@ -13,16 +13,15 @@ var courseSchema = new Schema({
   filePaths: [{
     fileName: String,
     path: String,
-    clicks: Number
+    clicks: [String]
   }],
   videos: [{
     url: String,
     thumbnail: String,
     title: String,
-    clicks: Number,
+    clicks: [String],
     youtubeId: String
   }],
-  // members: [{    userId: {type: String, ref: 'User' }  }]
   members: [{
     userId: String
   }]

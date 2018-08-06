@@ -160,7 +160,7 @@ export const uploadVideo = (url, courseId, title, youtubeId, thumbnail) => dispa
 
 
 
-// Upload Video
+// Delete Video
 export const deleteVideo = (courseId,videoId) => dispatch => {
   axios.delete(`/api/course/video/${courseId}/${videoId}`)
   .then(res =>

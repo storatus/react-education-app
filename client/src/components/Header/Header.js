@@ -14,7 +14,7 @@ class Header extends Component {
           <Navbar className="header" fluid>
             <Navbar.Header>
               <Navbar.Brand className="header-title">
-                <a href="#home">Education App</a>
+                <a href="#home">Education App - BUCS Department</a>
               </Navbar.Brand>
             </Navbar.Header>
 

@@ -63,7 +63,21 @@ router.put("/:courseId", (req, res) => {
 
 
 // DONWLOAD FILE
-router.get('/file/:downloadName', (req, res) => {
+router.get('/file/:downloadName/:courseId/:fileId', (req, res) => {
+
+  let fileId = req.params.fileId
+  let courseId = req.params.courseId
+  let ip = req.headers['x-forwarded-for']
+
+  Course.findOne({ "_id": courseId, "filePaths._id": fileId }).then( val => {
+    let index = val.filePaths[0].clicks.findIndex(el => el === ip)
+    if (index === -1) {
+      Course.findOneAndUpdate({ "_id": courseId, "filePaths._id": fileId },{"$push": { "filePaths.$.clicks": ip}})
+      .then(val => { console.log(val)})
+      .catch(err => console.log(err))
+    }
+  })
+
   let downloadName = req.params.downloadName
   let publicPath = `${__dirname}/../public/${downloadName}`
   let options = { destination: `./public/${downloadName}`}

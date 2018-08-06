@@ -47,11 +47,11 @@ class CourseFiles extends Component {
 }
 
 
-  downloadFile(path, fileName){
+  downloadFile(path, fileName, fileId){
     // Ref.
     axios({
       method: 'GET',
-      url:`/api/course/file/${path}`,
+      url:`/api/course/file/${path}/${this.props.courseId}/${fileId}`,
       responseType: 'blob'})
     .then(res => {
       let aTag = document.createElement('a');
@@ -115,7 +115,7 @@ class CourseFiles extends Component {
           <td>{val.fileName}</td>
           <td>{determineName(val.fileName)} Document</td>
           <td className="align-middle">
-              <Button onClick={(e) => this.downloadFile(val.path,val.fileName, e)} bsSize="xsmall" >Download</Button>
+              <Button onClick={(e) => this.downloadFile(val.path,val.fileName,val._id,e)} bsSize="xsmall" >Download</Button>
           </td>
 
         { this.props.role === 1 &&  <td className="align-middle">
