@@ -12,7 +12,7 @@ import {
 import './CourseVideos.css';
 import axios from 'axios'
 
-import { uploadVideo, deleteVideo } from '../../../actions/courseActions';
+import { uploadVideo, deleteVideo,watchVideo } from '../../../actions/courseActions';
 import { connect } from 'react-redux';
 
 import {setAuthToken} from './../../../helpers'
@@ -112,7 +112,7 @@ class CourseVideos extends Component {
 
 
   watchVideo(videoObj){
-    window.location.href = `https://www.youtube.com/watch?v=${videoObj.youtubeId}`
+    this.props.watchVideo(this.state.courseId, videoObj._id, videoObj.youtubeId)
   }
 
 
@@ -129,6 +129,7 @@ class CourseVideos extends Component {
             <Image src={val.thumbnail} rounded />
           </td>
           <td>{val.title}</td>
+          <td>{val.clicks.length}</td>
           <td className="align-middle">
               <Button onClick={(e) => this.watchVideo(val, e)} bsSize="xsmall" >Watch Video</Button>
           </td>
@@ -176,6 +177,7 @@ class CourseVideos extends Component {
                 <tr>
                   <th>Videothumb</th>
                   <th>Videoname</th>
+                  <th>Clicks</th>
                   <th>Watch</th>
                   {role === 1 && <th>Delete</th>}
                 </tr>
@@ -196,4 +198,4 @@ class CourseVideos extends Component {
 }
 
 
-export default connect(null, { uploadVideo, deleteVideo })(CourseVideos);
+export default connect(null, { uploadVideo, deleteVideo,watchVideo })(CourseVideos);

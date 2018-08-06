@@ -41,7 +41,6 @@ export default function(state = initialState, action) {
       };
 
     case DELETE_COURSE:
-      // console.log(action.payload);
       return {
         ...state,
         courses: state.courses.filter(el => {

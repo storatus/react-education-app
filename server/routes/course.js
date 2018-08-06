@@ -69,13 +69,17 @@ router.get('/file/:downloadName/:courseId/:fileId', (req, res) => {
   let courseId = req.params.courseId
   let ip = req.headers['x-forwarded-for']
 
+
   Course.findOne({ "_id": courseId, "filePaths._id": fileId }).then( val => {
-    let index = val.filePaths[0].clicks.findIndex(el => el === ip)
-    if (index === -1) {
-      Course.findOneAndUpdate({ "_id": courseId, "filePaths._id": fileId },{"$push": { "filePaths.$.clicks": ip}})
-      .then(val => { console.log(val)})
-      .catch(err => console.log(err))
+    let index = val.filePaths.findIndex(el => el._id == fileId)
+    let isIp = val.filePaths[index].clicks.findIndex(el => ip)
+
+    if (isIp === -1) {
+        Course.findOneAndUpdate({ "_id": courseId, "filePaths._id": fileId },{"$push": { "filePaths.$.clicks": ip}})
+        .then(val => { console.log(val)})
+        .catch(err => console.log(err))
     }
+
   })
 
   let downloadName = req.params.downloadName
@@ -159,6 +163,7 @@ router.delete('/video/:courseId/:videoId', (req, res) => {
   let videoId = req.params.videoId
   let youtubeId = req.params.youtubeId
 
+
   Course.findById(courseId)
   .then(courseData => {
 
@@ -200,7 +205,29 @@ router.post('/video', (req, res) => {
 
 
 
+// WATCH VIDEO
+router.get('/video/:courseId/:videoId', (req, res) => {
+  let courseId = req.params.courseId
+  let videoId = req.params.videoId
+  let ip = req.headers['x-forwarded-for']
 
+
+  Course.findOne({ "_id": courseId, "videos._id": videoId }).then( val => {
+
+    let index = val.videos.findIndex(el => el._id == videoId)
+    let isIp = val.videos[index].clicks.findIndex(el => ip)
+
+    if (isIp === -1) {
+        Course.findOneAndUpdate({ "_id": courseId, "videos._id": videoId },{"$push": { "videos.$.clicks": ip}}, {new: true})
+        .then(data => res.send(data))
+        .catch(err => console.log(err))
+    }else{
+      res.send(val)
+    }
+
+  })
+
+});
 
 
 

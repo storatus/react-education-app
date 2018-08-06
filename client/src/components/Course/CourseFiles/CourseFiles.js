@@ -12,7 +12,7 @@ import axios from 'axios';
 import './CourseFiles.css';
 import {determineName} from '../../../helpers'
 
-import { uploadFile, deleteFile } from '../../../actions/courseActions';
+import { uploadFile, deleteFile, downloadFile } from '../../../actions/courseActions';
 import { connect } from 'react-redux';
 
 class CourseFiles extends Component {
@@ -48,22 +48,26 @@ class CourseFiles extends Component {
 
 
   downloadFile(path, fileName, fileId){
+
+
+    this.props.downloadFile(path, fileName, fileId,this.props.courseId)
+
     // Ref.
-    axios({
-      method: 'GET',
-      url:`/api/course/file/${path}/${this.props.courseId}/${fileId}`,
-      responseType: 'blob'})
-    .then(res => {
-      let aTag = document.createElement('a');
-      let url = window.URL.createObjectURL(new Blob([res.data]));
-
-      aTag.href = url;
-      aTag.setAttribute('download', fileName); //or any other extension
-      document.body.appendChild(aTag);
-      aTag.click();
-
-    })
-    .catch(err => console.log(err))
+    // axios({
+    //   method: 'GET',
+    //   url:`/api/course/file/${path}/${this.props.courseId}/${fileId}`,
+    //   responseType: 'blob'})
+    // .then(res => {
+    //   let aTag = document.createElement('a');
+    //   let url = window.URL.createObjectURL(new Blob([res.data]));
+    //
+    //   aTag.href = url;
+    //   aTag.setAttribute('download', fileName); //or any other extension
+    //   document.body.appendChild(aTag);
+    //   aTag.click();
+    //
+    // })
+    // .catch(err => console.log(err))
   }
 
 
@@ -114,6 +118,7 @@ class CourseFiles extends Component {
         <tr key={val._id}>
           <td>{val.fileName}</td>
           <td>{determineName(val.fileName)} Document</td>
+          <td>{val.clicks.length} </td>
           <td className="align-middle">
               <Button onClick={(e) => this.downloadFile(val.path,val.fileName,val._id,e)} bsSize="xsmall" >Download</Button>
           </td>
@@ -161,6 +166,7 @@ class CourseFiles extends Component {
                   <tr>
                     <th>Filename</th>
                     <th>Type</th>
+                    <th>Clicks</th>
                     <th>Download</th>
                     {role === 1 && <th>Delete</th>}
                   </tr>
@@ -177,4 +183,4 @@ class CourseFiles extends Component {
 }
 
 
-export default connect(null, { uploadFile, deleteFile })(CourseFiles);
+export default connect(null, { uploadFile, deleteFile, downloadFile })(CourseFiles);

@@ -103,6 +103,23 @@ export const updateCourse = courseData => dispatch => {
 };
 
 
+// Download File
+export const downloadFile = (path, fileName, fileId, courseId) => dispatch => {
+    // Ref:
+    axios({
+      method: 'GET',
+      url:`/api/course/file/${path}/${courseId}/${fileId}`,
+      responseType: 'blob'})
+    .then(res => {
+      let aTag = document.createElement('a');
+      let url = window.URL.createObjectURL(new Blob([res.data]));
+      aTag.href = url;
+      aTag.setAttribute('download', fileName); //or any other extension
+      document.body.appendChild(aTag);
+      aTag.click();
+    })
+    .catch(err => console.log(err))
+};
 
 
 // Upload File
@@ -121,7 +138,6 @@ export const uploadFile = file => dispatch => {
       })
     );
 };
-
 
 
 // Delete File
@@ -158,7 +174,22 @@ export const uploadVideo = (url, courseId, title, youtubeId, thumbnail) => dispa
   );
 };
 
-
+// Watch Video
+export const watchVideo = (courseId,videoId, youtubeId) => dispatch => {
+  axios.get(`/api/course/video/${courseId}/${videoId}`)
+  .then(res => {
+    window.location.href = `https://www.youtube.com/watch?v=${youtubeId}`
+    dispatch({
+      type: GET_COURSE,
+      payload: res.data // This I have to change, this is why it is not updating
+    })
+  }).catch(err =>
+      dispatch({
+        type: GET_COURSE,
+        payload: null
+      })
+  );
+};
 
 // Delete Video
 export const deleteVideo = (courseId,videoId) => dispatch => {
