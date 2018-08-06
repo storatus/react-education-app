@@ -13,10 +13,10 @@ class Sidebar extends Component {
     this.state = {menu: [
       {name: "Home", url: "/", role: 0},
       {name: "All Courses", url: "/all-courses", role: 0},
+      {name: "My Courses", url: "/my-courses", role: 2},
       {name: "All Users", url: "/all-users", role: 1},
       {name: "Create Course", url: "/create-course", role: 1},
-      {name: "Create User", url: "/create-user", role: 1},
-      {name: "Login", url: "/login", role: 0}
+      {name: "Create User", url: "/create-user", role: 1}
     ]}
 
     this.logout = this.logout.bind(this);
@@ -26,7 +26,7 @@ class Sidebar extends Component {
 
 
 logout(e){
-    this.props.logoutUser()
+  this.props.logoutUser()
 }
 
 
@@ -41,11 +41,24 @@ generateLinks(menuItems){
   }
 
   render() {
-    // 1 is admin // 0 is user
+    // 1 is admin
+    // 0 is user
+
     let role = this.props.auth.role
     let menuItems = this.state.menu.filter(el => {
-      if (role === 1) { return true }
-      return  el.role === role
+      if (role === 1){
+        if (el.role === 2) {
+          return false
+        }
+        return true
+      }
+
+      if (role === 0) {
+        if (el.role === 0 || el.role === 2) {
+          return true;
+        }
+      }
+      return false
     })
     let finalLinks = this.generateLinks(menuItems)
 
@@ -58,7 +71,7 @@ generateLinks(menuItems){
           <ul className="nav flex-column">
             {finalLinks}
             <li key="logout" className="nav-item">
-                <a href="/#" onClick={this.logout}>  Logout </a>
+                <a href="/login" onClick={this.logout}>  Logout </a>
             </li>
          </ul>
          </div>

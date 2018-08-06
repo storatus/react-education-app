@@ -17,10 +17,8 @@ router.get('/', (req, res) => {
 });
 
 
-
-
 // CREATE USER
-router.post('/create', (req, res) => {
+router.post('/', (req, res) => {
 
   let user = new User();
   const userObj = req.body;
@@ -56,7 +54,7 @@ router.get('/:userId', (req, res) => {
 });
 
 
-// SINGLE LOGIN 
+// SINGLE LOGIN
 router.post('/login', (req, res) => {
 
   let { email, password } = req.body
@@ -93,8 +91,9 @@ router.post('/login', (req, res) => {
 
 
 
+
 // DELETE COURSE
-router.delete('/delete/:userId', (req, res) => {
+router.delete('/:userId', (req, res) => {
 
   let userId = req.params.userId;
 

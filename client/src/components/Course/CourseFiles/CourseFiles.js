@@ -51,7 +51,7 @@ class CourseFiles extends Component {
     // Ref.
     axios({
       method: 'GET',
-      url:`/api/downloadFile/${path}`,
+      url:`/api/course/file/${path}`,
       responseType: 'blob'})
     .then(res => {
       let aTag = document.createElement('a');

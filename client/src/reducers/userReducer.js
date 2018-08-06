@@ -19,30 +19,30 @@ export default function(state = initialState, action) {
 
     case ADD_USER:
       return {
-        ...state, // 1,2,3
+        ...state,
         users: [action.payload, ...state.users], // I have to change it
         user: action.payload
       };
     case GET_USERS:
       return {
-        ...state, // 1,2,3
+        ...state,
         users: action.payload // I have to change it
       };
     case DELETE_USER:
       return {
-        ...state, // 1,2,3
+        ...state,
         users: state.users.filter(el => {
           return el._id !== action.payload._id
         })
       };
     case LOGIN_USER:
       return {
-        ...state, // 1,2,3
+        ...state,
         authUser: action.payload
       };
     case LOGOUT_USER:
       return {
-        ...state, // 1,2,3
+        ...state, 
         authUser: {}
       };
     default:

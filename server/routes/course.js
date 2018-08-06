@@ -32,7 +32,7 @@ router.get('/:courseId', (req, res) => {
 
 
 // DELETE COURSE
-router.delete('/delete/:courseId', (req, res) => {
+router.delete('/:courseId', (req, res) => {
   let courseId = req.params.courseId;
 
   Course.findOneAndDelete({ _id: courseId })
@@ -42,80 +42,28 @@ router.delete('/delete/:courseId', (req, res) => {
 });
 
 
-// DELETE FILE
-router.delete('/deleteFile/:courseId/:fileId', (req, res) => {
+// UPDATE COURSE
+router.put("/:courseId", (req, res) => {
+
+  let obj = req.body;
   let courseId = req.params.courseId
-  let fileId = req.params.fileId;
 
-  Course.findById(courseId)
-  .then(courseData => {
-    let files = courseData.filePaths
-    let path = files.find(element => element._id == fileId).path
-
-    googleStorage.storage.bucket(googleStorage.bucketName).file(path).delete().then(() => {
-          Course.findByIdAndUpdate( courseId, { $pull: { "filePaths": { _id: fileId } } },{new: true})
-          .then(data => res.json(data))
-          .catch(error => res.status(500).res.json({error: 'Could not update Course file'}))
-    })
-    .catch(err => console.log(err))
-  })
-  .catch(error => res.status(500).res.json({error: 'Could not delete file'}))
-
+  Course.findByIdAndUpdate(courseId,{
+    name: obj.name,
+    dateFrom: obj.dateFrom,
+    dateTo: obj.dateTo,
+    description: obj.description,
+    courseStatus: obj.courseStatus
+  }, {new: true})
+  .then(data => res.send(data))
+  .catch(error => res.status(500).res.json({error: 'Could not upload file'}))
 
 });
-
-
-
-// DELETE VIDEO
-router.delete('/deleteVideo/:courseId/:videoId', (req, res) => {
-  let courseId = req.params.courseId
-  let videoId = req.params.videoId
-  let youtubeId = req.params.youtubeId
-
-  Course.findById(courseId)
-  .then(courseData => {
-
-    Course.findByIdAndUpdate( courseId, { $pull: { "videos": { _id: videoId } } },{new: true})
-    .then(data => res.send(data))
-    .catch(error => res.status(500).res.json({error: 'Could not update video file'}))
-
-  })
-  .catch(error => res.status(500).res.json({error: 'Could not delete video'}))
-
-});
-
-
-
-// UPLOAD VIDEO
-router.post('/uploadVideo', (req, res) => {
-  let courseId = req.body.courseId
-  let url = req.body.url
-  let title = req.body.title
-  let youtubeId = req.body.youtubeId
-  let thumbnail = req.body.thumbnail
-
-  Course.findById(courseId)
-  .then(courseObj => {
-    let videos = courseObj.videos
-    let findUrl = videos.findIndex(element => element.title === title)
-
-    if (findUrl == -1) {
-      Course.findByIdAndUpdate(courseId, {"$push": { "videos": {title, url, youtubeId, thumbnail, clicks: 0}}} , {new: true})
-      .then(data => res.send(data))
-      .catch(error => res.status(500).res.json({error: 'Could not update video data'}))
-    }
-
-  })
-  .catch(error => res.status(500).res.json({error: 'Could not upload video'}))
-
-});
-
-
 
 
 
 // DONWLOAD FILE
-router.get('/downloadFile/:downloadName', (req, res) => {
+router.get('/file/:downloadName', (req, res) => {
   let downloadName = req.params.downloadName
   let publicPath = `${__dirname}/../public/${downloadName}`
   let options = { destination: `./public/${downloadName}`}
@@ -130,7 +78,7 @@ router.get('/downloadFile/:downloadName', (req, res) => {
 
 
 // UPLOAD FILE
-router.post("/uploadFile", (req, res) => {
+router.post("/file", (req, res) => {
 
   var form = new formidable.IncomingForm();
   form.parse(req, (error,fields,files) => {
@@ -167,24 +115,78 @@ router.post("/uploadFile", (req, res) => {
 
 
 
+// DELETE FILE
+router.delete('/file/:courseId/:fileId', (req, res) => {
+  let courseId = req.params.courseId
+  let fileId = req.params.fileId;
 
+  Course.findById(courseId)
+  .then(courseData => {
+    let files = courseData.filePaths
+    let path = files.find(element => element._id == fileId).path
 
-// UPDATE COURSE
-router.post("/update", (req, res) => {
+    googleStorage.storage.bucket(googleStorage.bucketName).file(path).delete().then(() => {
+          Course.findByIdAndUpdate( courseId, { $pull: { "filePaths": { _id: fileId } } },{new: true})
+          .then(data => res.json(data))
+          .catch(error => res.status(500).res.json({error: 'Could not update Course file'}))
+    })
+    .catch(err => console.log(err))
+  })
+  .catch(error => res.status(500).res.json({error: 'Could not delete file'}))
 
-  let obj = req.body;
-
-  Course.findByIdAndUpdate(obj._id,{
-    name: obj.name,
-    dateFrom: obj.dateFrom,
-    dateTo: obj.dateTo,
-    description: obj.description,
-    courseStatus: obj.courseStatus
-  }, {new: true})
-  .then(data => res.send(data))
-  .catch(error => res.status(500).res.json({error: 'Could not upload file'}))
 
 });
+
+
+
+// DELETE VIDEO
+router.delete('/video/:courseId/:videoId', (req, res) => {
+  let courseId = req.params.courseId
+  let videoId = req.params.videoId
+  let youtubeId = req.params.youtubeId
+
+  Course.findById(courseId)
+  .then(courseData => {
+
+    Course.findByIdAndUpdate( courseId, { $pull: { "videos": { _id: videoId } } },{new: true})
+    .then(data => res.send(data))
+    .catch(error => res.status(500).res.json({error: 'Could not update video file'}))
+
+  })
+  .catch(error => res.status(500).res.json({error: 'Could not delete video'}))
+
+});
+
+
+
+
+// UPLOAD VIDEO
+router.post('/video', (req, res) => {
+  let courseId = req.body.courseId
+  let url = req.body.url
+  let title = req.body.title
+  let youtubeId = req.body.youtubeId
+  let thumbnail = req.body.thumbnail
+
+  Course.findById(courseId)
+  .then(courseObj => {
+    let videos = courseObj.videos
+    let findUrl = videos.findIndex(element => element.title === title)
+
+    if (findUrl == -1) {
+      Course.findByIdAndUpdate(courseId, {"$push": { "videos": {title, url, youtubeId, thumbnail, clicks: 0}}} , {new: true})
+      .then(data => res.send(data))
+      .catch(error => res.status(500).res.json({error: 'Could not update video data'}))
+    }
+
+  })
+  .catch(error => res.status(500).res.json({error: 'Could not upload video'}))
+
+});
+
+
+
+
 
 
 
@@ -193,8 +195,6 @@ router.post("/update", (req, res) => {
 router.post('/enrollCourse', (req, res) => {
   let courseId = req.body.courseId
   let userId = req.body.userId
-
-
 
   Course.findById(courseId)
   .then(courseObj => {
@@ -238,7 +238,7 @@ router.delete('/leaveCourse/:courseId/:enrollId', (req, res) => {
 
 
 // CREATE COURSE
-router.post('/create', (req, res) => {
+router.post('/', (req, res) => {
 
   const course = new Course();
   const obj = req.body;

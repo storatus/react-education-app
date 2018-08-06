@@ -16,7 +16,7 @@ import jwtDecode from 'jwt-decode';
 
 // Add Course
 export const addUser = userData => dispatch => {
-  axios.post('/api/user/create', userData)
+  axios.post('/api/user/', userData)
     .then(res =>
       dispatch({
         type: ADD_USER,
@@ -58,10 +58,9 @@ export const setUser = userData => {
 }
 
 
-
 // Delete User
 export const deleteUser = userId => dispatch => {
-  axios.delete(`/api/user/delete/${userId}`)
+  axios.delete(`/api/user/${userId}`)
     .then(res =>
       dispatch({
         type: DELETE_USER,

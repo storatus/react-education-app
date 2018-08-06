@@ -2,11 +2,8 @@ import React, {Component} from 'react';
 import {
   Table,
   Row,
-  Col,
-
-  ControlLabel,
-  Image,
-  Form} from 'react-bootstrap';
+  Col
+} from 'react-bootstrap';
 import './CourseUsers.css';
 import axios from 'axios'
 

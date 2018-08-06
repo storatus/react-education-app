@@ -4,6 +4,7 @@ import { Route,Switch,  } from 'react-router-dom'
 
 import Home from '../Home/Home';
 import Courses from '../Courses/Courses';
+import MyCourses from '../MyCourses/MyCourses';
 import CreateCourse from '../CreateCourse/CreateCourse';
 import EditCourse from '../EditCourse/EditCourse';
 import CreateUser from '../CreateUser/CreateUser';
@@ -24,6 +25,7 @@ class Container extends Component {
 
             <Route exact path='/'  component={Auth(Home)}/>
             <Route path='/all-courses' component={Auth(Courses)}/>
+            <Route path='/my-courses' component={Auth(MyCourses)}/>
             <Route path='/all-users' component={Auth(Users,1)}/>
             <Route path='/create-course'  key="create-course" component={Auth(CreateCourse,1)}/>
             <Route path='/course/:courseId' component={Course}/>
