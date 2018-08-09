@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 // GET SINGLE COURSE
 router.get('/:courseId', (req, res) => {
   let courseId = req.params.courseId;
-
+  
   Course.findById(courseId)
   .then(data => res.json(data))
   .catch(err => res.status(500).json({error: 'Something failed'}))

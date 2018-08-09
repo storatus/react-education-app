@@ -21,23 +21,19 @@ class Container extends Component {
   render() {
     return (
           <div className="col-md-10">
-          <Switch>
-
-            <Route exact path='/'  component={Auth(Home)}/>
-            <Route path='/all-courses' component={Auth(Courses)}/>
-            <Route path='/my-courses' component={Auth(MyCourses)}/>
-            <Route path='/all-users' component={Auth(Users,1)}/>
-            <Route path='/create-course'  key="create-course" component={Auth(CreateCourse,1)}/>
-            <Route path='/course/:courseId' component={Course}/>
-            <Route path='/edit/:courseId'  key="edit-course" component={Auth(EditCourse,1)}/>
-            <Route path='/create-user'  key="create-user" component={Auth(CreateUser,1)}/>
-            <Route path='/login' key="login" component={Login}/>
-            <Route component={Auth(NoPage)}/>
-
-          </Switch>
-
+            <Switch>
+              <Route exact path='/'  component={Auth(Home)}/>
+              <Route path='/all-courses' component={Auth(Courses)}/>
+              <Route path='/my-courses' component={Auth(MyCourses)}/>
+              <Route path='/all-users' component={Auth(Users,1)}/>
+              <Route path='/create-course'  key="create-course" component={Auth(CreateCourse,1)}/>
+              <Route path='/course/:courseId' component={Course}/>
+              <Route path='/edit/:courseId'  key="edit-course" component={Auth(EditCourse,1)}/>
+              <Route path='/create-user'  key="create-user" component={Auth(CreateUser,1)}/>
+              <Route path='/login' key="login" component={Login}/>
+              <Route component={Auth(NoPage)}/>
+            </Switch>
           </div>
-
       )
 
 

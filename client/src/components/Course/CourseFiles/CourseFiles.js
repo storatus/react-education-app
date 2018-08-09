@@ -49,25 +49,8 @@ class CourseFiles extends Component {
 
   downloadFile(path, fileName, fileId){
 
-
     this.props.downloadFile(path, fileName, fileId,this.props.courseId)
 
-    // Ref.
-    // axios({
-    //   method: 'GET',
-    //   url:`/api/course/file/${path}/${this.props.courseId}/${fileId}`,
-    //   responseType: 'blob'})
-    // .then(res => {
-    //   let aTag = document.createElement('a');
-    //   let url = window.URL.createObjectURL(new Blob([res.data]));
-    //
-    //   aTag.href = url;
-    //   aTag.setAttribute('download', fileName); //or any other extension
-    //   document.body.appendChild(aTag);
-    //   aTag.click();
-    //
-    // })
-    // .catch(err => console.log(err))
   }
 
 

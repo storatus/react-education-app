@@ -4,7 +4,7 @@ import axios from 'axios'
 const allowedFormats = {
   'PDF':  ['pdf'],
   'Word' : ['doc', 'docx', 'docm'],
-  'Excel': ['xls', 'xlt', 'xlm'],
+  'Excel': ['xls', 'xlt', 'xlm', 'xlsx'],
   'Powerpoint' : ['ppt', 'pot', 'ppt'],
   'PNG': ['png'],
   'JPG' : ['jpg', 'jpeg']
@@ -31,15 +31,14 @@ function determineName(fileName){
   let splitName = fileName.split(".");
   let lastElement = splitName[splitName.length-1]
 
-
   let results = Object.keys(allowedFormats).filter((el,key) => {
       let formats =  allowedFormats[el]
       let isFormat = formats.findIndex(element => element === lastElement)
+
       if (isFormat > -1) {
           let final = Object.getOwnPropertyNames(allowedFormats)[key]
           return final
       }
-      return true
   })
 
   return results[0]
