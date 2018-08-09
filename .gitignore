@@ -8,7 +8,7 @@
 /coverage
 
 # Server public for images
-/server/public
+# /server/public
 
 # production
 /build
