@@ -7,6 +7,8 @@ const User = require('./../models/User')
 const Course = require('./../models/Course')
 const secretKey = 'something'
 
+var adminAuth = require('./../auth/adminAuth')
+
 
 // GET ALL USERS
 router.get('/', (req, res) => {
@@ -16,8 +18,11 @@ router.get('/', (req, res) => {
 });
 
 
+
+
+
 // CREATE USER
-router.post('/', (req, res) => {
+router.post('/', adminAuth, (req, res) => {
 
   let user = new User();
   const userObj = req.body;

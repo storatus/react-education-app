@@ -6,6 +6,9 @@ var mongoose = require('mongoose')
 var path = require('path')
 var googleStorage = require('./../config')
 
+var adminAuth = require('./../auth/adminAuth')
+
+
 const Course = require('./../models/Course')
 const User = require('./../models/User')
 
@@ -15,7 +18,7 @@ const User = require('./../models/User')
 router.get('/', (req, res) => {
   Course.find()
   .then(data => res.json(data))
-  .catch(error => res.status(500).res.json({err: 'No courses found'}))
+  .catch(error => res.status(500).res.json({error: 'No courses found'}))
 });
 
 
@@ -30,9 +33,27 @@ router.get('/:courseId', (req, res) => {
 });
 
 
+// CREATE COURSE -- SECURITY
+router.post('/',  adminAuth, (req, res) => {
 
-// DELETE COURSE
-router.delete('/:courseId', (req, res) => {
+  const course = new Course();
+  const obj = req.body;
+
+  Object.keys(obj).forEach(key => {
+    let value = obj[key]
+    course[key] = value
+  });
+
+  course.save()
+  .then(data => res.send(data))
+  .catch(error => res.status(500).res.json({error: 'Could not create course '}))
+
+
+});
+
+
+// DELETE COURSE -- SECURITY
+router.delete('/:courseId', adminAuth, (req, res) => {
   let courseId = req.params.courseId;
 
   Course.findOneAndDelete({ _id: courseId })
@@ -42,8 +63,8 @@ router.delete('/:courseId', (req, res) => {
 });
 
 
-// UPDATE COURSE
-router.put("/:courseId", (req, res) => {
+// UPDATE COURSE -- SECURITY
+router.put("/:courseId", adminAuth, (req, res) => {
 
   let obj = req.body;
   let courseId = req.params.courseId
@@ -95,8 +116,8 @@ router.get('/file/:downloadName/:courseId/:fileId', (req, res) => {
 
 
 
-// UPLOAD FILE
-router.post("/file", (req, res) => {
+// UPLOAD FILE -- SECURITY
+router.post("/file", adminAuth, (req, res) => {
 
   var form = new formidable.IncomingForm();
   form.parse(req, (error,fields,files) => {
@@ -133,8 +154,8 @@ router.post("/file", (req, res) => {
 
 
 
-// DELETE FILE
-router.delete('/file/:courseId/:fileId', (req, res) => {
+// DELETE FILE -- SECURITY
+router.delete('/file/:courseId/:fileId', adminAuth, (req, res) => {
   let courseId = req.params.courseId
   let fileId = req.params.fileId;
 
@@ -157,8 +178,8 @@ router.delete('/file/:courseId/:fileId', (req, res) => {
 
 
 
-// DELETE VIDEO
-router.delete('/video/:courseId/:videoId', (req, res) => {
+// DELETE VIDEO -- SECURITY
+router.delete('/video/:courseId/:videoId', adminAuth, (req, res) => {
   let courseId = req.params.courseId
   let videoId = req.params.videoId
   let youtubeId = req.params.youtubeId
@@ -179,8 +200,8 @@ router.delete('/video/:courseId/:videoId', (req, res) => {
 
 
 
-// UPLOAD VIDEO
-router.post('/video', (req, res) => {
+// UPLOAD VIDEO -- SECURITY
+router.post('/video', adminAuth, (req, res) => {
   let courseId = req.body.courseId
   let url = req.body.url
   let title = req.body.title
@@ -278,23 +299,7 @@ router.delete('/leaveCourse/:courseId/:enrollId', (req, res) => {
 
 
 
-// CREATE COURSE
-router.post('/', (req, res) => {
 
-  const course = new Course();
-  const obj = req.body;
-
-  Object.keys(obj).forEach(key => {
-    let value = obj[key]
-    course[key] = value
-  });
-
-  course.save()
-  .then(data => res.send(data))
-  .catch(error => res.status(500).res.json({error: 'Could not create course '}))
-
-
-});
 
 
 

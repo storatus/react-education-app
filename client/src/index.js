@@ -18,7 +18,6 @@ if (localStorage.jwtToken) {
 }
 
 
-
 ReactDOM.render(
     <BrowserRouter>
       <Provider store={configStore}>

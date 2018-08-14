@@ -49,9 +49,9 @@ function determineName(fileName){
 // I have to reference
 function setAuthToken(token){
   if (token) {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    axios.defaults.headers.common['token'] = `${token}`
   }else{
-    delete axios.defaults.headers.common['Authorization']
+    delete axios.defaults.headers.common['token']
   }
 }
 
