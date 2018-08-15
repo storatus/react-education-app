@@ -53,8 +53,11 @@ class Users extends Component {
         <h2>
           All Users
         </h2>
+        <div className="component-divider-sub"></div>
+
       <Row >
         <Col md={8}>
+
               <Table responsive striped bordered condensed hover>
                 <thead>
                   <tr>

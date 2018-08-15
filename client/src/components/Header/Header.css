@@ -1,16 +1,22 @@
 .loggedIn{
   color: white;
-  display: inline;
-  float: right
+  display: inline-block;
+  font-size: 0.8em;
+
 }
 
 .navbar-header{
   width:100%;
 }
 
-/* For small  */
+.bath-logo{
+  height:100%;
+}
+
+
+/* For small Screen  */
 @media screen and (max-width: 767px) {
     .header-title {
-        font-size: 0.9em;
+        font-size: 1em;
     }
 }

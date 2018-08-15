@@ -26,8 +26,3 @@
 .display-file-input{
   display: inline-block !important;
 }
-
-.component-divider{
-  border-bottom: 3px solid #d27;
-  margin-bottom: 3rem;
-}

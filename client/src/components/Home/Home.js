@@ -26,6 +26,7 @@ class Home extends Component {
     return (
       <Grid fluid>
        <h2>Home</h2>
+         <div className="component-divider-sub"></div>
 
         <Row className="show-grid">
 

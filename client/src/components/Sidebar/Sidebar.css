@@ -32,10 +32,6 @@
   color: #333;
 }
 
-.sidebar .nav-link .feather {
-  margin-right: 4px;
-  color: #999;
-}
 
 .sidebar .nav-link.active {
   color: #007bff;
@@ -51,8 +47,6 @@
   text-transform: uppercase;
 }
 
-
-
-/*
- * Navbar
- */
+.nav-item a:link, .nav-item a:visited {
+  color: #002b56 !important; 
+}

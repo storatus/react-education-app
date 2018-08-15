@@ -62,6 +62,8 @@ class Courses extends Component {
         <h2>
           All courses
         </h2>
+        <div className="component-divider-sub"></div>
+
       <Row >
         <Col md={8}>
               <Table responsive striped bordered condensed hover>

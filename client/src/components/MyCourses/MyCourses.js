@@ -55,7 +55,9 @@ class MyCourses extends Component {
     return (
       <Grid fluid>
         <h2> My Courses </h2>
-      <Row>
+          <div className="component-divider-sub"></div>
+
+    <Row>
         <Col md={8}>
               <Table responsive striped bordered condensed hover>
                 <thead>

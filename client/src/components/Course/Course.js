@@ -94,10 +94,11 @@ class Course extends Component {
         <h2 >
           Course Overview -  {courseData.name}
         </h2>
-        <div className="component-divider"> </div> 
+        <div className="component-divider"></div>
 
         <Row >
           <Col md={3}>
+
             <ul className="no-bullets">
               <li>
                 <b>Name: </b> <span> {courseData.name} </span>

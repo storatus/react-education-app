@@ -24,7 +24,18 @@ body, p {
     font-kerning: normal;
 }
 
+.component-divider{
+  border-bottom: 3px solid #d27;
+  margin-bottom: 3rem;
+}
 
+
+.component-divider-sub{
+
+  border-bottom: 2px solid #c8d7e6;
+  margin-bottom: 3rem;
+
+}
 
 /*This is button color*/
 /* #dd2377 --> buttons color*/

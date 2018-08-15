@@ -33,7 +33,7 @@ logout(e){
 generateLinks(menuItems){
 
     return menuItems.map((exp,i) => {
-      return (<li key={i} className="nav-item">
+      return (<li key={i} className="nav-item nav-item-bath">
               <Link replace to={{pathname: exp.url}}>  {exp.name} </Link>
           </li>)
     })
@@ -67,7 +67,7 @@ generateLinks(menuItems){
           <div className="sidebar-sticky">
             <ul className="nav flex-column">
                     {finalLinks}
-                    <li key="logout" className="nav-item">
+                    <li key="logout" className="nav-item nav-item-bath">
                         <a href="/login" onClick={this.logout}>  Logout </a>
                     </li>
             </ul>

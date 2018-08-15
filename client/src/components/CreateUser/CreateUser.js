@@ -129,6 +129,7 @@ class CreateUser extends Component {
     return (
       <Grid fluid={true}>
       <h2> Create User </h2>
+      <div className="component-divider-sub"></div>
 
       <Row className="show-grid">
         <Col md={6}>
