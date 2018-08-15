@@ -74,10 +74,7 @@ generateLinks(menuItems){
           </div>
         </nav>
     )
-
   }
-
-
 }
 
 

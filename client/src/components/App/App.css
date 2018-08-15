@@ -1,19 +1,30 @@
 .header {
   background-color: #002c56; /*navbar background color*/
-  border-radius: 0px !important; 
+  border-radius: 0px !important;
 }
 
 .header-title  {
   color: white !important; /*overwriting*/
-  displ: inline-block;
+  display: inline-block;
 }
 
 
-
-main {
-
-
+body, p {
+    font-weight: 400;
+    font-family: "Noto Sans","Trebuchet MS",sans-serif;
+    margin-bottom: 1.33778rem;
+    letter-spacing: 0;
+    color: #202329;
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+    -webkit-font-feature-settings: 'kern';
+    -moz-font-feature-settings: 'kern';
+    -moz-font-feature-settings: 'kern=1';
+    -o-font-feature-settings: 'kern';
+    font-kerning: normal;
 }
+
+
 
 /*This is button color*/
 /* #dd2377 --> buttons color*/

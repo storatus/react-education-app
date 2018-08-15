@@ -91,9 +91,10 @@ class Course extends Component {
 
     return (
       <Grid fluid>
-        <h2>
+        <h2 >
           Course Overview -  {courseData.name}
         </h2>
+        <div className="component-divider"> </div> 
 
         <Row >
           <Col md={3}>
