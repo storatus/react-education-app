@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+var jwt  require('jsonwebtoken');
 const User = require('./../models/User')
 
 
