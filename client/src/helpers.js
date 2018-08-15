@@ -26,6 +26,8 @@ const errorMessages = {
   }
 }
 
+
+
 function determineName(fileName){
 
   let splitName = fileName.split(".");

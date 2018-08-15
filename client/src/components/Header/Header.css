@@ -1,6 +1,16 @@
 .loggedIn{
   color: white;
-  display: inline-block;
+  display: inline;
   float: right
+}
 
+.navbar-header{
+  width:100%;
+}
+
+/* For small  */
+@media screen and (max-width: 767px) {
+    .header-title {
+        font-size: 0.9em;
+    }
 }

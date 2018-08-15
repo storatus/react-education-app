@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar } from 'react-bootstrap';
+import { Navbar,Nav } from 'react-bootstrap';
 
 import { connect } from 'react-redux';
 import './Header.css';
@@ -11,15 +11,28 @@ class Header extends Component {
   render() {
     let role = this.props.auth.role
         return(
-          <Navbar className="header" fluid>
-            <Navbar.Header>
+
+
+          <Navbar className="header" inverse collapseOnSelect fluid>
+            <Navbar.Header className="navbar-header">
               <Navbar.Brand className="header-title">
-                <a href="#home">Education App - BUCS Department</a>
+                <a href="#" >Education App - BUCS Department</a>
+
               </Navbar.Brand>
+
+              { role === 1 &&  <span className="loggedIn hidden-xs hidden-sm"> Logged as Admin </span>}
+              { role === 0 &&  <span className="loggedIn hidden-xs hidden-sm"> Hello,  {this.props.auth.firstName} </span>}
+
+              <Navbar.Toggle />
+
             </Navbar.Header>
 
-          { role === 1 &&  <span className="loggedIn"> Logged as Admin </span>}
-          { role === 0 &&  <span className="loggedIn"> Hello,  {this.props.auth.firstName} </span>}
+            <Navbar.Collapse>
+              <Nav>
+              </Nav>
+            </Navbar.Collapse>
+
+
 
           </Navbar>
 

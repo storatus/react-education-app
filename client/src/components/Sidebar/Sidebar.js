@@ -62,20 +62,17 @@ generateLinks(menuItems){
     })
     let finalLinks = this.generateLinks(menuItems)
 
-
-
-
     return (
-      <nav className="sidebar col-md-2">
-        <div className="sidebar-container">
-          <ul className="nav flex-column">
-            {finalLinks}
-            <li key="logout" className="nav-item">
-                <a href="/login" onClick={this.logout}>  Logout </a>
-            </li>
-         </ul>
-         </div>
-      </nav>
+        <nav className="col-md-2 hidden-xs hidden-sm sidebar">
+          <div className="sidebar-sticky">
+            <ul className="nav flex-column">
+                    {finalLinks}
+                    <li key="logout" className="nav-item">
+                        <a href="/login" onClick={this.logout}>  Logout </a>
+                    </li>
+            </ul>
+          </div>
+        </nav>
     )
 
   }

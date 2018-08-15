@@ -15,12 +15,13 @@ import NoPage from '../NoPage/NoPage';
 import Auth from '../Auth/Auth'
 
 
+import './Container.css';
 
 
 class Container extends Component {
   render() {
     return (
-          <div className="col-md-10">
+          <main role="main" className="col-md-10 main-container">
             <Switch>
               <Route exact path='/'  component={Auth(Home)}/>
               <Route path='/all-courses' component={Auth(Courses)}/>
@@ -33,10 +34,8 @@ class Container extends Component {
               <Route path='/login' key="login" component={Login}/>
               <Route component={Auth(NoPage)}/>
             </Switch>
-          </div>
+          </main>
       )
-
-
 
 
   }

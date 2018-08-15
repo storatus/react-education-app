@@ -1,11 +1,12 @@
 .header {
   background-color: #002c56; /*navbar background color*/
+  border-radius: 0px !important; 
 }
 
 .header-title  {
   color: white !important; /*overwriting*/
+  displ: inline-block;
 }
-
 
 
 

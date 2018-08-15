@@ -8,7 +8,6 @@ import {
   FormControl,
   ControlLabel,
   Form} from 'react-bootstrap';
-import axios from 'axios';
 import './CourseFiles.css';
 import {determineName} from '../../../helpers'
 

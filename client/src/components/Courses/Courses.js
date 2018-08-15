@@ -27,6 +27,7 @@ class Courses extends Component {
         if (el.courseStatus === 'enabled') {
           return true
         }
+        return
       }
     })
 

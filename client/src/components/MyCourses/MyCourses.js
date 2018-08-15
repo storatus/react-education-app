@@ -22,7 +22,6 @@ class MyCourses extends Component {
   generateCourses(courseData){
 
     let auth = this.props.auth
-    let role = this.props.auth.role
 
 
     let filterCourses = courseData.filter(el => {
@@ -68,7 +67,7 @@ class MyCourses extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                {courses}    
+                {courses}
                 </tbody>
             </Table>
           </Col>
