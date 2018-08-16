@@ -105,7 +105,7 @@ router.get('/file/:downloadName/:courseId/:fileId', (req, res) => {
 
   let downloadName = req.params.downloadName
   let publicPath = `${__dirname}/../public/${downloadName}`
-  let options = { destination: `./public/${downloadName}`}
+  let options = { destination: `./../public/${downloadName}`}
 
   googleStorage.storage.bucket(googleStorage.bucketName).file(downloadName).download(options)
   .then(() => res.download(publicPath, downloadName))

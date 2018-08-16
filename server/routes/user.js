@@ -96,7 +96,7 @@ router.post('/login', (req, res) => {
 
 
 
-// DELETE COURSE
+// DELETE USER
 router.delete('/:userId', (req, res) => {
 
   let userId = req.params.userId;
