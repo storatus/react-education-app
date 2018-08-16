@@ -111,7 +111,7 @@ router.get('/file/:downloadName/:courseId/:fileId', (req, res) => {
   .then(() => {
 
 
-
+    console.log('Hellooooo');
     res.download(publicPath, downloadName)
 
 
