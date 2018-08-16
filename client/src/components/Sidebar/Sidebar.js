@@ -3,6 +3,7 @@ import './Sidebar.css';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/userActions';
+import { Nav, NavItem } from 'react-bootstrap';
 
 
 class Sidebar extends Component {
@@ -20,7 +21,6 @@ class Sidebar extends Component {
     ]}
 
     this.logout = this.logout.bind(this);
-
 }
 
 
@@ -32,10 +32,24 @@ logout(e){
 
 generateLinks(menuItems){
 
+
+
+
     return menuItems.map((exp,i) => {
-      return (<li key={i} className="nav-item nav-item-bath">
-              <Link replace to={{pathname: exp.url}}>  {exp.name} </Link>
-          </li>)
+
+      let isResponsive = this.props.isResponsive;
+
+      if (isResponsive) {
+        return (<NavItem key={i} componentClass='span'>
+                <Link replace to={{pathname: exp.url}}>  {exp.name} </Link>
+            </NavItem>)
+
+      }else{
+        return (<li key={i} className="nav-item nav-item-bath">
+                <Link replace to={{pathname: exp.url}}>  {exp.name} </Link>
+            </li>)
+      }
+
     })
 
   }
@@ -45,6 +59,9 @@ generateLinks(menuItems){
     // 0 is user
 
     let role = this.props.auth.role
+    let isResponsive = this.props.isResponsive;
+
+
     let menuItems = this.state.menu.filter(el => {
       if (role === 1){
         if (el.role === 2) {
@@ -62,18 +79,37 @@ generateLinks(menuItems){
     })
     let finalLinks = this.generateLinks(menuItems)
 
-    return (
-        <nav className="col-md-2 hidden-xs hidden-sm sidebar">
-          <div className="sidebar-sticky">
-            <ul className="nav flex-column">
-                    {finalLinks}
-                    <li key="logout" className="nav-item nav-item-bath">
-                        <a href="/login" onClick={this.logout}>  Logout </a>
-                    </li>
-            </ul>
-          </div>
-        </nav>
-    )
+    if (isResponsive) {
+
+
+      return(<Nav className="hidden-md hidden-lg">
+            {finalLinks}
+            <NavItem key="logout" componentClass='span'>
+                    <Link replace to="/login" onClick={this.logout}>  Logout </Link>
+                </NavItem>
+            </Nav>
+          )
+
+    }else{
+
+      return (
+          <nav className="col-md-2 hidden-xs hidden-sm sidebar">
+            <div className="sidebar-sticky">
+              <ul className="nav flex-column">
+                      {finalLinks}
+                      <li key="logout" className="nav-item nav-item-bath">
+                          <a href="/login" onClick={this.logout}>  Logout </a>
+                      </li>
+              </ul>
+            </div>
+          </nav>
+      )
+
+    }
+
+
+
+
   }
 }
 

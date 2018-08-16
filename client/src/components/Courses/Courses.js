@@ -60,7 +60,7 @@ class Courses extends Component {
     return (
       <Grid fluid>
         <h2>
-          All courses
+          All Courses
         </h2>
         <div className="component-divider-sub"></div>
 

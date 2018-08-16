@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { Navbar,Nav, NavItem } from 'react-bootstrap';
 
+
+import Sidebar from './../Sidebar/Sidebar'
+
 import { connect } from 'react-redux';
 import './Header.css';
 
 
 class Header extends Component {
+
+
+
+
 
 
   render() {
@@ -16,10 +23,10 @@ class Header extends Component {
           <Navbar className="header" inverse collapseOnSelect fluid>
             <Navbar.Header className="navbar-header">
               <Navbar.Brand className="header-title">
-                <a href="#" >
+                <a  >
 
 
-                  <span> <img className="bath-logo" src={require("../../bath_logo.png")} />  Education App     </span>
+                  <span> <img className="bath-logo" alt="bath-logo" src={require("../../bath_logo.png")} />  Education App     </span>
 
                 </a>
 
@@ -41,8 +48,7 @@ class Header extends Component {
             </Navbar.Header>
 
             <Navbar.Collapse>
-              <Nav>
-              </Nav>
+              <Sidebar isResponsive={true} />
             </Navbar.Collapse>
 
 

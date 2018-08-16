@@ -48,5 +48,16 @@
 }
 
 .nav-item a:link, .nav-item a:visited {
-  color: #002b56 !important; 
+  color: #002b56 !important;
+}
+
+/* https://stackoverflow.com/questions/42561137/link-cannot-appear-as-a-descendant-of-a-link */
+.navbar-nav span[role=button] {
+  line-height: 18px;
+  padding: 18px;
+  display: inline-block;
+}
+
+.navbar-nav  a{
+  color: white !important;
 }

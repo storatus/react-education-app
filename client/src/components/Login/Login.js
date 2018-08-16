@@ -1,9 +1,6 @@
 
 import React, {Component} from 'react';
 import {
-  Grid,
-  Row,
-  Col,
   Form,
   FormGroup,
   FormControl,
@@ -67,49 +64,40 @@ class Login extends Component {
   }
 
 
+  render(){
 
+    return(
+      <Form horizontal={true} onSubmit={this.submitForm} className="form-signin">
+          <img alt="bath-logo-black" src={require("../../bath_logo_black.svg")} />
+                    <FormGroup controlId="email">
+                      <ControlLabel>Email</ControlLabel>
+                      <FormControl
+                        type="text"
+                        value={this.state.value}
+                        placeholder="Enter email"
+                        onChange={this.handleInput}
+                      />
 
-  render() {
-    return (
-      <Grid>
-        <Row className="margin-top-form">
-          <Col xsOffset={4}  sm={4}>
-            <Form horizontal={true} onSubmit={this.submitForm}>
-              <FormGroup controlId="email">
-                <ControlLabel>Email</ControlLabel>
-                <FormControl
-                  type="text"
-                  value={this.state.value}
-                  placeholder="Enter email"
-                  onChange={this.handleInput}
-                />
+                    </FormGroup>
 
-              </FormGroup>
+                    <FormGroup controlId="password">
+                      <ControlLabel>Password</ControlLabel>
+                      <FormControl
+                        type="password"
+                        value={this.state.value}
+                        placeholder="Enter password"
+                        onChange={this.handleInput}
+                      />
+                    </FormGroup>
 
-
-              <FormGroup controlId="password">
-                <ControlLabel>Password</ControlLabel>
-                <FormControl
-                  type="password"
-                  value={this.state.value}
-                  placeholder="Enter password"
-                  onChange={this.handleInput}
-                />
-              </FormGroup>
-
-
-              <FormGroup className="center-button">
-                <Button type="submit" >Login</Button>
-
-              </FormGroup>
-            </Form>
-            </Col>
-          </Row>
-        </Grid>
+                    <FormGroup className="center-button">
+                      <Button type="submit" >Login</Button>
+                    </FormGroup>
+    </Form>
 
   )
-
   }
+
 }
 
 const reduxProps = state => {
