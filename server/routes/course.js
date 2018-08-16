@@ -97,7 +97,7 @@ router.get('/file/:downloadName/:courseId/:fileId', (req, res) => {
 
     if (isIp === -1) {
         Course.findOneAndUpdate({ "_id": courseId, "filePaths._id": fileId },{"$push": { "filePaths.$.clicks": ip}})
-        .then(val => { console.log(val)})
+        .then(val => { console.log('')})
         .catch(err => console.log(err))
     }
 
@@ -105,10 +105,17 @@ router.get('/file/:downloadName/:courseId/:fileId', (req, res) => {
 
   let downloadName = req.params.downloadName
   let publicPath = `${__dirname}/../public/${downloadName}`
-  let options = { destination: `./../public/${downloadName}`}
+  let options = { destination: `./public/${downloadName}`}
 
   googleStorage.storage.bucket(googleStorage.bucketName).file(downloadName).download(options)
-  .then(() => res.download(publicPath, downloadName))
+  .then(() => {
+
+
+
+    res.download(publicPath, downloadName)
+
+
+  })
   .catch(err => console.error('ERROR:', err));
 
 });
