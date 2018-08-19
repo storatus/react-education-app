@@ -100,12 +100,14 @@ class CourseVideos extends Component {
 
     axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${youtubeId}&key=${youtubeKey}&part=snippet`)
     .then(response => {
+      let token = localStorage.getItem('jwtToken')
+      setAuthToken(token)
+      
       let title = response.data.items[0].snippet.title
       let thumbnail = response.data.items[0].snippet.thumbnails.default.url
       this.props.uploadVideo(url, courseId, title, youtubeId, thumbnail)
 
-      let token = localStorage.getItem('jwtToken')
-      setAuthToken(token)
+
 
     }).catch(err => console.log(err))
   }

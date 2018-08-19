@@ -4,15 +4,21 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "bootstrap": "^4.1.1",
     "foreman": "^3.0.0",
     "jwt-decode": "^2.2.0",
     "marked": "^0.4.0",
-    "react": "^16.4.0",
-    "react-bootstrap": "^0.32.1",
-    "react-dom": "^16.4.0",
+    "react": "^16.4.2",
+    "react-bootstrap": "0.32.1",
+    "react-dom": "^16.4.2",
+    "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,6 +28,6 @@
   },
   "proxy": "http://localhost:3001",
   "devDependencies": {
-    "jest": "^23.1.0"
+    "jest": "^23.5.0"
   }
 }

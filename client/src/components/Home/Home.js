@@ -13,7 +13,6 @@ class Home extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-
   handleClick(name){
     this.props.history.push(name);
   }
@@ -28,10 +27,10 @@ class Home extends Component {
        <h2>Home</h2>
          <div className="component-divider-sub"></div>
 
-        <Row className="show-grid">
+        <Row>
 
 
-´            <Col md={3}>
+´            <Col md={3}  >
               <Panel onClick={(e) => this.handleClick('/all-courses', e)}>
                   <Panel.Body className="panelPointer">See All Courses</Panel.Body>
               </Panel>
@@ -39,7 +38,7 @@ class Home extends Component {
 
 
         { role === 1 &&
-              <Col md={3}>
+              <Col md={3} >
                 <Panel onClick={(e) => this.handleClick('/create-course', e)}>
                     <Panel.Body className="panelPointer">Create Course</Panel.Body>
                 </Panel>
