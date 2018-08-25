@@ -1,4 +1,5 @@
-// Ref.
+// Ref: Example seen from https://goo.gl/oKVi33
+
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -23,12 +24,9 @@ export default function(InComponent,role = null){
       }
     }
 
-
     render() {
       return (<InComponent {...this.props}/>)
     }
-
-
   }
 
   const reduxProps = state => {

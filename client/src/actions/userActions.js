@@ -1,4 +1,4 @@
-// REF. Examples
+// Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
 import {
   ADD_USER,
   GET_USERS,
@@ -80,11 +80,13 @@ export const deleteUser = userId => dispatch => {
 export const loginUser = userData => dispatch => {
   axios.post('/api/user/login', userData)
     .then(res =>{
+
+      // Ref: Seen example from https://goo.gl/HCaXX2
       let token = res.data.token
       localStorage.setItem('jwtToken', token)
       setAuthToken(token)
-      let decodedUser = jwtDecode(token)
-      dispatch(setUser(decodedUser))
+      let dUser = jwtDecode(token)
+      dispatch(setUser(dUser))
     })
     .catch(err =>
       dispatch({

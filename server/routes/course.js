@@ -302,8 +302,5 @@ router.delete('/leaveCourse/:courseId/:enrollId', (req, res) => {
 
 
 
-
-
-
 // export default router
 module.exports = router

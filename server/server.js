@@ -13,10 +13,7 @@ var user = require('./routes/user')
 
 
 
-
-
-
-//What is bodyParser --> I need to clarify this
+// Examples taken from https://goo.gl/ZGizec
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
@@ -25,8 +22,6 @@ app.use(logger('dev'));
 
 app.use('/api/course', course);
 app.use('/api/user', user);
-
-
 
 
 if (process.env.NODE_ENV == 'production') {
@@ -39,5 +34,4 @@ if (process.env.NODE_ENV == 'production') {
 
 
 
-// // Use our router configuration when we call /api
 app.listen(process.env.PORT || 3001);

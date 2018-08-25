@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route,Switch,  } from 'react-router-dom'
+import './Container.css';
 
 
 import Home from '../Home/Home';
@@ -13,9 +14,6 @@ import Users from '../Users/Users';
 import Login from '../Login/Login';
 import NoPage from '../NoPage/NoPage';
 import Auth from '../Auth/Auth'
-
-
-import './Container.css';
 
 
 class Container extends Component {
@@ -36,8 +34,6 @@ class Container extends Component {
             </Switch>
           </main>
       )
-
-
   }
 }
 

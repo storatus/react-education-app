@@ -1,3 +1,5 @@
+// Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
+
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';

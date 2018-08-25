@@ -1,14 +1,14 @@
 .header {
-  background-color: #002c56; /*navbar background color*/
+  background-color: #002c56;
   border-radius: 0px !important;
 }
 
 .header-title  {
-  color: white !important; /*overwriting*/
+  color: white !important;
   display: inline-block;
 }
 
-
+/*Ref: University of Bath Website: https://goo.gl/bGbbxb*/
 body, p {
     font-weight: 400;
     font-family: "Noto Sans","Trebuchet MS",sans-serif;
@@ -36,6 +36,3 @@ body, p {
   margin-bottom: 3rem;
 
 }
-
-/*This is button color*/
-/* #dd2377 --> buttons color*/

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Table, Grid, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import { getCourses } from '../../actions/courseActions';
-import './MyCourses.css';
 import { connect } from 'react-redux';
 
 
@@ -55,22 +54,34 @@ class MyCourses extends Component {
     return (
       <Grid fluid>
         <h2> My Courses </h2>
-          <div className="component-divider-sub"></div>
+        <div className="component-divider-sub">
+        </div>
 
-    <Row>
-        <Col md={8}>
-              <Table responsive striped bordered condensed hover>
-                <thead>
-                  <tr>
-                    <th>Course name</th>
-                    <th>Total material</th>
-                    <th>People enrolled</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
+        <Row>
+          <Col md={8}>
+            <Table
+              responsive
+              striped
+              bordered
+              condensed
+              hover>
+              <thead>
+                <tr>
+                  <th>
+                    Course name
+                  </th>
+                  <th>
+                    Total material
+                  </th>
+                  <th>
+                    People enrolled
+                  </th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
                 {courses}
-                </tbody>
+              </tbody>
             </Table>
           </Col>
         </Row>

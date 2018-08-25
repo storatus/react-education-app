@@ -48,7 +48,7 @@ function determineName(fileName){
 }
 
 
-// I have to reference
+// Ref: As seen from stackoverflow https://goo.gl/6n8rJv
 function setAuthToken(token){
   if (token) {
     axios.defaults.headers.common['token'] = `${token}`
@@ -56,10 +56,6 @@ function setAuthToken(token){
     delete axios.defaults.headers.common['token']
   }
 }
-
-
-
-// https://github.com/firebase/nginx/blob/master/conf/mime.types
 
 
 export {allowedFormats, errorMessages, determineName, setAuthToken};

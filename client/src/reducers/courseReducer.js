@@ -1,4 +1,4 @@
-// Reference --> Exampels from redux
+// Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
 
 import {
   ADD_COURSE,
@@ -10,23 +10,22 @@ import {
 } from '../actions/typesActions';
 
 
-// What about loading ?
-const initialState = {
+const firstState = {
   courses: [],
   course: {}
 }
 
-export default function(state = initialState, action) {
+export default function(state = firstState, action) {
   switch (action.type) {
     case GET_COURSES:
       return {
-        ...state, // 1,2,3
+        ...state,
         courses: action.payload
       };
     case ADD_COURSE:
       return {
         ...state,
-        courses: [action.payload, ...state.courses] // I have to change it
+        courses: [action.payload, ...state.courses]
       };
     case GET_COURSE:
       return {
@@ -47,7 +46,7 @@ export default function(state = initialState, action) {
           return el._id !== action.payload._id
         })
       };
-    case UPDATE_COURSE: // I do not know If I need this
+    case UPDATE_COURSE:
       return {
         ...state,
         course: action.payload

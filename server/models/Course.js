@@ -1,9 +1,8 @@
-//models/Course.js
+// Ref: From mongoose docs https://goo.gl/szRMTi
 
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema;
 
-// New Schema
 var courseSchema = new Schema({
   name: String,
   dateFrom: String,

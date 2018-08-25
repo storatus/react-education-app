@@ -1,4 +1,4 @@
-// REF. Examples
+// Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
 
 import {
   ADD_COURSE,
@@ -10,6 +10,7 @@ import {
   ERRORS
 } from './typesActions';
 import axios from 'axios';
+
 
 // Add Course
 export const addCourse = courseData => dispatch => {
@@ -111,10 +112,12 @@ export const downloadFile = (path, fileName, fileId, courseId) => dispatch => {
       url:`/api/course/file/${path}/${courseId}/${fileId}`,
       responseType: 'blob'})
     .then(res => {
+
+      // Ref: https://goo.gl/SGdqBm
       let aTag = document.createElement('a');
       let url = window.URL.createObjectURL(new Blob([res.data]));
       aTag.href = url;
-      aTag.setAttribute('download', fileName); //or any other extension
+      aTag.setAttribute('download', fileName);
       document.body.appendChild(aTag);
       aTag.click();
     })
@@ -128,7 +131,7 @@ export const uploadFile = file => dispatch => {
     .then(res =>
       dispatch({
         type: GET_COURSE,
-        payload: res.data // This I have to change, this is why it is not updating
+        payload: res.data
       })
     )
     .catch(err =>
@@ -164,7 +167,7 @@ export const uploadVideo = (url, courseId, title, youtubeId, thumbnail) => dispa
   .then(res =>
     dispatch({
       type: GET_COURSE,
-      payload: res.data // This I have to change, this is why it is not updating
+      payload: res.data
     })
   ).catch(err =>
       dispatch({
@@ -181,7 +184,7 @@ export const watchVideo = (courseId,videoId, youtubeId) => dispatch => {
     window.location.href = `https://www.youtube.com/watch?v=${youtubeId}`
     dispatch({
       type: GET_COURSE,
-      payload: res.data // This I have to change, this is why it is not updating
+      payload: res.data
     })
   }).catch(err =>
       dispatch({
@@ -197,7 +200,7 @@ export const deleteVideo = (courseId,videoId) => dispatch => {
   .then(res =>
     dispatch({
       type: GET_COURSE,
-      payload: res.data // This I have to change, this is why it is not updating
+      payload: res.data
     })
   ).catch(err =>
       dispatch({
@@ -214,7 +217,7 @@ export const enrollCourse = userData => dispatch => {
     .then(res =>
       dispatch({
           type: GET_COURSE,
-          payload: res.data // This I have to change, this is why it is not updating
+          payload: res.data
     }))
     .catch(err =>
       dispatch({
@@ -236,7 +239,7 @@ export const leaveCourse = (courseId,enrollId) => dispatch => {
     .then(res =>
       dispatch({
           type: GET_COURSE,
-          payload: res.data // This I have to change, this is why it is not updating
+          payload: res.data
     }))
     .catch(err =>
       dispatch({

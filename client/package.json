@@ -28,6 +28,11 @@
   },
   "proxy": "http://localhost:3001",
   "devDependencies": {
-    "jest": "^23.5.0"
+    "enzyme": "^3.4.4",
+    "enzyme-adapter-react-16": "^1.2.0",
+    "fetch-mock": "^6.5.2",
+    "jest": "^23.5.0",
+    "react-addons-test-utils": "^15.6.2",
+    "redux-mock-store": "^1.5.3"
   }
 }

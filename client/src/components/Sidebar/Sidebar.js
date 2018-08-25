@@ -31,14 +31,9 @@ logout(e){
 
 
 generateLinks(menuItems){
-
-
-
-
     return menuItems.map((exp,i) => {
 
       let isResponsive = this.props.isResponsive;
-
       if (isResponsive) {
         return (<NavItem key={i} componentClass='span'>
                 <Link replace to={{pathname: exp.url}}>  {exp.name} </Link>
@@ -49,9 +44,7 @@ generateLinks(menuItems){
                 <Link replace to={{pathname: exp.url}}>  {exp.name} </Link>
             </li>)
       }
-
     })
-
   }
 
   render() {
@@ -106,10 +99,6 @@ generateLinks(menuItems){
       )
 
     }
-
-
-
-
   }
 }
 

@@ -9,7 +9,6 @@ import {
   ControlLabel,
   Image,
   Form} from 'react-bootstrap';
-import './CourseVideos.css';
 import axios from 'axios'
 
 import { uploadVideo, deleteVideo,watchVideo } from '../../../actions/courseActions';
@@ -56,7 +55,7 @@ class CourseVideos extends Component {
   }
 
   checkUrlVideo(url){
-    // https://stackoverflow.com/questions/2964678/jquery-youtube-url-validation-with-regex/10315969#10315969
+    // Ref: Regex taken from https://goo.gl/unbFN5
     let urlRegex = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
     let result = url.match(urlRegex)
     if (result) {
@@ -102,7 +101,7 @@ class CourseVideos extends Component {
     .then(response => {
       let token = localStorage.getItem('jwtToken')
       setAuthToken(token)
-      
+
       let title = response.data.items[0].snippet.title
       let thumbnail = response.data.items[0].snippet.thumbnails.default.url
       this.props.uploadVideo(url, courseId, title, youtubeId, thumbnail)

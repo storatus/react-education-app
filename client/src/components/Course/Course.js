@@ -13,7 +13,6 @@ import CourseUsers from './CourseUsers/CourseUsers'
 
 
 import { getCourse, deleteCourse, enrollCourse, leaveCourse, cleanCourse } from '../../actions/courseActions';
-
 import { connect } from 'react-redux';
 
 
@@ -26,7 +25,6 @@ class Course extends Component {
 
     this.leave = this.leave.bind(this);
     this.enroll = this.enroll.bind(this);
-
   }
 
 
@@ -129,8 +127,6 @@ class Course extends Component {
       {  Object.keys(courseData).length > 0 && <CourseVideos role={role} courseId={courseData._id} videos={courseData.videos}/>}
       <hr></hr>
       {  Object.keys(courseData).length > 0 && <CourseUsers role={role} courseId={courseData._id} members={courseData.members}/>}
-
-
 
 
       <hr></hr>

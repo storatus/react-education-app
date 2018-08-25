@@ -9,7 +9,6 @@ import {
   Button,
   ControlLabel
 } from 'react-bootstrap';
-import './CreateUser.css';
 
 import { addUser } from '../../actions/userActions';
 import { removeError } from '../../actions/errorActions';

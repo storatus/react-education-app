@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Table, Grid, Row, Col, Button } from 'react-bootstrap';
 import { getUsers, deleteUser } from '../../actions/userActions';
-import './Users.css';
 import { connect } from 'react-redux';
 
 

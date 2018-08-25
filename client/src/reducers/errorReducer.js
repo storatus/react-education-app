@@ -1,15 +1,15 @@
-// Reference --> Exampels from redux
+// Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
 
 import {
   ERRORS,
   REMOVE_ERRORS
 } from '../actions/typesActions';
 
-const initialState = {
+const firstState = {
   message: {}
 }
 
-export default function(state = initialState, action) {
+export default function(state = firstState, action) {
   switch (action.type) {
     case ERRORS:
       return {

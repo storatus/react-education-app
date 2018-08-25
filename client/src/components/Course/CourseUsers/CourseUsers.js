@@ -4,7 +4,6 @@ import {
   Row,
   Col
 } from 'react-bootstrap';
-import './CourseUsers.css';
 import axios from 'axios'
 
 

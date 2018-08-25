@@ -2,12 +2,10 @@ import React, {Component} from 'react';
 import { Table, Grid, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import { getCourses } from '../../actions/courseActions';
-import './Courses.css';
 import { connect } from 'react-redux';
 
 
-
-class Courses extends Component {
+export class Courses extends Component {
 
   componentDidMount() {
     this.props.getCourses();
@@ -32,8 +30,6 @@ class Courses extends Component {
     })
 
     return filterCourses.map(val => {
-
-
           return (
           <tr key={val._id}>
             <td>{val.name}</td>
@@ -46,9 +42,6 @@ class Courses extends Component {
               </Link>
             </td>
           </tr>)
-
-
-
         })
   }
 

@@ -10,32 +10,19 @@ import './Header.css';
 
 class Header extends Component {
 
-
-
-
-
-
   render() {
+
+    // Ref: based on react-bootstrap examples : https://goo.gl/pBMvSb
     let role = this.props.auth.role
         return(
-
 
           <Navbar className="header" inverse collapseOnSelect fluid>
             <Navbar.Header className="navbar-header">
               <Navbar.Brand className="header-title">
-                <a  >
-
-
+                <a>
                   <span> <img className="bath-logo" alt="bath-logo" src={require("../../bath_logo.png")} />  Education App     </span>
-
                 </a>
-
               </Navbar.Brand>
-
-
-
-
-
               <Navbar.Toggle />
 
                 <Nav pullRight>
@@ -43,17 +30,13 @@ class Header extends Component {
                      { role === 1 &&  <span className="loggedIn hidden-xs hidden-sm"> Logged as Admin </span>}
                      { role === 0 &&  <span className="loggedIn hidden-xs hidden-sm"> Hello,  {this.props.auth.firstName} </span>}
                    </NavItem>
-                 </Nav>
+                </Nav>
 
             </Navbar.Header>
 
             <Navbar.Collapse>
               <Sidebar isResponsive={true} />
             </Navbar.Collapse>
-
-
-
-
           </Navbar>
 
       )

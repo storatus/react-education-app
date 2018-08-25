@@ -9,10 +9,9 @@ import {
   Button,
   ControlLabel
 } from 'react-bootstrap';
-import './EditCourse.css';
 import {errorMessages} from '../../helpers';
 
-import { getCourse,updateCourse } from '../../actions/courseActions';
+import { getCourse, updateCourse } from '../../actions/courseActions';
 import { connect } from 'react-redux';
 
 

@@ -1,6 +1,7 @@
+// Ref: Example seen from https://goo.gl/HAeXNA 
+
 var jwt = require('jsonwebtoken');
 const User = require('./../models/User')
-
 
  var adminAuth = (req, res, next) => {
   const token = req.headers['token'];

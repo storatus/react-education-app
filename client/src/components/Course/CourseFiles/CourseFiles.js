@@ -8,7 +8,6 @@ import {
   FormControl,
   ControlLabel,
   Form} from 'react-bootstrap';
-import './CourseFiles.css';
 import {determineName} from '../../../helpers'
 
 import { uploadFile, deleteFile, downloadFile } from '../../../actions/courseActions';
@@ -34,7 +33,6 @@ class CourseFiles extends Component {
 
   }
 
-
   componentWillReceiveProps(newProps) {
     if (newProps) {
         this.setState({
@@ -47,9 +45,7 @@ class CourseFiles extends Component {
 
 
   downloadFile(path, fileName, fileId){
-
     this.props.downloadFile(path, fileName, fileId,this.props.courseId)
-
   }
 
 

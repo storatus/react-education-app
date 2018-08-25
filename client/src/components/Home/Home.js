@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 import { Grid,Row,Col,Panel } from 'react-bootstrap';
 import { connect } from 'react-redux';
-
 import './Home.css';
-
-
 
 class Home extends Component {
 
@@ -20,23 +17,17 @@ class Home extends Component {
 
   render() {
     let role = this.props.auth.role
-
-
     return (
       <Grid fluid>
        <h2>Home</h2>
          <div className="component-divider-sub"></div>
 
         <Row>
-
-
 ´            <Col md={3}  >
               <Panel onClick={(e) => this.handleClick('/all-courses', e)}>
                   <Panel.Body className="panelPointer">See All Courses</Panel.Body>
               </Panel>
             </Col>
-
-
         { role === 1 &&
               <Col md={3} >
                 <Panel onClick={(e) => this.handleClick('/create-course', e)}>
@@ -53,20 +44,11 @@ class Home extends Component {
                 </Col>
             }
 
-
-
         </Row>
-
-
-      </Grid>)
+      </Grid>
+    )
   }
 }
-
-
-
-
-
-
 
 
 const reduxProps = state => {

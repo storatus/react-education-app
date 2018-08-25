@@ -37,8 +37,6 @@ class Login extends Component {
 
   componentWillReceiveProps(newProps) {
 
-    // I have to work on this
-
     if (newProps.errorMesage.err) {
         alert(newProps.errorMesage.err)
         this.props.removeError()
@@ -67,33 +65,38 @@ class Login extends Component {
   render(){
 
     return(
-      <Form horizontal={true} onSubmit={this.submitForm} className="form-signin">
-          <img alt="bath-logo-black" src={require("../../bath_logo_black.svg")} />
-                    <FormGroup controlId="email">
-                      <ControlLabel>Email</ControlLabel>
-                      <FormControl
-                        type="text"
-                        value={this.state.value}
-                        placeholder="Enter email"
-                        onChange={this.handleInput}
-                      />
+      <Form
+        horizontal={true}
+        onSubmit={this.submitForm}
+        className="form-signin">
+        <img
+          alt="bath-logo-black"
+          src={require("../../bath_logo_black.svg")} />
+        <FormGroup controlId="email">
+          <ControlLabel>Email</ControlLabel>
+          <FormControl
+            type="text"
+            value={this.state.value}
+            placeholder="Enter email"
+            onChange={this.handleInput}
+            />
 
-                    </FormGroup>
+        </FormGroup>
 
-                    <FormGroup controlId="password">
-                      <ControlLabel>Password</ControlLabel>
-                      <FormControl
-                        type="password"
-                        value={this.state.value}
-                        placeholder="Enter password"
-                        onChange={this.handleInput}
-                      />
-                    </FormGroup>
+        <FormGroup controlId="password">
+          <ControlLabel>Password</ControlLabel>
+          <FormControl
+            type="password"
+            value={this.state.value}
+            placeholder="Enter password"
+            onChange={this.handleInput}
+            />
+        </FormGroup>
 
-                    <FormGroup className="center-button">
-                      <Button type="submit" >Login</Button>
-                    </FormGroup>
-    </Form>
+        <FormGroup className="center-button">
+          <Button type="submit" >Login</Button>
+        </FormGroup>
+      </Form>
 
   )
   }
@@ -106,8 +109,6 @@ const reduxProps = state => {
     errorMesage: state.errors.message
   })
 };
-
-
 
 
 export default connect(reduxProps, { loginUser, removeError })(Login);

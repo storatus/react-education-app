@@ -1,4 +1,4 @@
-// Reference --> Exampels from redux
+// Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
 
 import {
   ADD_USER,
@@ -8,25 +8,25 @@ import {
   LOGOUT_USER
 } from '../actions/typesActions';
 
-const initialState = {
+const firstState = {
   users: [],
-  user: {}, // This is only for checking if a new user was added
-  authUser: {} // This for using in Auth
+  user: {},
+  authUser: {}
 }
 
-export default function(state = initialState, action) {
+export default function(state = firstState, action) {
   switch (action.type) {
 
     case ADD_USER:
       return {
         ...state,
-        users: [action.payload, ...state.users], // I have to change it
+        users: [action.payload, ...state.users],
         user: action.payload
       };
     case GET_USERS:
       return {
         ...state,
-        users: action.payload // I have to change it
+        users: action.payload 
       };
     case DELETE_USER:
       return {
@@ -42,7 +42,7 @@ export default function(state = initialState, action) {
       };
     case LOGOUT_USER:
       return {
-        ...state, 
+        ...state,
         authUser: {}
       };
     default:

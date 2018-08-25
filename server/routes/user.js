@@ -18,9 +18,6 @@ router.get('/', (req, res) => {
 });
 
 
-
-
-
 // CREATE USER
 router.post('/', adminAuth, (req, res) => {
 
@@ -36,6 +33,8 @@ router.post('/', adminAuth, (req, res) => {
     if (userData) {
       return res.status(400).json({err: 'Email exsists'});
     }else {
+
+      // Ref: taken from bcrypt example https://goo.gl/4EMHbe
       bcrypt.hash(password, 2).then(hash => {
         user.password = hash
         user.save()
@@ -76,6 +75,7 @@ router.post('/login', (req, res) => {
               return res.status(400).json({err: 'This is the wrong password'});
             }
 
+            
             let jwtData = {};
             jwtData._id = _id
             jwtData.firstName = firstName
@@ -125,8 +125,4 @@ router.delete('/:userId', (req, res) => {
 });
 
 
-
-
-
-// export default router
 module.exports = router

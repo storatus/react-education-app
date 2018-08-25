@@ -15,7 +15,7 @@
 }
 
 
-/* For small Screen  */
+/* sm screen */
 @media screen and (max-width: 767px) {
     .header-title {
         font-size: 1em;

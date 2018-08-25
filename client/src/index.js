@@ -11,10 +11,10 @@ import {setAuthToken} from './helpers'
 import jwtDecode from 'jwt-decode';
 import { setUser } from './actions/userActions';
 
-
+// Ref: Example seen from https://goo.gl/6WBzMn
 if (localStorage.jwtToken) {
-  setAuthToken(localStorage.jwtToken) // This is placing it into headers
-  configStore.dispatch(setUser(jwtDecode(localStorage.jwtToken))) // putting it equal in state
+  setAuthToken(localStorage.jwtToken)
+  configStore.dispatch(setUser(jwtDecode(localStorage.jwtToken)))
 }
 
 
