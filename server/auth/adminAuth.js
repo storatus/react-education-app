@@ -1,4 +1,8 @@
-// Ref: Example seen from https://goo.gl/HAeXNA 
+/**
+ * adminAuth module - Ref: Example seen from https://goo.gl/HAeXNA - Checks for authorization in server side  
+ * @module adminAuth
+ */
+
 
 var jwt = require('jsonwebtoken');
 const User = require('./../models/User')

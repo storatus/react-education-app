@@ -17,8 +17,10 @@ import { removeError } from '../../actions/errorActions';
 
 
 
-// MOST PEOPLE USE AUTH0
-
+/**
+ * Login React Class - Shows a different view
+ * @class Login
+ */
 class Login extends Component {
 
 

@@ -1,4 +1,10 @@
-// Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
+/**
+ * courseReducer module
+ * Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
+ * @module courseReducer
+ */
+
+
 
 import {
   ADD_COURSE,
@@ -15,6 +21,8 @@ const firstState = {
   course: {}
 }
 
+
+/*CHANGE STATE ACCORDINGLY*/
 export default function(state = firstState, action) {
   switch (action.type) {
     case GET_COURSES:

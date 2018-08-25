@@ -1,5 +1,12 @@
-import axios from 'axios'
+/**
+ * helpers module
+ * Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
+ * @module helpers
+ */
 
+
+
+import axios from 'axios'
 
 const allowedFormats = {
   'PDF':  ['pdf'],
@@ -27,7 +34,7 @@ const errorMessages = {
 }
 
 
-
+/** determine name for showing extension in file */
 function determineName(fileName){
 
   let splitName = fileName.split(".");
@@ -48,7 +55,7 @@ function determineName(fileName){
 }
 
 
-// Ref: As seen from stackoverflow https://goo.gl/6n8rJv
+/** Ref: As seen from stackoverflow https://goo.gl/6n8rJv */
 function setAuthToken(token){
   if (token) {
     axios.defaults.headers.common['token'] = `${token}`

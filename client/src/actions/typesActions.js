@@ -1,4 +1,7 @@
-// Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
+/**
+ * typesActions module - Redux Examples taken from  https://bit.ly/2BIGB2T
+ * @module typesActions
+ */
 
 export const GET_COURSES = 'GET_COURSES';
 export const ADD_COURSE = 'ADD_COURSE';

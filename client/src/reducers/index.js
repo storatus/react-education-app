@@ -1,5 +1,8 @@
-// Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
-
+/**
+ * index.js module for configuration
+ * Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
+ * @module index.js reducer configuration
+ */
 import { combineReducers } from 'redux';
 import courseReducer from './courseReducer';
 import userReducer from './userReducer';

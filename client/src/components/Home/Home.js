@@ -3,6 +3,13 @@ import { Grid,Row,Col,Panel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import './Home.css';
 
+
+
+
+/**
+ * Home React Class - Depending on role show different output 
+ * @class Home
+ */
 class Home extends Component {
 
   constructor(props) {

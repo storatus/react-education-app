@@ -16,7 +16,10 @@ import { connect } from 'react-redux';
 
 import {setAuthToken} from './../../../helpers'
 
-
+/**
+ * CourseVideos React Class
+ * @class CourseVideos
+ */
 class CourseVideos extends Component {
 
   constructor(props) {
@@ -45,7 +48,7 @@ class CourseVideos extends Component {
 }
 
 
-
+  /*Check disabled state for button */
   handleInput(e){
     let url = e.target.value
     this.setState({
@@ -54,8 +57,9 @@ class CourseVideos extends Component {
     });
   }
 
+  /** Check if video url is a youtube video url with regex - Regex taken from https://goo.gl/unbFN5 */
   checkUrlVideo(url){
-    // Ref: Regex taken from https://goo.gl/unbFN5
+
     let urlRegex = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
     let result = url.match(urlRegex)
     if (result) {
@@ -68,16 +72,18 @@ class CourseVideos extends Component {
   submitForm(e) {
     e.preventDefault();
 
+    /*Get rid of whitespaces*/
     let url = this.state.url.replace(/\s+/g, '');
     let courseId = this.state.courseId
 
+    /*Check valid youtube string*/
     let result = this.checkUrlVideo(url);
     if (result === false) {
         alert('Your string is not a valid youtube string')
         return;
     }
 
-
+    /*Youtube id and key*/
     let youtubeId = result[1];
     let youtubeKey = 'AIzaSyALhXcz4s3rk1zdGpqqHHWw-QJYLNuf0vs'
 
@@ -96,9 +102,11 @@ class CourseVideos extends Component {
     setAuthToken(false)
 
 
-
+    /*Call youtube API and get response */
     axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${youtubeId}&key=${youtubeKey}&part=snippet`)
     .then(response => {
+
+      /*Set token */
       let token = localStorage.getItem('jwtToken')
       setAuthToken(token)
 
@@ -111,17 +119,17 @@ class CourseVideos extends Component {
     }).catch(err => console.log(err))
   }
 
-
+  /** watch video inside component*/
   watchVideo(videoObj){
     this.props.watchVideo(this.state.courseId, videoObj._id, videoObj.youtubeId)
   }
 
-
+  /** delete video inside component*/
   deleteVideo(videoId){
     this.props.deleteVideo(this.state.courseId, videoId)
   }
 
-
+  /** generate videos to display in tabular form*/
   generateVideos(videos){
     return videos.map((val,index) => {
         return (

@@ -1,0 +1,5480 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>final-education-app 1.0.0 | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' type='text/css' rel='stylesheet' />
+  <link href='assets/style.css' type='text/css' rel='stylesheet' />
+  <link href='assets/github.css' type='text/css' rel='stylesheet' />
+  <link href='assets/split.css' type='text/css' rel='stylesheet' />
+</head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'>final-education-app</h3>
+          <div class='mb1'><code>1.0.0</code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#courseactions'
+                  class="">
+                  courseActions
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addcourse'
+                  class="">
+                  addCourse
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getcourses'
+                  class="">
+                  getCourses
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#deletecourse'
+                  class="">
+                  deleteCourse
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getcourse'
+                  class="">
+                  getCourse
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#updatecourse'
+                  class="">
+                  updateCourse
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#downloadfile'
+                  class="">
+                  downloadFile
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#uploadfile'
+                  class="">
+                  uploadFile
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#deletefile'
+                  class="">
+                  deleteFile
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#uploadvideo'
+                  class="">
+                  uploadVideo
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#watchvideo'
+                  class="">
+                  watchVideo
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#deletevideo'
+                  class="">
+                  deleteVideo
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#enrollcourse'
+                  class="">
+                  enrollCourse
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#cleancourse'
+                  class="">
+                  cleanCourse
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#leavecourse'
+                  class="">
+                  leaveCourse
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#erroractions'
+                  class="">
+                  errorActions
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#removeerror'
+                  class="">
+                  removeError
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#typesactions'
+                  class="">
+                  typesActions
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#useractions'
+                  class="">
+                  userActions
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#adduser'
+                  class="">
+                  addUser
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getusers'
+                  class="">
+                  getUsers
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#setuser'
+                  class="">
+                  setUser
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#deleteuser'
+                  class="">
+                  deleteUser
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#loginuser'
+                  class="">
+                  loginUser
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#logoutuser'
+                  class="">
+                  logoutUser
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#app'
+                  class="">
+                  App
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#auth'
+                  class="">
+                  Auth
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#container'
+                  class="">
+                  Container
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#course'
+                  class=" toggle-sibling">
+                  Course
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#courseleave'
+                        class='regular pre-open'>
+                        #leave
+                      </a></li>
+                      
+                      <li><a
+                        href='#courseenroll'
+                        class='regular pre-open'>
+                        #enroll
+                      </a></li>
+                      
+                      <li><a
+                        href='#coursedeletecourse'
+                        class='regular pre-open'>
+                        #deleteCourse
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#coursefiles'
+                  class=" toggle-sibling">
+                  CourseFiles
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#coursefilesdownloadfile'
+                        class='regular pre-open'>
+                        #downloadFile
+                      </a></li>
+                      
+                      <li><a
+                        href='#coursefilesdeletefile'
+                        class='regular pre-open'>
+                        #deleteFile
+                      </a></li>
+                      
+                      <li><a
+                        href='#coursefilessetfile'
+                        class='regular pre-open'>
+                        #setFile
+                      </a></li>
+                      
+                      <li><a
+                        href='#coursefilesuploadfile'
+                        class='regular pre-open'>
+                        #uploadFile
+                      </a></li>
+                      
+                      <li><a
+                        href='#coursefilesgeneratefiles'
+                        class='regular pre-open'>
+                        #generateFiles
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#courseusers'
+                  class=" toggle-sibling">
+                  CourseUsers
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#courseuserscallapimembers'
+                        class='regular pre-open'>
+                        #callApiMembers
+                      </a></li>
+                      
+                      <li><a
+                        href='#courseusersgeneratemembers'
+                        class='regular pre-open'>
+                        #generateMembers
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#coursevideos'
+                  class=" toggle-sibling">
+                  CourseVideos
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#coursevideoscheckurlvideo'
+                        class='regular pre-open'>
+                        #checkUrlVideo
+                      </a></li>
+                      
+                      <li><a
+                        href='#coursevideoswatchvideo'
+                        class='regular pre-open'>
+                        #watchVideo
+                      </a></li>
+                      
+                      <li><a
+                        href='#coursevideosdeletevideo'
+                        class='regular pre-open'>
+                        #deleteVideo
+                      </a></li>
+                      
+                      <li><a
+                        href='#coursevideosgeneratevideos'
+                        class='regular pre-open'>
+                        #generateVideos
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#courses'
+                  class=" toggle-sibling">
+                  Courses
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#coursescalcmaterial'
+                        class='regular pre-open'>
+                        #calcMaterial
+                      </a></li>
+                      
+                      <li><a
+                        href='#coursesgeneratecourses'
+                        class='regular pre-open'>
+                        #generateCourses
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#createcourse'
+                  class=" toggle-sibling">
+                  CreateCourse
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#createcourseisvalid'
+                        class='regular pre-open'>
+                        #isValid
+                      </a></li>
+                      
+                      <li><a
+                        href='#createcoursecleanform'
+                        class='regular pre-open'>
+                        #cleanForm
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#createuser'
+                  class="">
+                  CreateUser
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#editcourse'
+                  class=" toggle-sibling">
+                  EditCourse
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#editcourseisvalid'
+                        class='regular pre-open'>
+                        #isValid
+                      </a></li>
+                      
+                      <li><a
+                        href='#editcourseassigndata'
+                        class='regular pre-open'>
+                        #assignData
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#header'
+                  class="">
+                  Header
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#home'
+                  class="">
+                  Home
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#login'
+                  class="">
+                  Login
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#main'
+                  class="">
+                  Main
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#mycourses'
+                  class=" toggle-sibling">
+                  MyCourses
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#mycoursescalcmaterial'
+                        class='regular pre-open'>
+                        #calcMaterial
+                      </a></li>
+                      
+                      <li><a
+                        href='#mycoursesgeneratecourses'
+                        class='regular pre-open'>
+                        #generateCourses
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#nopage'
+                  class="">
+                  NoPage
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#sidebar'
+                  class=" toggle-sibling">
+                  Sidebar
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#sidebarlogout'
+                        class='regular pre-open'>
+                        #logout
+                      </a></li>
+                      
+                      <li><a
+                        href='#sidebargeneratelinks'
+                        class='regular pre-open'>
+                        #generateLinks
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#users'
+                  class=" toggle-sibling">
+                  Users
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#usersdeleteuser'
+                        class='regular pre-open'>
+                        #deleteUser
+                      </a></li>
+                      
+                      <li><a
+                        href='#usersgenerateusers'
+                        class='regular pre-open'>
+                        #generateUsers
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#definerole'
+                  class="">
+                  defineRole
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#configstore'
+                  class="">
+                  configStore
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#helpers'
+                  class="">
+                  helpers
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#'
+                  class="">
+                  
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#setauthtoken'
+                  class="">
+                  setAuthToken
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#indexjs'
+                  class="">
+                  index.js
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#coursereducer'
+                  class="">
+                  courseReducer
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#errorreducer'
+                  class="">
+                  errorReducer
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#combinereducers'
+                  class="">
+                  combineReducers
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#userreducer'
+                  class="">
+                  userReducer
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#componenttestjs'
+                  class="">
+                  Component.test.js
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='http://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='courseactions'>
+      courseActions
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>courseActions module
+Ref: Redux Examples taken from  <a href="https://bit.ly/2BIGB2T">https://bit.ly/2BIGB2T</a></p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>courseActions</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addcourse'>
+      addCourse
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to add course</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>addCourse</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>courseData</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getcourses'>
+      getCourses
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to get courses</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>getCourses</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='deletecourse'>
+      deleteCourse
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to delete course</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>deleteCourse</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>courseId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getcourse'>
+      getCourse
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to get course</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>getCourse</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>courseId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='updatecourse'>
+      updateCourse
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to update course</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>updateCourse</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>courseData</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='downloadfile'>
+      downloadFile
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to download file</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>downloadFile</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>path</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>fileName</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>fileId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>courseId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='uploadfile'>
+      uploadFile
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to upload file</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>uploadFile</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>file</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='deletefile'>
+      deleteFile
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to delete file</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>deleteFile</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>courseId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>fileId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='uploadvideo'>
+      uploadVideo
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to upload video</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>uploadVideo</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>url</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>courseId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>title</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>youtubeId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>thumbnail</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='watchvideo'>
+      watchVideo
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to watch video</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>watchVideo</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>courseId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>videoId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>youtubeId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='deletevideo'>
+      deleteVideo
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to delete video</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>deleteVideo</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>courseId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>videoId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='enrollcourse'>
+      enrollCourse
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to enroll in course</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>enrollCourse</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>userData</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='cleancourse'>
+      cleanCourse
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to clean course</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>cleanCourse</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='leavecourse'>
+      leaveCourse
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to leave course</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>leaveCourse</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>courseId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>enrollId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='erroractions'>
+      errorActions
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>errorActions module</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>errorActions</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='removeerror'>
+      removeError
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to remove Error that is in state</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>removeError</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='typesactions'>
+      typesActions
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>typesActions module - Redux Examples taken from  <a href="https://bit.ly/2BIGB2T">https://bit.ly/2BIGB2T</a></p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>typesActions</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='useractions'>
+      userActions
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>userActions module - Redux Examples taken from  <a href="https://bit.ly/2BIGB2T">https://bit.ly/2BIGB2T</a></p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>userActions</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='adduser'>
+      addUser
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to add user</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>addUser</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>userData</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getusers'>
+      getUsers
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to get all users</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>getUsers</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='setuser'>
+      setUser
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to set user in state</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>setUser</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>userData</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='deleteuser'>
+      deleteUser
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to delete user</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>deleteUser</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>userId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='loginuser'>
+      loginUser
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to login the  user</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>loginUser</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>userData</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='logoutuser'>
+      logoutUser
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Action function to log out the user</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>logoutUser</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='app'>
+      App
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>App React Class</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new App()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='auth'>
+      Auth
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Auth React Class - Example seen from <a href="https://goo.gl/oKVi33">https://goo.gl/oKVi33</a></p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new Auth()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='container'>
+      Container
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Container React Class - This is where router is implemented to switch between pages</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new Container()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='course'>
+      Course
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Course React Class</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new Course()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='courseleave'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>leave(enrollId)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>leave function inside component</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>leave(enrollId: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>enrollId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='courseenroll'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>enroll()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>enroll function inside component with obj with user info</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>enroll()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='coursedeletecourse'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>deleteCourse(courseId, e)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>delete function inside component</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>deleteCourse(courseId: any, e: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>courseId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>e</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='coursefiles'>
+      CourseFiles
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>CourseFiles React Class</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new CourseFiles()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='coursefilesdownloadfile'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>downloadFile(path, fileName, fileId)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Download  file inside component</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>downloadFile(path: any, fileName: any, fileId: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>path</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>fileName</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>fileId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='coursefilesdeletefile'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>deleteFile(materialId)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Delete file</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>deleteFile(materialId: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>materialId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='coursefilessetfile'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>setFile(e)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Setfile from JavaScript and HTML5</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>setFile(e: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>e</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='coursefilesuploadfile'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>uploadFile(e)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Upload  file inside component</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>uploadFile(e: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>e</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='coursefilesgeneratefiles'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>generateFiles(fileData)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Generate files for rendering table</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>generateFiles(fileData: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>fileData</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='courseusers'>
+      CourseUsers
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>CourseUsers React Class</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new CourseUsers()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='courseuserscallapimembers'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>callApiMembers(members)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>connect user ids with database call</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>callApiMembers(members: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>members</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='courseusersgeneratemembers'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>generateMembers(members)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Generate members to display in tabular form</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>generateMembers(members: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>members</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='coursevideos'>
+      CourseVideos
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>CourseVideos React Class</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new CourseVideos()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='coursevideoscheckurlvideo'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>checkUrlVideo(url)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Check if video url is a youtube video url with regex - Regex taken from <a href="https://goo.gl/unbFN5">https://goo.gl/unbFN5</a></p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>checkUrlVideo(url: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>url</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='coursevideoswatchvideo'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>watchVideo(videoObj)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>watch video inside component</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>watchVideo(videoObj: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>videoObj</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='coursevideosdeletevideo'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>deleteVideo(videoId)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>delete video inside component</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>deleteVideo(videoId: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>videoId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='coursevideosgeneratevideos'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>generateVideos(videos)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>generate videos to display in tabular form</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>generateVideos(videos: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>videos</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='courses'>
+      Courses
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Courses React Class</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new Courses()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='coursescalcmaterial'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>calcMaterial(videos, filePaths)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Calculate how much material is in</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>calcMaterial(videos: any, filePaths: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>videos</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>filePaths</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='coursesgeneratecourses'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>generateCourses(courseData)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Generate courses table depending on student and admin view. This depends if it is enabled or disabled</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>generateCourses(courseData: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>courseData</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='createcourse'>
+      CreateCourse
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>CreateCourse React Class</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new CreateCourse()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='createcourseisvalid'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>isValid()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Validation check if in form everything is valid</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>isValid()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='createcoursecleanform'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>cleanForm()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>After submit clean form</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>cleanForm()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='createuser'>
+      CreateUser
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>CreateUser React Class</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new CreateUser()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='editcourse'>
+      EditCourse
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>EditCourse React Class</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new EditCourse()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='editcourseisvalid'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>isValid()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Check validation</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>isValid()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='editcourseassigndata'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>assignData(data)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Assign all data from form before sending</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>assignData(data: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>data</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='header'>
+      Header
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Header React Class - Ref: based on react-bootstrap examples : <a href="https://goo.gl/pBMvSb">https://goo.gl/pBMvSb</a></p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new Header()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='home'>
+      Home
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Home React Class - Depending on role show different output</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new Home()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='login'>
+      Login
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Login React Class - Shows a different view</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new Login()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='main'>
+      Main
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Main React Class</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new Main()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='mycourses'>
+      MyCourses
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>MyCourses React Class - shows all courses from a student perspective - Almost same code as courses</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new MyCourses()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='mycoursescalcmaterial'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>calcMaterial(videos, filePaths)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Calculate materials</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>calcMaterial(videos: any, filePaths: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>videos</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>filePaths</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='mycoursesgeneratecourses'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>generateCourses(courseData)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Generate courses that apply to the current user</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>generateCourses(courseData: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>courseData</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='nopage'>
+      NoPage
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>NoPage React Class - Shows 404 when page not present</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new NoPage()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='sidebar'>
+      Sidebar
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Sidebar React Class - Shows Sidebar depending on the user role</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new Sidebar()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='sidebarlogout'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>logout(e)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>logout is a different function in link list</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>logout(e: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>e</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='sidebargeneratelinks'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>generateLinks(menuItems)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Generating asll links depending on user role</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>generateLinks(menuItems: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>menuItems</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='users'>
+      Users
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Users React Class - Shows all users</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new Users()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='usersdeleteuser'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>deleteUser(userId)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>delete specific user</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>deleteUser(userId: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>userId</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='usersgenerateusers'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>generateUsers(userData)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>generate all users</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>generateUsers(userData: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>userData</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='definerole'>
+      defineRole
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>show student or admin in the table</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>defineRole</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>role</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='configstore'>
+      configStore
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>configStore module
+Ref: Redux Examples taken from  <a href="https://bit.ly/2BIGB2T">https://bit.ly/2BIGB2T</a></p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>configStore</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='helpers'>
+      helpers
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>helpers module
+Ref: Redux Examples taken from  <a href="https://bit.ly/2BIGB2T">https://bit.ly/2BIGB2T</a></p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>helpers</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id=''>
+      
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>determine name for showing extension in file</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='setauthtoken'>
+      setAuthToken
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Ref: As seen from stackoverflow <a href="https://goo.gl/6n8rJv">https://goo.gl/6n8rJv</a></p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>setAuthToken(token: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>token</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='indexjs'>
+      index.js
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>index.js module</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>index.js</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='coursereducer'>
+      courseReducer
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>courseReducer module
+Ref: Redux Examples taken from  <a href="https://bit.ly/2BIGB2T">https://bit.ly/2BIGB2T</a></p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>courseReducer</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='errorreducer'>
+      errorReducer
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>errorReducer module
+Ref: Redux Examples taken from  <a href="https://bit.ly/2BIGB2T">https://bit.ly/2BIGB2T</a></p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>errorReducer</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='combinereducers'>
+      combineReducers
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>index.js module for configuration
+Ref: Redux Examples taken from  <a href="https://bit.ly/2BIGB2T">https://bit.ly/2BIGB2T</a></p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>combineReducers</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='userreducer'>
+      userReducer
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>userReducer module
+Ref: Redux Examples taken from  <a href="https://bit.ly/2BIGB2T">https://bit.ly/2BIGB2T</a></p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>userReducer</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='componenttestjs'>
+      Component.test.js
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>test components module
+Ref: <a href="https://bit.ly/2BpDf4p">https://bit.ly/2BpDf4p</a>
+Ref: <a href="https://bit.ly/2MCYu7p">https://bit.ly/2MCYu7p</a></p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>Component.test.js</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>

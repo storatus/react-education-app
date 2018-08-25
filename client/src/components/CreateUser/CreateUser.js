@@ -15,7 +15,10 @@ import { removeError } from '../../actions/errorActions';
 
 import { connect } from 'react-redux';
 
-
+/**
+ * CreateUser React Class
+ * @class CreateUser
+ */
 class CreateUser extends Component {
 
   constructor(props) {
@@ -39,6 +42,7 @@ class CreateUser extends Component {
 
   }
 
+  /*When a new user is created cleanForm and clean all errors in state from Redux*/
   componentWillReceiveProps(newProps) {
 
     if (newProps.errorMesage.err) {

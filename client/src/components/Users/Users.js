@@ -3,7 +3,10 @@ import { Table, Grid, Row, Col, Button } from 'react-bootstrap';
 import { getUsers, deleteUser } from '../../actions/userActions';
 import { connect } from 'react-redux';
 
-
+/**
+ * Users React Class - Shows all users
+ * @class Users
+ */
 
 class Users extends Component {
 
@@ -18,7 +21,7 @@ class Users extends Component {
     this.props.getUsers();
   }
 
-
+  /** delete specific user*/
   deleteUser(userId){
 
     this.props.deleteUser(userId)
@@ -26,7 +29,7 @@ class Users extends Component {
 
   }
 
-
+  /** generate all users*/
   generateUsers(userData){
 
     return userData.map(val => {
@@ -78,7 +81,7 @@ class Users extends Component {
   }
 }
 
-
+/** show student or admin in the table*/
 const defineRole = role => {
   return role === 0 ? 'student' : 'admin'
 }

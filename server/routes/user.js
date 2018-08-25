@@ -1,3 +1,9 @@
+/**
+ * user module - REST CALLS
+ * @module user
+ */
+
+
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt')
@@ -62,7 +68,7 @@ router.post('/login', (req, res) => {
 
   let { email, password } = req.body
 
-  // find user
+  // find user and if everything is found decrypt password
   User.findOne({email: email}).then(userData => {
     if (userData == null) {
       res.status(400).json({err: 'Email does not exist'});
@@ -75,7 +81,7 @@ router.post('/login', (req, res) => {
               return res.status(400).json({err: 'This is the wrong password'});
             }
 
-            
+
             let jwtData = {};
             jwtData._id = _id
             jwtData.firstName = firstName

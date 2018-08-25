@@ -1,7 +1,12 @@
+/**
+ * course module - REST CALLS
+ * @module course
+ */
+
+
 var express = require('express');
 var router = express.Router();
 var formidable = require('formidable');
-var fs = require('fs');
 var mongoose = require('mongoose')
 var path = require('path')
 var googleStorage = require('./../config')
@@ -90,7 +95,7 @@ router.get('/file/:downloadName/:courseId/:fileId', (req, res) => {
   let courseId = req.params.courseId
   let ip = req.headers['x-forwarded-for']
 
-
+  /*Check IP for counting */
   Course.findOne({ "_id": courseId, "filePaths._id": fileId }).then( val => {
     let index = val.filePaths.findIndex(el => el._id == fileId)
     let isIp = val.filePaths[index].clicks.findIndex(el => ip)
@@ -107,7 +112,7 @@ router.get('/file/:downloadName/:courseId/:fileId', (req, res) => {
   let publicPath = `${__dirname}/../public/${downloadName}`
   let options = { destination: publicPath}
 
-
+  /*Get file first from Google to download */
   googleStorage.storage.bucket(googleStorage.bucketName).file(downloadName).download(options)
   .then(() => res.download(publicPath, downloadName))
   .catch(err => console.error('ERROR:', err));

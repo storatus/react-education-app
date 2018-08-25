@@ -1,4 +1,10 @@
-// Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
+
+/**
+ * userActions module - Redux Examples taken from  https://bit.ly/2BIGB2T
+ * @module userActions
+ */
+
+
 import {
   ADD_USER,
   GET_USERS,
@@ -14,7 +20,7 @@ import jwtDecode from 'jwt-decode';
 
 
 
-// Add Course
+/** Action function to add user */
 export const addUser = userData => dispatch => {
   axios.post('/api/user/', userData)
     .then(res =>
@@ -32,7 +38,7 @@ export const addUser = userData => dispatch => {
 };
 
 
-// Get Users
+/** Action function to get all users */
 export const getUsers = () => dispatch => {
   axios.get('/api/user/')
     .then(res =>
@@ -49,7 +55,7 @@ export const getUsers = () => dispatch => {
     );
 };
 
-
+/** Action function to set user in state */
 export const setUser = userData => {
   return {
     type: LOGIN_USER,
@@ -57,8 +63,7 @@ export const setUser = userData => {
   }
 }
 
-
-// Delete User
+/** Action function to delete user  */
 export const deleteUser = userId => dispatch => {
   axios.delete(`/api/user/${userId}`)
     .then(res =>
@@ -76,7 +81,7 @@ export const deleteUser = userId => dispatch => {
 };
 
 
-// Login User
+/** Action function to login the  user  */
 export const loginUser = userData => dispatch => {
   axios.post('/api/user/login', userData)
     .then(res =>{
@@ -98,7 +103,7 @@ export const loginUser = userData => dispatch => {
 
 
 
-// Logout User
+/** Action function to log out the user  */
 export const logoutUser = () => dispatch => {
 
   setAuthToken(false)

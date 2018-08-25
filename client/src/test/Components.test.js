@@ -1,6 +1,10 @@
-// Ref: https://bit.ly/2BpDf4p
-// Ref: https://bit.ly/2MCYu7p
 
+/**
+ * test components module
+ * Ref: https://bit.ly/2BpDf4p
+ * Ref: https://bit.ly/2MCYu7p
+ * @module Component.test.js
+ */
 
 import React from 'react';
 
@@ -20,7 +24,7 @@ import NoPage from './../components/NoPage/NoPage';
 import Main from './../components/Main/Main';
 
 
-
+// Get mock data for API simulation
 import configureMockStore from "redux-mock-store";
 import { Provider } from "react-redux";
 const mockStore = configureMockStore();

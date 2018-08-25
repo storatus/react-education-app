@@ -5,10 +5,14 @@ import {
   Col
 } from 'react-bootstrap';
 import axios from 'axios'
-
-
 import { connect } from 'react-redux';
 
+
+
+/**
+ * CourseUsers React Class
+ * @class CourseUsers
+ */
 class CourseUsers extends Component {
 
   constructor(props) {
@@ -34,6 +38,7 @@ class CourseUsers extends Component {
     this.callApiMembers(this.props.members)
   }
 
+  /** connect user ids with database call */
   callApiMembers(members){
     let memberCalls = members.map(el => axios.get(`/api/user/${el.userId}`))
 
@@ -44,7 +49,7 @@ class CourseUsers extends Component {
   }
 
 
-
+  /** Generate members to display in tabular form */
   generateMembers(members){
     return members.map((val,index) => {
         return (
@@ -58,8 +63,6 @@ class CourseUsers extends Component {
   }
 
   render() {
-
-
 
     return(
       <div>

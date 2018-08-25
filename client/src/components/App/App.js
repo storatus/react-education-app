@@ -6,7 +6,10 @@ import Login from '../Login/Login';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 
-
+/**
+ * App React Class
+ * @class App
+ */
 class App extends Component {
 
   render() {

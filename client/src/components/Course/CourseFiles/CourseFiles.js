@@ -13,6 +13,10 @@ import {determineName} from '../../../helpers'
 import { uploadFile, deleteFile, downloadFile } from '../../../actions/courseActions';
 import { connect } from 'react-redux';
 
+/**
+ * CourseFiles React Class
+ * @class CourseFiles
+ */
 class CourseFiles extends Component {
 
   constructor(props) {
@@ -43,26 +47,27 @@ class CourseFiles extends Component {
     }
 }
 
-
+  /** Download  file inside component */
   downloadFile(path, fileName, fileId){
     this.props.downloadFile(path, fileName, fileId,this.props.courseId)
   }
 
 
-
+  /** Delete file  */
   deleteFile(materialId){
     this.setState({isDisabledDelete: true})
     this.props.deleteFile(this.props.courseId,materialId)
   }
 
 
+  /** Setfile from JavaScript and HTML5 */
   setFile(e){
     let fileObj = e.target.files[0]
     this.setState({ file: fileObj, isDisabled: false})
   }
 
 
-
+  /** Upload  file inside component */
   uploadFile(e){
     e.preventDefault()
     this.setState({isDisabled: true})
@@ -76,8 +81,8 @@ class CourseFiles extends Component {
     form.append('file', fileObj);
     form.append('courseId', this.state.courseId);
 
+    /* Check if file with same name already uploaded */
     let findName =  this.props.filePaths.findIndex(data => data.fileName === fileName)
-
     if (findName > -1) {
       alert('File with same name already uploaded')
       this.setState({isDisabled: false})
@@ -90,6 +95,7 @@ class CourseFiles extends Component {
   }
 
 
+  /** Generate files for rendering table */
   generateFiles(fileData){
     return fileData.map((val,index) => {
         return (

@@ -1,5 +1,8 @@
-// Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
-
+/**
+ * errorReducer module
+ * Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
+ * @module errorReducer
+ */
 import {
   ERRORS,
   REMOVE_ERRORS

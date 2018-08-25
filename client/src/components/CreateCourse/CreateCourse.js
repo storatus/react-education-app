@@ -15,7 +15,10 @@ import {errorMessages} from '../../helpers';
 import { addCourse } from '../../actions/courseActions';
 import { connect } from 'react-redux';
 
-
+/**
+ * CreateCourse React Class
+ * @class CreateCourse
+ */
 class CreateCourse extends Component {
 
   constructor(props) {
@@ -40,6 +43,9 @@ class CreateCourse extends Component {
 
   }
 
+
+
+  /** Validation check if in form everything is valid*/
   isValid(){
 
     let checkValid = true
@@ -89,6 +95,7 @@ class CreateCourse extends Component {
     }
   }
 
+  /** After submit clean form*/
   cleanForm(){
     this.setState({
       name: '',

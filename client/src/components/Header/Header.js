@@ -7,12 +7,14 @@ import Sidebar from './../Sidebar/Sidebar'
 import { connect } from 'react-redux';
 import './Header.css';
 
-
+/**
+ * Header React Class - Ref: based on react-bootstrap examples : https://goo.gl/pBMvSb
+ * @class Header
+ */
 class Header extends Component {
 
   render() {
 
-    // Ref: based on react-bootstrap examples : https://goo.gl/pBMvSb
     let role = this.props.auth.role
         return(
 
@@ -27,6 +29,7 @@ class Header extends Component {
 
                 <Nav pullRight>
                    <NavItem eventKey={1} href="#">
+                     {/*Show admin or student name depending on the role*/}
                      { role === 1 &&  <span className="loggedIn hidden-xs hidden-sm"> Logged as Admin </span>}
                      { role === 0 &&  <span className="loggedIn hidden-xs hidden-sm"> Hello,  {this.props.auth.firstName} </span>}
                    </NavItem>

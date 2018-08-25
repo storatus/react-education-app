@@ -15,7 +15,10 @@ import { getCourse, updateCourse } from '../../actions/courseActions';
 import { connect } from 'react-redux';
 
 
-
+/**
+ * EditCourse React Class
+ * @class EditCourse
+ */
 class EditCourse extends Component {
 
   constructor(props) {
@@ -39,6 +42,7 @@ class EditCourse extends Component {
 
   }
 
+  /** Check validation */
   isValid(){
 
     let checkValid = true
@@ -75,7 +79,7 @@ class EditCourse extends Component {
   }
 
 
-
+  /** Assign all data from form before sending */
   assignData(data){
     this.setState({
       _id: data._id,

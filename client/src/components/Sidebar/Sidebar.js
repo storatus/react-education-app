@@ -5,7 +5,10 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/userActions';
 import { Nav, NavItem } from 'react-bootstrap';
 
-
+/**
+ * Sidebar React Class - Shows Sidebar depending on the user role
+ * @class Sidebar
+ */
 class Sidebar extends Component {
 
   constructor(props) {
@@ -24,12 +27,12 @@ class Sidebar extends Component {
 }
 
 
-
+/** logout is a different function in link list*/
 logout(e){
   this.props.logoutUser()
 }
 
-
+/** Generating asll links depending on user role*/
 generateLinks(menuItems){
     return menuItems.map((exp,i) => {
 
@@ -48,9 +51,7 @@ generateLinks(menuItems){
   }
 
   render() {
-    // 1 is admin
-    // 0 is user
-
+    /*role --> student = 0 and admin = 1*/
     let role = this.props.auth.role
     let isResponsive = this.props.isResponsive;
 

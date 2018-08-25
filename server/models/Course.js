@@ -1,4 +1,8 @@
-// Ref: From mongoose docs https://goo.gl/szRMTi
+/**
+ * Course module - Ref: From mongoose docs https://goo.gl/szRMTi
+ * @module Course
+ */
+
 
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema;

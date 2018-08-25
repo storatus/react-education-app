@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import { Grid,Row,Col } from 'react-bootstrap';
 
 
-
+/**
+ * NoPage React Class - Shows 404 when page not present
+ * @class NoPage
+ */
 class NoPage extends Component {
 
   render() {

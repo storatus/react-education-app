@@ -1,3 +1,9 @@
+/**
+ * config module - google storage 
+ * @module config
+ */
+
+
 var path = require('path')
 
 const bucketName = 'final-education-app'

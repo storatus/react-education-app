@@ -15,7 +15,10 @@ import Login from '../Login/Login';
 import NoPage from '../NoPage/NoPage';
 import Auth from '../Auth/Auth'
 
-
+/**
+ * Container React Class - This is where router is implemented to switch between pages
+ * @class Container
+ */
 class Container extends Component {
   render() {
     return (

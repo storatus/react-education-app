@@ -5,19 +5,22 @@ import { getCourses } from '../../actions/courseActions';
 import { connect } from 'react-redux';
 
 
-
+/**
+ * MyCourses React Class - shows all courses from a student perspective - Almost same code as courses
+ * @class MyCourses
+ */
 class MyCourses extends Component {
 
   componentDidMount() {
     this.props.getCourses();
   }
 
-
+  /** Calculate materials*/
   calcMaterial(videos, filePaths){
     return videos.length + filePaths.length
   }
 
-
+  /** Generate courses that apply to the current user */
   generateCourses(courseData){
 
     let auth = this.props.auth

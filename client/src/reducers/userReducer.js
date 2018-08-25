@@ -1,4 +1,8 @@
-// Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
+/**
+ * userReducer module
+ * Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
+ * @module userReducer
+ */
 
 import {
   ADD_USER,
@@ -26,7 +30,7 @@ export default function(state = firstState, action) {
     case GET_USERS:
       return {
         ...state,
-        users: action.payload 
+        users: action.payload
       };
     case DELETE_USER:
       return {

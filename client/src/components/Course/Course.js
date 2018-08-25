@@ -16,7 +16,10 @@ import { getCourse, deleteCourse, enrollCourse, leaveCourse, cleanCourse } from 
 import { connect } from 'react-redux';
 
 
-
+/**
+ * Course React Class
+ * @class Course
+ */
 class Course extends Component {
 
 
@@ -35,13 +38,13 @@ class Course extends Component {
     }
   }
 
-
+  /** leave function inside component  */
   leave(enrollId){
     this.props.leaveCourse(this.props.match.params.courseId,enrollId)
     alert('Course left')
   }
 
-
+  /** enroll function inside component with obj with user info  */
   enroll(){
 
     let enrollObj = {
@@ -54,7 +57,7 @@ class Course extends Component {
 
   }
 
-
+  /** delete function inside component   */
   deleteCourse(courseId,e){
     this.props.deleteCourse(courseId)
     alert('Course Deleted')
@@ -67,6 +70,7 @@ class Course extends Component {
     this.props.getCourse(courseId)
   }
 
+  /* When course component is left clean cours in state  */
   componentWillUnmount(){
     this.props.cleanCourse()
   }
@@ -78,6 +82,7 @@ class Course extends Component {
     let role = this.props.auth.role
     let enrollId = null;
 
+    /*Check if tstudent is enrolled in course*/
     if (Object.keys(courseData).length > 0 && courseData.members.length > 0 && role === 0) {
       enrollId = courseData.members.find(el => el.userId === this.props.auth._id)
       if (enrollId) {
@@ -121,7 +126,7 @@ class Course extends Component {
           </Col>
         </Row>
 
-
+      {/*All 3 subcomponents*/}
       {  Object.keys(courseData).length > 0 && <CourseFiles  role={role} courseId={courseData._id} filePaths={courseData.filePaths}/>}
       <hr></hr>
       {  Object.keys(courseData).length > 0 && <CourseVideos role={role} courseId={courseData._id} videos={courseData.videos}/>}
@@ -133,6 +138,7 @@ class Course extends Component {
         <Row className="margin-up margin-down" >
             <Col md={6}>
               <div className="pull-right">
+                {/*Show different buttons depending on being student or admin*/}
                 { role === 1 &&
                   <div>
                     <Button  onClick={(e) => this.deleteCourse(courseData._id, e)} bsStyle="danger" className="margin-right" > Delete Course</Button>

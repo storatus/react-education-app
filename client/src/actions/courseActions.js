@@ -1,5 +1,10 @@
-// Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
+/**
+ * courseActions module
+ * Ref: Redux Examples taken from  https://bit.ly/2BIGB2T
+ * @module courseActions
+ */
 
+/* Import all reducers*/
 import {
   ADD_COURSE,
   GET_COURSES,
@@ -12,7 +17,7 @@ import {
 import axios from 'axios';
 
 
-// Add Course
+/** Action function to add course  */
 export const addCourse = courseData => dispatch => {
   axios.post('/api/course/', courseData)
     .then(res =>
@@ -30,7 +35,7 @@ export const addCourse = courseData => dispatch => {
 };
 
 
-// Get Courses
+/** Action function to get courses  */
 export const getCourses = () => dispatch => {
   axios.get('/api/course')
     .then(response =>
@@ -46,7 +51,8 @@ export const getCourses = () => dispatch => {
     );
 };
 
-// Delete Course --> look for reference
+
+/** Action function to delete course  */
 export const deleteCourse = courseId => dispatch => {
   axios.delete(`/api/course/${courseId}`)
     .then(res =>{
@@ -65,7 +71,7 @@ export const deleteCourse = courseId => dispatch => {
 
 
 
-// Get Course
+/** Action function to get course  */
 export const getCourse = courseId => dispatch => {
   dispatch({
     type: CLEAN_COURSE
@@ -86,8 +92,8 @@ export const getCourse = courseId => dispatch => {
 };
 
 
-// Update Course
-export const updateCourse = courseData => dispatch => {
+/** Action function to update course  */
+ export const updateCourse = courseData => dispatch => {
   axios.put(`/api/course/${courseData._id}`, courseData)
     .then(res =>
       dispatch({
@@ -104,7 +110,7 @@ export const updateCourse = courseData => dispatch => {
 };
 
 
-// Download File
+/** Action function to download file  */
 export const downloadFile = (path, fileName, fileId, courseId) => dispatch => {
     // Ref:
     axios({
@@ -113,7 +119,7 @@ export const downloadFile = (path, fileName, fileId, courseId) => dispatch => {
       responseType: 'blob'})
     .then(res => {
 
-      // Ref: https://goo.gl/SGdqBm
+      /* Ref: https://goo.gl/SGdqBm */
       let aTag = document.createElement('a');
       let url = window.URL.createObjectURL(new Blob([res.data]));
       aTag.href = url;
@@ -125,7 +131,7 @@ export const downloadFile = (path, fileName, fileId, courseId) => dispatch => {
 };
 
 
-// Upload File
+/** Action function to upload file  */
 export const uploadFile = file => dispatch => {
   axios.post(`/api/course/file`,file)
     .then(res =>
@@ -143,7 +149,7 @@ export const uploadFile = file => dispatch => {
 };
 
 
-// Delete File
+/** Action function to delete file  */
 export const deleteFile = (courseId,fileId) => dispatch => {
   axios.delete(`/api/course/file/${courseId}/${fileId}`)
     .then(res =>
@@ -161,7 +167,7 @@ export const deleteFile = (courseId,fileId) => dispatch => {
 };
 
 
-// Upload Video
+/** Action function to upload video  */
 export const uploadVideo = (url, courseId, title, youtubeId, thumbnail) => dispatch => {
   axios.post('/api/course/video', {url, courseId, title, youtubeId, thumbnail})
   .then(res =>
@@ -177,7 +183,7 @@ export const uploadVideo = (url, courseId, title, youtubeId, thumbnail) => dispa
   );
 };
 
-// Watch Video
+/** Action function to watch video  */
 export const watchVideo = (courseId,videoId, youtubeId) => dispatch => {
   axios.get(`/api/course/video/${courseId}/${videoId}`)
   .then(res => {
@@ -194,7 +200,7 @@ export const watchVideo = (courseId,videoId, youtubeId) => dispatch => {
   );
 };
 
-// Delete Video
+/** Action function to delete video  */
 export const deleteVideo = (courseId,videoId) => dispatch => {
   axios.delete(`/api/course/video/${courseId}/${videoId}`)
   .then(res =>
@@ -211,7 +217,7 @@ export const deleteVideo = (courseId,videoId) => dispatch => {
 };
 
 
-// Enroll Course
+/** Action function to enroll in course  */
 export const enrollCourse = userData => dispatch => {
   axios.post('/api/course/enrollCourse', userData)
     .then(res =>
@@ -227,13 +233,13 @@ export const enrollCourse = userData => dispatch => {
     );
 };
 
-
+/** Action function to clean course  */
 export const cleanCourse = () => dispatch => {
       dispatch({type: CLEAN_COURSE})
 };
 
 
-// leave course
+/** Action function to leave course  */
 export const leaveCourse = (courseId,enrollId) => dispatch => {
   axios.delete(`/api/course/leaveCourse/${courseId}/${enrollId}`)
     .then(res =>

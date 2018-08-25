@@ -4,19 +4,22 @@ import { Link } from 'react-router-dom'
 import { getCourses } from '../../actions/courseActions';
 import { connect } from 'react-redux';
 
-
+/**
+ * Courses React Class
+ * @class Courses
+ */
 export class Courses extends Component {
 
   componentDidMount() {
     this.props.getCourses();
   }
 
-
+  /** Calculate how much material is in */
   calcMaterial(videos, filePaths){
     return videos.length + filePaths.length
   }
 
-
+  /** Generate courses table depending on student and admin view. This depends if it is enabled or disabled*/
   generateCourses(courseData){
     let role = this.props.auth.role
     let filterCourses = courseData.filter(el => {
