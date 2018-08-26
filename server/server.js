@@ -29,7 +29,7 @@ app.use(logger('dev'));
 app.use('/api/course', course);
 app.use('/api/user', user);
 
-
+// Examples taken from Express.js file https://goo.gl/VYU9fs
 if (process.env.NODE_ENV == 'production') {
   app.use(express.static(path.join(__dirname, '/../client/build')));
   app.get('*', (req, res) => {
