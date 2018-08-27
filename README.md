@@ -35,12 +35,8 @@ If you want to install the application locally, following steps are necessary:
 
 2) Install NPM available at: https://www.npmjs.com/get-npm
 
-3) On the command line type in: git clone https://github.com/storatus/final-education-app.git
+3) On the command line visit the folder and type in the following: npm install && cd client && npm install
 
-4) This should clone the directorx from the repository.
+4) On the command line in the root of the folder type in: npm run dev
 
-5) On the command line visit the cloned folder and type in the following: npm install && cd client && npm install
-
-6) On the command line in the root of the folder type in: npm run development
-
-7) The app should be visible at http://localhost:3000/
+5) The app should be visible at http://localhost:3000/
