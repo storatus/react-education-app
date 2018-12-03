@@ -43,7 +43,7 @@ generateLinks(menuItems){
             </NavItem>)
 
       }else{
-        return (<li key={i} className="nav-item nav-item-bath">
+        return (<li key={i} className="nav-item nav-item-education">
                 <Link replace to={{pathname: exp.url}}>  {exp.name} </Link>
             </li>)
       }
@@ -91,7 +91,7 @@ generateLinks(menuItems){
             <div className="sidebar-sticky">
               <ul className="nav flex-column">
                       {finalLinks}
-                      <li key="logout" className="nav-item nav-item-bath">
+                      <li key="logout" className="nav-item nav-item-education">
                           <a href="/login" onClick={this.logout}>  Logout </a>
                       </li>
               </ul>

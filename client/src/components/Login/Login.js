@@ -72,8 +72,8 @@ class Login extends Component {
         onSubmit={this.submitForm}
         className="form-signin">
         <img
-          alt="bath-logo-black"
-          src={require("../../bath_logo_black.svg")} />
+          alt="education-logo-black"
+          src={require("../../education-logo-login.png")} />
         <FormGroup controlId="email">
           <ControlLabel>Email</ControlLabel>
           <FormControl

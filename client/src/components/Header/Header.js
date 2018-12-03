@@ -22,7 +22,7 @@ class Header extends Component {
             <Navbar.Header className="navbar-header">
               <Navbar.Brand className="header-title">
                 <a>
-                  <span> <img className="bath-logo" alt="bath-logo" src={require("../../bath_logo.png")} />  Education App     </span>
+                  <span> <img className="education-logo" alt="education-logo" src={require("../../education-logo.png")} />  Education App     </span>
                 </a>
               </Navbar.Brand>
               <Navbar.Toggle />
