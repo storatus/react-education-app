@@ -32,6 +32,6 @@
     "concurrently": "^3.5.1"
   },
   "scriptsComments": {
-   "Ref": "Reference for starting server simultaneously -- https://goo.gl/mqyLU5"
- }
+    "Ref": "Reference for starting server simultaneously -- https://goo.gl/mqyLU5"
+  }
 }

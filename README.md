@@ -1,4 +1,4 @@
-This is the final-master thesis project - Sebastian Glahn
+<!-- This is the final-master thesis project - Sebastian Glahn
 
 For the repository please visit: https://github.com/storatus/final-education-app
 
@@ -39,4 +39,4 @@ If you want to install the application locally, following steps are necessary:
 
 4) On the command line in the root of the folder type in: npm run dev
 
-5) The app should be visible at http://localhost:3000/
+5) The app should be visible at http://localhost:3000/ -->
