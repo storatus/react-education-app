@@ -1,14 +1,13 @@
 /**
- * config module - google storage 
+ * config module - google storage
  * @module config
  */
 
-
 var path = require('path')
 
-const bucketName = 'final-education-app'
+const bucketName = '' // Put here your bucketName
 const Storage = require('@google-cloud/storage');
-const projectId = 'master-thesis-210210';
+const projectId = ''; // Put here your id
 
 const storage = new Storage({
   keyFilename: path.join(__dirname, '/../storage.json'),

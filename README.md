@@ -4,43 +4,13 @@
 
 # React Education App
 
-This is an education App built with React, Redux, Express.js and MongoDB. Additional technologies include google cloud API. It has an admin and student role.
+This is an education App built with React, Redux, Express.js and MongoDB. Additional technologies include google cloud API and the YouTube API.
 
 
-As an Admin you are able to:
+### Installation
 
-
-- Create Courses
-- Create Students
-- Enable/Disable Courses
-- Upload Files
-- Upload YouTube videos
-
-As a student you can:
-
-- Attend Courses
-
-
-
-
-## Table of Contents
-- [Installation](#installation)
-- [Features](#features)
-- [Contributing](#contributing)
-- [Team](#team)
-- [FAQ](#faq)
-- [Support](#support)
-- [License](#license)
-
-
-
-
-
-## Installation
-
-- Please clone this repository using `git clone https://github.com/storatus/react-education-app.git` first.
-
-- There will be two package.json, one for server side and the other on in the client side. Server and client have to start at the same time.  
+- Please clone this repository using `git clone https://github.com/storatus/react-education-app.git` first. There will be two package.json files, one for the server side and the other for the client side.
+This is because server and client have to start at the same time. If you do not have NPM installed, please do so at `https://www.npmjs.com`. This is also a very good project for having a starter platform with react.js and redux.
 
 - In your directory after cloning please do the following:
 
@@ -59,69 +29,67 @@ $ npm install
 
 ### Setup
 
+In order to use the web app you need to register for the Google cloud storage API. Please visit `https://console.cloud.google.com` for registering.
+You will also need an gCloud API key which you can get here `https://cloud.google.com/iam/docs/creating-managing-service-account-keys`.
+
+- Please go to `storage.json` and put your gCloud data accordingly
+- In `server/config.js` please change the following data:
+
+```javascript
+const bucketName = '' // Here comes your bucketName
+const Storage = require('@google-cloud/storage');
+const projectId = ''; // Here comes your project ID
+```
+- You can you any database service for MongoDB. I recommend using `https://mlab.com/`. The go to `server/configDB.js` and change your data accordingly.
+
+```javascript
+mongoose.connect(''); // Here put the database you want to connect to.
+```
+- Finally, please go to `client/src/components/Course/CourseVideos` and change to your youtube key ( you can get it here: `https://developers.google.com/youtube/v3/` )     
+
+```javascript
+let youtubeKey = ''; // Put your youtube key here
+```
+
+## Features
+
+As an Admin you are able to:
+
+- Create Courses
+- Create Students
+- Enable/Disable Courses
+- Upload Files
+- Upload YouTube videos
+
+As a student you can:
+
+- Attend Courses
+- Review Courses
+- Download files
+- Watch Youtube videos that were previously uploaded to Youtube.
+
+This web app has been tested regirously and is fully responsive.
+
+## Examples
+
+
+
+## Support
+
+Please visit my website `www.sebastianglahn.com`. I am always open for new projects and freelance work.
+
+## License
+
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+
+- **[MIT license](http://opensource.org/licenses/mit-license.php)**
+- Copyright 2018 © <a href="http://www.sebastianglahn.com" target="_blank"> Sebastian Glahn </a>.
+
+
+
 
 
 <!--
-
-
----
-
-## Example (Optional)
-
-```javascript
-// code away!
-
-let generateProject = project => {
-  let code = [];
-  for (let js = 0; js < project.length; js++) {
-    code.push(js);
-  }
-};
-```
-
----
-
-
-
-
-
-
-- For all the possible languages that support syntax highlithing on GitHub (which is basically all of them), refer <a href="https://github.com/github/linguist/blob/master/lib/linguist/languages.yml" target="_blank">here</a>.
-
----
-
-## Features
-## Usage (Optional)
-## Documentation (Optional)
-## Tests (Optional)
-
-- Going into more detail on code and technologies used
-- I utilized this nifty <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown Cheatsheet</a> for this sample `README`.
-
----
-
-## Contributing
-
-> To get started...
-
-### Step 1
-
-- **Option 1**
-    - 🍴 Fork this repo!
-
-- **Option 2**
-    - 👯 Clone this repo to your local machine using `https://github.com/joanaz/HireDot2.git`
-
-### Step 2
-
-- **HACK AWAY!** 🔨🔨🔨
-
-### Step 3
-
-- 🔃 Create a new pull request using <a href="https://github.com/joanaz/HireDot2/compare/" target="_blank">`https://github.com/joanaz/HireDot2/compare/`</a>.
-
----
-
 ## Team
 
 > Or Contributors/People
@@ -167,4 +135,6 @@ Reach out to me at one of the following places!
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
-- Copyright 2015 © <a href="http://fvcproductions.com" target="_blank">FVCproductions</a>. -->
+- Copyright 2015 © <a href="http://fvcproductions.com" target="_blank">FVCproductions</a>.
+
+-->

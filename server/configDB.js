@@ -6,7 +6,7 @@
 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://storatus:storatus12@ds247001.mlab.com:47001/final-education-app');
+mongoose.connect(''); // Here put the database you want to connect to. 
 
 
 var db = mongoose.connection;

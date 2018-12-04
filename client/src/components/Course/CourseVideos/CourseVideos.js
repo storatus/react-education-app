@@ -85,7 +85,7 @@ class CourseVideos extends Component {
 
     /*Youtube id and key*/
     let youtubeId = result[1];
-    let youtubeKey = 'AIzaSyALhXcz4s3rk1zdGpqqHHWw-QJYLNuf0vs'
+    let youtubeKey = '' // Put your youtube key here
 
 
     let checkRepeat = this.props.videos.findIndex(data => {
