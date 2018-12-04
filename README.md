@@ -45,7 +45,7 @@ const projectId = ''; // Here comes your project ID
 ```javascript
 mongoose.connect(''); // Here put the database you want to connect to.
 ```
-- Finally, please go to `client/src/components/Course/CourseVideos` and change to your youtube key ( you can get it here: `https://developers.google.com/youtube/v3/` )     
+- Finally, please go to `client/src/components/Course/CourseVideos` and change to your youTube key. You can get it <a href="https://developers.google.com/youtube/v3/" target="_blank"> here </a> :
 
 ```javascript
 let youtubeKey = ''; // Put your youtube key here
