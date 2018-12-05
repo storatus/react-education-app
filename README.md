@@ -73,7 +73,10 @@ This web app has been tested regirously and is fully responsive.
 ## Examples
 
 **Example 1**
-<img src="http://www.sebastianglahn.com/images/portfolio/portfolio_education/github/education-github-2.png" width="300">
+
+
+
+<img src="http://www.sebastianglahn.com/images/portfolio/portfolio_education/github/education-github-2.png" width="500">
 
 
 
