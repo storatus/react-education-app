@@ -29,8 +29,8 @@ $ npm install
 
 ### Setup
 
-In order to use the web app you need to register for the Google cloud storage API. Please visit the `<a href="https://console.cloud.google.com" target="_blank"> website  </a>` for registering.
-You will also need an gCloud API key which you can get `<a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys" target="_blank"> here  </a>`.
+In order to use the web app you need to register for the Google cloud storage API. Please visit the <a href="https://console.cloud.google.com" target="_blank"> website  </a> for registering.
+You will also need an gCloud API key which you can get <a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys" target="_blank"> here  </a>.
 
 - Please go to `storage.json` and put your gCloud data accordingly
 - In `server/config.js` please change the following data:
@@ -40,7 +40,7 @@ const bucketName = '' // Here comes your bucketName
 const Storage = require('@google-cloud/storage');
 const projectId = ''; // Here comes your project ID
 ```
-- You can you any database service for MongoDB. I recommend using `<a href="https://mlab.com/" target="_blank"> Mlab </a>`. The go to `server/configDB.js` and change your data accordingly.
+- You can you any database service for MongoDB. I recommend using <a href="https://mlab.com/" target="_blank"> Mlab </a>. The go to `server/configDB.js` and change your data accordingly.
 
 ```javascript
 mongoose.connect(''); // Here put the database you want to connect to.
