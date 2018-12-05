@@ -76,9 +76,9 @@ This web app has been tested regirously and is fully responsive.
 
 <img src="http://www.sebastianglahn.com/images/portfolio/portfolio_education/github/education-github-3.png" width="500">
 
-<img src="http://www.sebastianglahn.com/images/portfolio/portfolio_education/github/education-github-4.png" height="500">
+<img src="http://www.sebastianglahn.com/images/portfolio/portfolio_education/github/education-github-4.png" height="300">
 
-<img src="http://www.sebastianglahn.com/images/portfolio/portfolio_education/github/education-github-5.png" height="500">
+<img src="http://www.sebastianglahn.com/images/portfolio/portfolio_education/github/education-github-5.png" height="300">
 
 
 ## Support
