@@ -29,8 +29,8 @@ $ npm install
 
 ### Setup
 
-In order to use the web app you need to register for the Google cloud storage API. Please visit `https://console.cloud.google.com` for registering.
-You will also need an gCloud API key which you can get here `https://cloud.google.com/iam/docs/creating-managing-service-account-keys`.
+In order to use the web app you need to register for the Google cloud storage API. Please visit the `<a href="https://console.cloud.google.com" target="_blank"> website  </a>` for registering.
+You will also need an gCloud API key which you can get `<a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys" target="_blank"> here  </a>`.
 
 - Please go to `storage.json` and put your gCloud data accordingly
 - In `server/config.js` please change the following data:
@@ -40,7 +40,7 @@ const bucketName = '' // Here comes your bucketName
 const Storage = require('@google-cloud/storage');
 const projectId = ''; // Here comes your project ID
 ```
-- You can you any database service for MongoDB. I recommend using `https://mlab.com/`. The go to `server/configDB.js` and change your data accordingly.
+- You can you any database service for MongoDB. I recommend using `<a href="https://mlab.com/" target="_blank"> Mlab </a>`. The go to `server/configDB.js` and change your data accordingly.
 
 ```javascript
 mongoose.connect(''); // Here put the database you want to connect to.
@@ -72,11 +72,24 @@ This web app has been tested regirously and is fully responsive.
 
 ## Examples
 
+| <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a>
+| <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a>
+| <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a>
+|
+| :---: |:---:| :---:|
+| [![FVCproductions](http://www.sebastianglahn.com/images/portfolio/portfolio_education/education_3_portfolio.png)](http://fvcproductions.com)    
+| [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)
+| [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)  
+|
+| <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a>
+| <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a>
+| <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a>
+|
 
 
 ## Support
 
-Please visit my website `www.sebastianglahn.com`. I am always open for new projects and freelance work.
+Please visit my `<a href="https://www.sebastianglahn.com" target="_blank"> website </a>`. I am always open for new projects and freelance work.
 
 ## License
 
@@ -86,19 +99,7 @@ Please visit my website `www.sebastianglahn.com`. I am always open for new proje
 - Copyright 2018 © <a href="http://www.sebastianglahn.com" target="_blank"> Sebastian Glahn </a>.
 
 
-
-
-
 <!--
-## Team
-
-> Or Contributors/People
-
-| <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> | <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> | <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> |
-| :---: |:---:| :---:|
-| [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)    | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)  |
-| <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> |
-
 - You can just grab their GitHub profile image URL
 - You should probably resize their picture using `?s=200` at the end of the image URL.
 
