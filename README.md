@@ -75,11 +75,6 @@ This web app has been tested regirously and is fully responsive.
 
 
 
-
-
-| [![FVCproductions](http://www.sebastianglahn.com/images/portfolio/portfolio_education/education_3_portfolio.png?v=3&s=200)](http://fvcproductions.com) 
-
-
 ## Support
 
 Please visit my `<a href="https://www.sebastianglahn.com" target="_blank"> website </a>`. I am always open for new projects and freelance work.
