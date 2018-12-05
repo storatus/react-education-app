@@ -1,4 +1,4 @@
-<a href="http://www.sebastianglahn.com"><img src="http://www.sebastianglahn.com/images/portfolio/portfolio_education/github/education-github-2.png" alt=""></a>
+<a href="http://www.sebastianglahn.com"><img src="http://www.sebastianglahn.com/images/portfolio/portfolio_education/github/education-github-1.png" alt=""></a>
 
 
 
@@ -72,10 +72,13 @@ This web app has been tested regirously and is fully responsive.
 
 ## Examples
 
-**Example 1**
 <img src="http://www.sebastianglahn.com/images/portfolio/portfolio_education/github/education-github-2.png" width="500">
 
+<img src="http://www.sebastianglahn.com/images/portfolio/portfolio_education/github/education-github-3.png" width="500">
 
+<img src="http://www.sebastianglahn.com/images/portfolio/portfolio_education/github/education-github-4.png" width="500">
+
+<img src="http://www.sebastianglahn.com/images/portfolio/portfolio_education/github/education-github-5.png" width="500">
 
 
 ## Support
