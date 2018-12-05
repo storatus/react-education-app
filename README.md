@@ -74,10 +74,9 @@ This web app has been tested regirously and is fully responsive.
 
 
 
-
 ## Support
 
-Please visit my `<a href="https://www.sebastianglahn.com" target="_blank"> website </a>`. I am always open for new projects and freelance work.
+Please visit my <a href="https://www.sebastianglahn.com" target="_blank"> website </a>. I am always open for new projects and freelance work.
 
 ## License
 
